@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  position: relative;
+  overflow-x: hidden;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+header {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+@layer components {
+  .flcenter {
+    @apply flex justify-center items-center;
+  }
+  .section {
+    @apply min-h-[100vh] w-[100vw];
+  }
+}
+
+/* Header */
+
+.m-link {
+  @apply text-black hover:bg-orange-200  transition-all ease-in rounded-lg mr-2 px-4 py-1;
+}
+
+.menu-item {
+  @apply ml-2;
+}
+/* Footer */
+.footer p {
+  @apply text-xl max-sm:text-sm max-md:text-sm mb-2;
+}
+.footer li {
+  @apply text-[gray] font-thin text-sm max-sm:text-sm max-md:text-xs mb-1;
+}
+.footer li:hover {
+  @apply text-[white] cursor-pointer;
+}
+.inpt:focus {
+  outline: none;
+  border: none;
+}
