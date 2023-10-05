@@ -16,13 +16,15 @@ import trip from "../../_assets/Çalışma Yüzeyi 1_1.png"
 import heart_ from "../../_assets/Çalışma Yüzeyi 1_8.png"
 import heart from "../../_assets/Çalışma Yüzeyi 1_7.png"
 
+import logo from "../../_assets/AKDAĞCI SİGORTA LOGO 750x350-100.jpg"
+
 export default function Header() {
     const pathname = usePathname()
     console.log(pathname)
 
     return (
-        <header style={{}} className='py-2 fixed left-0 top-0 right-0 z-10 max-md:bottom-0 max-md:flex max-md:flex-col max-md-justify-center max-md:items-start max-md:pl-20 max-md:[&>a]:mb-5 max-md:pt-20'>
-            <Link href={"/"} >  <div className='absolute top-[20px] left-10 text-black z-10'></div></Link>
+        <header style={{}} className=' shadow-lg py-2 fixed left-0 top-0 right-0 z-10 max-md:bottom-0 max-md:flex max-md:flex-col max-md-justify-center max-md:items-start max-md:pl-20 max-md:[&>a]:mb-5 max-md:pt-20'>
+            <Link className='flcenter' href={"/"} >  <div className='absolute top-[20px] left-10 text-black z-10 flcenter'> <Image className='translate-y-[-8px]' width={200} src={logo} /> </div></Link>
             <div style={{ visibility: pathname == "/oturumac" ? "hidden" : "" }} className='flcenter max-md:flex max-md:flex-col max-md-justify-start max-md:items-start max-md:[&>a]:mb-5' >
                 <Link className='flex flcenter m-link' href={"/arac"} > <Image className='max-w-[50px]' src={pathname == "/arac" ? car : car_} /> <div className='menu-item' >Araç</div></Link>
                 <Link className='flex flcenter m-link' href={"/ev"} ><Image className='max-w-[50px]' src={pathname == "/ev" ? home : home_} /><div className='menu-item' >Ev</div></Link>

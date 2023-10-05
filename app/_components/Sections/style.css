@@ -64,9 +64,10 @@
 .ticker-container {
   -ms-flex-align: center;
   align-items: center;
-  background: linear-gradient(100.72deg, #ff8a00, #ff8a00, #d449f7);
-
-  bottom: 0;
+  /* background: linear-gradient(100.72deg, #ff8a00, #ff8a00, #d449f7); */
+  border-bottom: 3px solid orange;
+  border-top: 3px solid orange;
+  bottom: 100px;
   display: -ms-flexbox;
   display: flex;
   height: 150px;
@@ -140,8 +141,8 @@
 }
 
 .ticker-container .ticker-viewer .ticker-scroll.infinite-animation {
-  -webkit-animation: tickerScroll 40s linear infinite normal;
-  animation: tickerScroll 40s linear infinite normal;
+  -webkit-animation: tickerScroll 120s linear infinite normal;
+  animation: tickerScroll 120s linear infinite normal;
   -webkit-transform: translateX(0);
   transform: translateX(0);
 }
