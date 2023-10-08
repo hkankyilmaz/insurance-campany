@@ -17,7 +17,7 @@ function AboutUs() {
 
                 <div className='h-[400px] w-full bg-cover' style={{ backgroundImage: "url('https://buharkolik.net/wp-content/uploads/2023/04/hakkimizda.jpg')" }} >
                 </div>
-                <div className='[&>p]:mb-3 max-w-[1200px] max-md:[&>p]:text-xs  flex flex-col justify-start items-start z-10 shadow-xl px-5 py-12 rounded-2xl translate-y-[-100px] bg-white' >
+                <div className='[&>p]:mb-3 max-w-[1200px] max-md:[&>p]:text-xs  flex flex-col justify-start items-start z-[5] shadow-xl px-5 py-12 rounded-2xl translate-y-[-100px] bg-white' >
                     <p> <strong>e-sigortam.com</strong> dileğiniz zaman evden, ofisten veya dünyanın herhangi bir yerinden sigorta ihtiyaçlarınıza zahmetsizce, en uygun fiyatlarla ve şeffaf bir şekilde ulaşabilmeniz için kuruldu. </p>
                     <p>Türkiye’nin en iyi sigorta şirketlerine ait en güncel fiyat ve ürünleri karşılaştırarak bütçenize ve ihtiyacınıza en uygun ürünü bulur ve sigorta satın aldığınızda kalite ve kazanç keyfini aynı anda yaşayabilirsiniz.</p>
                     <p>21 kişilik eğitimli uzman kadromuz ile hizmet sunmaktayız.</p>
