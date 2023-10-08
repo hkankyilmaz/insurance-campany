@@ -14,8 +14,8 @@ function Form() {
     const [value, setValue] = useState({ first: "car", second: "carIns" })
 
     return (
-        <div className='max-w-[1000px]'>
-            <FormControl className='mb-5' size='small' fullWidth>
+        <div className=' w-full max-md:px-[20px] max-lg:px-[50px] lg:w-full '>
+            <FormControl className='!mb-5' size='small' fullWidth>
                 <InputLabel size='small' >Sigorta Türü</InputLabel>
                 <Select
                     label="Sigorta Türü"
@@ -44,7 +44,7 @@ function Form() {
                 </Select>
             </FormControl>
             {value.first == "car" ?
-                <FormControl className='mb-5' size='small' fullWidth>
+                <FormControl className='!mb-5' size='small' fullWidth>
                     <InputLabel size='small'>Aracım Sigortalı</InputLabel>
                     <Select
                         labelId="dlabel-carIns"
@@ -59,7 +59,7 @@ function Form() {
                     </Select>
                 </FormControl>
                 : value.first == "house" ?
-                    <FormControl className='mb-5' size='small' fullWidth>
+                    <FormControl className='!mb-5' size='small' fullWidth>
                         <InputLabel size='small'>Evim Sigortalı</InputLabel>
                         <Select
                             labelId="dlabel-carIns"
@@ -72,7 +72,7 @@ function Form() {
                         </Select>
                     </FormControl>
                     : value.first == "business" ?
-                        <FormControl className='mb-5' size='small' fullWidth>
+                        <FormControl className='!mb-5' size='small' fullWidth>
                             <InputLabel size='small'>İşyerim Sigortalı</InputLabel>
                             <Select
                                 labelId="dlabel-carIns"
@@ -85,7 +85,7 @@ function Form() {
                             </Select>
                         </FormControl>
                         : value.first == "trip" ?
-                            <FormControl className='mb-5' size='small' fullWidth>
+                            <FormControl className='!mb-5' size='small' fullWidth>
                                 <InputLabel size='small'>Sağlığım Sigortalı</InputLabel>
                                 <Select
                                     labelId="dlabel-carIns"
@@ -99,7 +99,7 @@ function Form() {
                                 </Select>
                             </FormControl>
                             : value.first == "healt" ?
-                                <FormControl className='mb-5' size='small' fullWidth>
+                                <FormControl className='!mb-5' size='small' fullWidth>
                                     <InputLabel size='small'>Seyahatim Sigortalı</InputLabel>
                                     <Select
                                         labelId="dlabel-carIns"

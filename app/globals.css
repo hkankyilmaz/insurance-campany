@@ -56,7 +56,7 @@ header {
   @apply text-xl max-sm:text-sm max-md:text-sm mb-2;
 }
 .footer li {
-  @apply text-white font-thin text-sm max-sm:text-sm max-md:text-xs mb-1;
+  @apply text-white font-thin text-sm max-sm:text-sm max-md:text-xs mb-1 cursor-pointer;
 }
 
 .inpt:focus {

@@ -47,7 +47,7 @@ function CarInsurance() {
     };
     if (values.person) {
         return (
-            <form className='w-[350px] md:w-[800px]' onSubmit={handleSubmit(onSubmit)} >
+            <form className='w-full' onSubmit={handleSubmit(onSubmit)} >
                 <div>
                     <FormControlLabel control={<Checkbox checked={values.person}
                         onChange={(e) => setValues({ person: e.target.checked, business: !e.target.checked })} />}
@@ -229,7 +229,7 @@ function CarInsurance() {
         )
     } else {
         return (
-            <form className='w-[800px]' onSubmit={handleSubmit(onSubmit)} >
+            <form className='w-full' onSubmit={handleSubmit(onSubmit)} >
                 <div>
                     <FormControlLabel control={<Checkbox checked={values.person}
                         onChange={(e) => setValues({ person: e.target.checked, business: !e.target.checked })} />}
@@ -414,7 +414,7 @@ function TrafficInsurance() {
     };
     if (values.person) {
         return (
-            <form className='w-[800px]' onSubmit={handleSubmit(onSubmit)} >
+            <form className='w-full' onSubmit={handleSubmit(onSubmit)} >
                 <div>
                     <FormControlLabel control={<Checkbox checked={values.person}
                         onChange={(e) => setValues({ person: e.target.checked, business: !e.target.checked })} />}
@@ -537,7 +537,7 @@ function TrafficInsurance() {
         )
     } else {
         return (
-            <form className='w-[800px]' onSubmit={handleSubmit(onSubmit)} >
+            <form className='w-full' onSubmit={handleSubmit(onSubmit)} >
                 <div>
                     <FormControlLabel control={<Checkbox checked={values.person}
                         onChange={(e) => setValues({ person: e.target.checked, business: !e.target.checked })} />}
@@ -686,7 +686,7 @@ function ResInsurance() {
     };
 
     return (
-        <form className='w-[800px]' onSubmit={handleSubmit(onSubmit)} >
+        <form className='w-full' onSubmit={handleSubmit(onSubmit)} >
 
             <div className='grid grid-cols-2 gap-x-2' >
                 <div>

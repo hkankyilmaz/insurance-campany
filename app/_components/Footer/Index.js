@@ -5,11 +5,12 @@ import Image from 'next/image'
 
 import logo from "../../_assets/AKDAĞCI SİGORTA LOGO 750x350-100.jpg"
 import { AiFillYoutube, AiFillInstagram, AiFillLinkedin, AiFillFacebook } from 'react-icons/ai';
+import Link from 'next/link';
 
 
 function Footer() {
     return (
-        <section className='text-white bg-slate-800 py-[100px] max-xl+:px-[25px] px-[150px] footer'>
+        <section className='text-white bg-slate-800 py-[100px] max-xl+:px-[25px] px-[25px] md:px-[150px] footer'>
             <div className='mb-[50px]'>
                 <Image className='w-[300px]' src={logo} />
 
@@ -60,8 +61,8 @@ function Footer() {
 
                         <p>BİZİ TANIYIN</p>
                         <ul>
-                            <li> Hakkımızda</li>
-                            <li>İletişim</li>
+                            <Link href={"hakkimizda"}><li> Hakkımızda</li></Link>
+                            <Link href={"iletisim"}> <li>İletişim</li></Link>
                         </ul>
                     </div>
                     <div>
@@ -90,7 +91,7 @@ function Footer() {
                     <p className='!text-md text-center' >Bizi Takip Edin</p>
                 </div>
             </div>
-        </section>
+        </section >
     )
 }
 
