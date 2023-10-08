@@ -14,10 +14,12 @@ body {
   overflow-x: hidden;
 }
 main {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
   overflow-x: hidden;
+  @media (min-width: 760px) {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+  }
 }
 /* main::-webkit-scrollbar {
   z-index: 100;

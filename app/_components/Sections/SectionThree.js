@@ -9,7 +9,7 @@ import { AiFillCreditCard } from 'react-icons/ai';
 
 function SectionThree() {
     return (
-        <section className='h-[100vh] w-[100vw] pt-[120px] max-md:pt-[100px] px-[25px] xl:px-[400px] flex flex-col justify-start items-center relative border-b' >
+        <section className='md:h-[100vh] w-[100vw] pt-[120px] max-md:py-[25px] px-[25px] xl:px-[400px] flex flex-col justify-start items-center relative bg-slate-50' >
             <p className='font-bold text-2xl max-md:text-lg my-4' >Akdağcı Sigortam Nasıl Çalışır...</p>
             <div className='max-md::lex-col md:flcenter'>
                 <div  >

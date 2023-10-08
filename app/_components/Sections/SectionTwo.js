@@ -8,7 +8,7 @@ function SectionTwo() {
     const SLIDE_COUNT = 4;
     const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
     return (
-        <section className='relative h-[100vh] w-[100vw] bg-black'>
+        <section className='relative h-[100vh] w-[100vw] bg-black max-md:hidden'>
             <Slider slides={SLIDES} options={OPTIONS} />
             <div className='absolute bottom-32 left-[50%] translate-x-[-50%] max-md:flex max-md:flex-col max-md:item-center max-md:justify-center'>
                 <button className='mr-6 w-[200px] px-4 py-2 rounded-md bg-white text-black hover:bg-orange-400 hover:text-white transition-all ease-in'>Tekif Al</button>

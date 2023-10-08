@@ -74,6 +74,9 @@
   position: absolute;
   white-space: nowrap;
   width: 100vw;
+  @media (max-width: 760px) {
+    bottom: 50px;
+  }
 }
 
 .ticker-container.hide-ticker {

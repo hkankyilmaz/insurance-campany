@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 function SectionFour() {
     return (
-        <section className='flex flex-col justify-start items-center min-h-[100vh] w-[100vw] pt-[150px] md:pt-[300px] relative border-b ' >
+        <section className='flex flex-col justify-start items-center h-[100vh] max-md:h-[70vh] w-[100vw] pt-[50px] md:pt-[300px] relative' >
 
             <h2 className='max-md:text-lg font-bold text-2xl text-center mb-3'>Bizimle Çalışan Firmalar</h2>
             <p className='text-center max-md:text-xs max-w-[1000px]'>

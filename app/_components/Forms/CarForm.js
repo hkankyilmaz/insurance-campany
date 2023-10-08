@@ -61,7 +61,7 @@ function CarInsurance() {
                 <div className='grid grid-cols-2 gap-x-2 max-md:grid-cols-1' >
                     <div>
                         <TextField
-                            className='!!mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Ad/Soyad"
                             {...register("car_person_kasko_nameSurname", {
                                 required: "Zorunlu Alan",
@@ -80,7 +80,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='!!mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Cep Telefonu"
                             {...register("car_person_kasko_phoneNumber", {
                                 required: "Zorunlu Alan",
@@ -100,7 +100,7 @@ function CarInsurance() {
                     <div>
 
                         <TextField
-                            className='!!mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Ruhsat Sahibi Tc No"
                             {...register("car_person_kasko_TcNo", {
                                 required: "Zorunlu Alan",
@@ -114,7 +114,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='!!mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Araç Plakası"
                             {...register("car_person_kasko_carNumber", {
                                 required: "Zorunlu Alan",
@@ -128,7 +128,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='!!mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Ruhsat Seri No"
                             {...register("car_person_kasko_seriesNo", {
                                 required: "Zorunlu Alan",
