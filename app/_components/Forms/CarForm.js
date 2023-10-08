@@ -58,10 +58,10 @@ function CarInsurance() {
                         label="Şirket"
                     />
                 </div>
-                <div className='grid grid-cols-2 gap-x-2' >
+                <div className='grid grid-cols-2 gap-x-2 max-md:grid-cols-1' >
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!!mb-3' size='small' fullWidth
                             label="Ad/Soyad"
                             {...register("car_person_kasko_nameSurname", {
                                 required: "Zorunlu Alan",
@@ -80,7 +80,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!!mb-3' size='small' fullWidth
                             label="Cep Telefonu"
                             {...register("car_person_kasko_phoneNumber", {
                                 required: "Zorunlu Alan",
@@ -100,7 +100,7 @@ function CarInsurance() {
                     <div>
 
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!!mb-3' size='small' fullWidth
                             label="Ruhsat Sahibi Tc No"
                             {...register("car_person_kasko_TcNo", {
                                 required: "Zorunlu Alan",
@@ -114,7 +114,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!!mb-3' size='small' fullWidth
                             label="Araç Plakası"
                             {...register("car_person_kasko_carNumber", {
                                 required: "Zorunlu Alan",
@@ -128,7 +128,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!!mb-3' size='small' fullWidth
                             label="Ruhsat Seri No"
                             {...register("car_person_kasko_seriesNo", {
                                 required: "Zorunlu Alan",
@@ -142,7 +142,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Meslek"
                             {...register("car_person_kasko_job", {
                                 required: "Zorunlu Alan",
@@ -160,7 +160,7 @@ function CarInsurance() {
                         />
                     </div>
                     <div>
-                        <FormControl className='mb-3' size='small' fullWidth>
+                        <FormControl className='!mb-3' size='small' fullWidth>
                             <InputLabel size='small'>Lpg</InputLabel>
                             <Select
                                 labelId="dlabel-carIns"
@@ -180,7 +180,7 @@ function CarInsurance() {
                         />
                     </div>
                     <div>
-                        <FormControl className='mb-3' size='small' fullWidth>
+                        <FormControl className='!mb-3' size='small' fullWidth>
                             <InputLabel size='small'>Orjinal Harici Aksesuar</InputLabel>
                             <Select
                                 labelId="dlabel-carIns"
@@ -201,7 +201,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Doğum Tarihi"
                             {...register("car_person_kasko_birthdate", {
                                 required: "Zorunlu Alan",
@@ -243,7 +243,7 @@ function CarInsurance() {
                 <div className='grid grid-cols-2 gap-x-2' >
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Firma Unvanı"
                             {...register("car_business_kasko_companyName", {
                                 required: "Zorunlu Alan",
@@ -262,7 +262,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Vergi Numarası"
                             {...register("car_business_kasko_taxNumber", {
                                 required: "Zorunlu Alan",
@@ -282,7 +282,7 @@ function CarInsurance() {
                     <div>
 
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="İl-İlçe"
                             {...register("car_business_kasko_location", {
                                 required: "Zorunlu Alan",
@@ -296,7 +296,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Telefon Numarası"
                             {...register("car_business_kasko_phoneNumber", {
                                 required: "Zorunlu Alan",
@@ -310,7 +310,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Araç Plakası"
                             {...register("car_business_kasko_carNumber", {
                                 required: "Zorunlu Alan",
@@ -324,7 +324,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Ruhsat Seri No"
                             {...register("car_business_kasko_seriesNumber", {
                                 required: "Zorunlu Alan",
@@ -342,7 +342,7 @@ function CarInsurance() {
                         />
                     </div>
                     <div>
-                        <FormControl className='mb-3' size='small' fullWidth>
+                        <FormControl className='!mb-3' size='small' fullWidth>
                             <InputLabel size='small'>Lpg</InputLabel>
                             <Select
                                 labelId="dlabel-carIns"
@@ -362,7 +362,7 @@ function CarInsurance() {
                         />
                     </div>
                     <div>
-                        <FormControl className='mb-3' size='small' fullWidth>
+                        <FormControl className='!mb-3' size='small' fullWidth>
                             <InputLabel size='small'>Orjinal Harici Aksesuar</InputLabel>
                             <Select
                                 labelId="dlabel-carIns"
@@ -428,7 +428,7 @@ function TrafficInsurance() {
                 <div className='grid grid-cols-2 gap-x-2' >
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Ad/Soyad"
                             {...register("car_person_traffic_nameSurname", {
                                 required: "Zorunlu Alan",
@@ -447,7 +447,7 @@ function TrafficInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Cep Telefonu"
                             {...register("car_person_traffic_phoneNumber", {
                                 required: "Zorunlu Alan",
@@ -467,7 +467,7 @@ function TrafficInsurance() {
                     <div>
 
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Ruhsat Sahibi Tc No"
                             {...register("car_person_traffic_TcNo", {
                                 required: "Zorunlu Alan",
@@ -481,7 +481,7 @@ function TrafficInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Araç Plakası"
                             {...register("car_person_traffic_carNumber", {
                                 required: "Zorunlu Alan",
@@ -495,7 +495,7 @@ function TrafficInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Ruhsat Seri No"
                             {...register("car_person_traffic_seriesNo", {
                                 required: "Zorunlu Alan",
@@ -509,7 +509,7 @@ function TrafficInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Doğum Tarihi"
                             {...register("car_person_traffic_birthdate", {
                                 required: "Zorunlu Alan",
@@ -551,7 +551,7 @@ function TrafficInsurance() {
                 <div className='grid grid-cols-2 gap-x-2' >
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Firma Unvanı"
                             {...register("car_business_traffic_companyName", {
                                 required: "Zorunlu Alan",
@@ -570,7 +570,7 @@ function TrafficInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Vergi Numarası"
                             {...register("car_business_traffic_taxNumber", {
                                 required: "Zorunlu Alan",
@@ -590,7 +590,7 @@ function TrafficInsurance() {
                     <div>
 
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="İl-İlçe"
                             {...register("car_business_traffic_location", {
                                 required: "Zorunlu Alan",
@@ -604,7 +604,7 @@ function TrafficInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Telefon Numarası"
                             {...register("car_business_traffic_phoneNumber", {
                                 required: "Zorunlu Alan",
@@ -618,7 +618,7 @@ function TrafficInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Araç Plakası"
                             {...register("car_business_traffic_carNumber", {
                                 required: "Zorunlu Alan",
@@ -637,7 +637,7 @@ function TrafficInsurance() {
                     </div>
                     <div>
                         <TextField
-                            className='mb-3' size='small' fullWidth
+                            className='!mb-3' size='small' fullWidth
                             label="Ruhsat Seri No"
                             {...register("car_business_traffic_seriesNumber", {
                                 required: "Zorunlu Alan",
@@ -691,7 +691,7 @@ function ResInsurance() {
             <div className='grid grid-cols-2 gap-x-2' >
                 <div>
                     <TextField
-                        className='mb-3' size='small' fullWidth
+                        className='!mb-3' size='small' fullWidth
                         label="Ad/Soyad"
                         {...register("car_financial_nameSurname", {
                             required: "Zorunlu Alan",
@@ -710,7 +710,7 @@ function ResInsurance() {
                 </div>
                 <div>
                     <TextField
-                        className='mb-3' size='small' fullWidth
+                        className='!mb-3' size='small' fullWidth
                         label="Cep Telefonu"
                         {...register("car_financial_phoneNumber", {
                             required: "Zorunlu Alan",
@@ -730,7 +730,7 @@ function ResInsurance() {
                 <div>
 
                     <TextField
-                        className='mb-3' size='small' fullWidth
+                        className='!mb-3' size='small' fullWidth
                         label="Ruhsat Sahibi Tc No"
                         {...register("car_financial_TcNo", {
                             required: "Zorunlu Alan",
@@ -744,7 +744,7 @@ function ResInsurance() {
                 </div>
                 <div>
                     <TextField
-                        className='mb-3' size='small' fullWidth
+                        className='!mb-3' size='small' fullWidth
                         label="Araç Plakası"
                         {...register("car_financial_carNumber", {
                             required: "Zorunlu Alan",
@@ -758,7 +758,7 @@ function ResInsurance() {
                 </div>
                 <div>
                     <TextField
-                        className='mb-3' size='small' fullWidth
+                        className='!mb-3' size='small' fullWidth
                         label="Ruhsat Seri No"
                         {...register("car_financial_seriesNo", {
                             required: "Zorunlu Alan",
@@ -772,7 +772,7 @@ function ResInsurance() {
                 </div>
                 <div>
                     <TextField
-                        className='mb-3' size='small' fullWidth
+                        className='!mb-3' size='small' fullWidth
                         label="Doğum Tarihi"
                         {...register("car_financial_birthdate", {
                             required: "Zorunlu Alan",

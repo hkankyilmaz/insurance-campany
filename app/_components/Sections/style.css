@@ -148,8 +148,8 @@
 }
 
 .ticker-container .ticker-viewer .ticker-scroll.delay-animation {
-  -webkit-animation-delay: 8s;
-  animation-delay: 8s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
   opacity: 0;
 }
 

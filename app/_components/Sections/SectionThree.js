@@ -9,12 +9,12 @@ import { AiFillCreditCard } from 'react-icons/ai';
 
 function SectionThree() {
     return (
-        <section className='h-[100vh] w-[100vw] pt-100px md:pt-[0px] px-[50px] xl:px-[400px]  flex flex-col justify-center items-center relative border-b' >
-            <p className='text-2xl max-md:text-lg my-4 border-b border-b-[orange] pb-1' >Akdağcı Sigortam Nasıl Çalışır...</p>
+        <section className='h-[100vh] w-[100vw] pt-[120px] max-md:pt-[100px] px-[25px] xl:px-[400px] flex flex-col justify-start items-center relative border-b' >
+            <p className='font-bold text-2xl max-md:text-lg my-4' >Akdağcı Sigortam Nasıl Çalışır...</p>
             <div className='max-md::lex-col md:flcenter'>
                 <div  >
                     <div className='mb-2'>  <div className='w-20 h-20 flcenter max-md:w-10 max-md:h-10 border rounded-full' ><BsSendFill className='max-md:text-xl text-4xl' /></div>  </div>
-                    <h2 className='mb-2text-xl max-md:text-normal  font-bold' >Teklif Al </h2>
+                    <h2 className='mb-2 text-xl max-md:text-normal  font-bold' >Teklif Al </h2>
                     <p className='max-md:text-xs text-md mb-2'>İhtiyacınız olan sigorta poliçesi Formunu doldurun ve gönderin. Birkaç dakika içerisinde 20’den fazla sigorta şirketinin teklifi ekranınıza gelsin.</p>
                     <div className='mb-2'  >  <div className='w-20 h-20 flcenter max-md:w-10 max-md:h-10  border rounded-full' > <GoGitCompare className='max-md:text-xl text-4xl' /> </div>  </div>
                     <h2 className='mb-2 md:text-xl max-md:text-normal font-bold'>Karşılaştır</h2>

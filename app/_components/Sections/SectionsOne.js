@@ -10,7 +10,7 @@ function SectionsOne() {
     return (
         <section className='relative'>
             <Slider slides={SLIDES} options={OPTIONS} />
-            <div className='absolute bottom-20 left-[50%] translate-x-[-50%] max-md:flex max-md:flex-col max-md:item-center max-md:justify-center'>
+            <div className='absolute bottom-10 left-[50%] translate-x-[-50%] max-md:flex max-md:flex-col max-md:item-center max-md:justify-center'>
                 <button className='mr-6 w-[200px] px-4 py-2 rounded-md bg-white text-black hover:bg-orange-400 hover:text-white transition-all ease-in'>Tekif Al</button>
                 <button className='w-[200px]  px-4 py-2 rounded-md bg-white text-black hover:bg-orange-400 hover:text-white transition-all ease-in mt-3' >Bana Ulaşın</button>
             </div>
