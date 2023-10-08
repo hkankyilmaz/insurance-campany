@@ -1,4 +1,4 @@
-import Image from 'next/image'
+
 
 import SectionsOne from './_components/Sections/SectionsOne'
 import SectionTwo from './_components/Sections/SectionTwo'
@@ -11,8 +11,7 @@ import Header from './_components/Header/Index'
 
 export default function Home() {
   return (
-    <main className="">
-      <Header />
+    <main >
       <SectionTwo />
       <SectionsOne />
       <SectionThree />

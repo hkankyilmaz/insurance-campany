@@ -1,0 +1,17 @@
+.container {
+  transition: height 0.3s;
+  a {
+    &:hover {
+      .simg {
+        display: initial;
+      }
+      .fimg {
+        display: none;
+      }
+      div {
+        display: initial;
+        opacity: 1;
+      }
+    }
+  }
+}

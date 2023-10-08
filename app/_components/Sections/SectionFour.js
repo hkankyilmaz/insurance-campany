@@ -3,13 +3,12 @@ import Image from 'next/image'
 
 function SectionFour() {
     return (
-        <div className='flex flex-col justify-start items-center h-[100vh] w-[100vw] pt-[300px] relative border-b ' >
+        <section className='flex flex-col justify-start items-center h-[100vh] w-[100vw] pt-[150px] md:pt-[300px] relative border-b ' >
 
-            <h2 className='text-3xl text-center mb-3 border-b border-b-[orange] pb-1'>Bizimle Çalışan Firmalar</h2>
-            <p className='max-w-[1000px]'>
+            <h2 className='max-md:text-lg text-3xl text-center mb-3 border-b border-b-[orange] pb-1'>Bizimle Çalışan Firmalar</h2>
+            <p className='text-center max-md:text-xs max-w-[1000px]'>
                 Qui mollit nostrud excepteur consectetur veniam consectetur. Dolor ea culpa laborum in in nostrud culpa amet sit laborum cupidatat non magna nulla. Exercitation laborum nisi ut Lorem minim enim eiusmod.
-                Qui mollit nostrud excepteur consectetur veniam consectetur. Dolor ea culpa laborum in in nostrud culpa amet sit laborum cupidatat non magna nulla. Exercitation laborum nisi ut Lorem minim enim eiusmod.
-                Qui mollit nostrud excepteur consectetur veniam consectetur. Dolor ea culpa laborum in in nostrud culpa amet sit laborum cupidatat non magna nulla. Exercitation laborum nisi ut Lorem minim enim eiusmod.
+                tion laborum nisi ut Lorem minim enim eiusmod.
             </p>
 
             <TickerContainer />
@@ -17,7 +16,7 @@ function SectionFour() {
 
 
 
-        </div>
+        </section>
     )
 }
 
