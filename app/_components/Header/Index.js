@@ -48,7 +48,7 @@ export default function Header() {
 
     return (
         <header ref={ref} className={`${styles.container} shadow-lg py-2 fixed left-0 top-0 right-0 z-10 max-md:h-[70px] overflow-hidden max-md:bg-white max-md:bottom-0 max-md:flex max-md:flex-col max-md-justify-center max-md:items-start`}>
-            <Link className='flcenter' href={"/"} >  <div className='absolute max-md:left-1 top-[20px] left-10 text-black z-10 !flex flcenter'> <Image className='translate-y-[-8px] max-md:w-[175px] ' width={200} src={logo} /> </div></Link>
+            <Link className='flcenter' href={"/"} >  <div className='absolute max-md:left-1 top-[20px] left-10 text-black z-10 !flex flcenter'> <Image className='translate-y-[-8px] max-md:translate-x-[-30px] max-md:w-[175px] ' width={200} src={logo} /> </div></Link>
             <div ref={ref_} onMouseEnter={onEnter} onMouseLeave={onLeave} style={{ visibility: pathname == "/oturumac" ? "hidden" : "" }} className='max-md:hidden flex justify-center items-start max-md:m-auto max-md:flex-col max-md-justify-start max-md:items-start max-md:[&>a]:mb-5' >
                 <Link className='flex flex-col max-md:items-start justify-center items-center m-link' href={"/arac"} >
                     <Image className='max-w-[50px]' src={pathname == "/arac" ? car : car_} />
