@@ -33,7 +33,7 @@ function AboutUs() {
                     <div className='w-full flex flex-col justify-center items-center'>
                         <p className='text-xl md:text-3xl font-bold text-slate-800'>Neden</p>
                         <p className='text-xl md:text-3xl mb-3 font-bold text-slate-800' >e-sigortam.com?</p>
-                        <p className='md:text-lg'>Sigorta sektöründe 25 yıllık tecrübemiz ve alt yapımız ile</p>
+                        <p className='md:text-lg max-md:text-center'>Sigorta sektöründe 25 yıllık tecrübemiz ve alt yapımız ile</p>
                         <p className='md:text-lg max-md:text-center'>siz değerli müşterilerimizin sigorta gereksinimlerini online olarak karşılamaktayız.</p>
                         <div className='w-full grid grid-cols-1 md:grid-cols-4 [&>div]:flex [&>div]:flex-col [&>div]:justify-center [&>div]:items-center pt-5 gap-x-2 gap-y-2 [&>p]:text-slate-600' >
                             <div className='bg-slate-100 py-10'>
