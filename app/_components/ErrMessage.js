@@ -4,6 +4,7 @@ export default function ErrMessage({ message }) {
   return (
     <p className="flex text-xs w-full items-center text-red-900 ml-1 mb-4">
       <ErrorIcon
+        className="translate-y-[2px]"
         sx={{
           marginRight: "3px",
           color: "#ff9999",

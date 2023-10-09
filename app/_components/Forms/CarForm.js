@@ -36,13 +36,10 @@ function CarInsurance() {
         register,
         handleSubmit,
         formState: { errors },
+        clearErrors
     } = useForm();
-    console.log(errors);
+    console.log(errors)
     const onSubmit = async (data) => {
-
-        const { email, password } = data;
-        let options = { redirect: false, email, password };
-
         console.log(data);
     };
     if (values.person) {
@@ -163,6 +160,7 @@ function CarInsurance() {
                         <FormControl className='!mb-3' size='small' fullWidth>
                             <InputLabel size='small'>Lpg</InputLabel>
                             <Select
+                                onChange={() => clearErrors("car_person_kasko_lpg")}
                                 labelId="dlabel-carIns"
                                 label="Lpg"
                                 {...register("car_person_kasko_lpg", {
@@ -171,6 +169,7 @@ function CarInsurance() {
                             >
                                 <MenuItem value={"lgpTrue"}>Lpg Var</MenuItem>
                                 <MenuItem value={"lpgFalse"}>Lpg Yok</MenuItem>
+
                             </Select>
                         </FormControl>
                         <ErrorMessage
@@ -189,8 +188,10 @@ function CarInsurance() {
                                     required: "Zorunlu Alan",
                                 })}
                             >
-                                <MenuItem value={"lgpTrue"}>Orjinal Aksesuar Var</MenuItem>
-                                <MenuItem value={"lpgFalse"}>Orjinal Aksesuar Yok</MenuItem>
+                                <MenuItem value={"pluginTrue"}>Orjinal Aksesuar Var</MenuItem>
+                                <MenuItem value={"pluginFalse"}>Orjinal Aksesuar Yok</MenuItem>
+
+
                             </Select>
                         </FormControl>
                         <ErrorMessage
@@ -342,7 +343,8 @@ function CarInsurance() {
                         />
                     </div>
                     <div>
-                        <FormControl className='!mb-3' size='small' fullWidth>
+                        <FormControl className='!mb-3' size='small' fullWidth defaultValue={" "}>
+
                             <InputLabel size='small'>Lpg</InputLabel>
                             <Select
                                 labelId="dlabel-carIns"
@@ -353,6 +355,7 @@ function CarInsurance() {
                             >
                                 <MenuItem value={"lgpTrue"}>Lpg Var</MenuItem>
                                 <MenuItem value={"lpgFalse"}>Lpg Yok</MenuItem>
+
                             </Select>
                         </FormControl>
                         <ErrorMessage

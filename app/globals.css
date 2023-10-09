@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* .MuiFormControl-root * {
+  font-size: 0.75rem !important;
+}
+.form_ *:not(h2, .MuiFormControl-root *) {
+  font-size: 0.9rem !important;
+} */
+
 body {
   position: relative;
   overflow-x: hidden;

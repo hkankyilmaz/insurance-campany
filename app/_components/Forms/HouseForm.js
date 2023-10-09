@@ -10,7 +10,8 @@ import { useForm } from "react-hook-form";
 import ErrMessage from '../ErrMessage';
 import { ErrorMessage } from '@hookform/error-message';
 import validator from "validator";
-
+import isEmpty from 'lodash.isempty';
+import ErrorIcon from "@mui/icons-material/Error";
 function HouseForm({ variety }) {
     if (variety == "houseIns") {
         return <HouseInsurance />
@@ -63,17 +64,7 @@ function HouseInsurance() {
                             label="Ad/Soyad"
                             {...register("house_person_konut_nameSurname", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isDate: (value) =>
-                                        validator?.isAlpha(value, 'tr-TR', { ignore: " " }) ||
-                                        "Lütfen sadece harf girin.",
-                                },
                             })}
-                        />
-                        <ErrorMessage
-                            errors={errors}
-                            name="house_person_konut_nameSurname"
-                            render={({ message }) => <ErrMessage message={message} />}
                         />
                     </div>
                     <div>
@@ -82,21 +73,10 @@ function HouseInsurance() {
                             label="Cep Telefonu"
                             {...register("house_person_konut_phoneNumber", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isMobilePhone: (value) =>
-                                        validator?.isMobilePhone(value, 'tr-TR') ||
-                                        "Lütfen geçerli bir telefon numarası girin.",
-                                },
                             })}
-                        />
-                        <ErrorMessage
-                            errors={errors}
-                            name="house_person_konut_phoneNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
                         />
                     </div>
                     <div>
-
                         <TextField
                             className='!mb-3' size='small' fullWidth
                             label="Tc No"
@@ -104,11 +84,7 @@ function HouseInsurance() {
                                 required: "Zorunlu Alan",
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="house_person_konut_TcNo"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -116,20 +92,9 @@ function HouseInsurance() {
                             label="Doğum Tarihi"
                             {...register("house_person_konut_birthdate", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isDate: (value) =>
-                                        validator?.isDate(value, {
-                                            ...options,
-                                        }) ||
-                                        "Lütfen GG/AA/YYYY veya GG-AA-YY şeklinde girin.",
-                                },
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="house_person_konut_birthdate"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -139,11 +104,7 @@ function HouseInsurance() {
                                 required: "Zorunlu Alan",
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="house_person_konut_adress"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -153,11 +114,7 @@ function HouseInsurance() {
                                 required: "Zorunlu Alan",
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="house_person_konut_area"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -168,11 +125,6 @@ function HouseInsurance() {
 
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="house_person_konut_flat"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
                     </div>
                     <div>
                         <TextField
@@ -182,11 +134,6 @@ function HouseInsurance() {
                                 required: "Zorunlu Alan",
 
                             })}
-                        />
-                        <ErrorMessage
-                            errors={errors}
-                            name="house_person_konut_wflat"
-                            render={({ message }) => <ErrMessage message={message} />}
                         />
                     </div>
                     <div>
@@ -206,11 +153,7 @@ function HouseInsurance() {
                                 <MenuItem value={"celikKarkas"}>Çelik Karkas</MenuItem>
                             </Select>
                         </FormControl>
-                        <ErrorMessage
-                            errors={errors}
-                            name="house_person_konut_madeOf"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <FormControl className='!mb-3' size='small' fullWidth>
@@ -227,11 +170,7 @@ function HouseInsurance() {
                                 <MenuItem value={"depo"}>Depo</MenuItem>
                             </Select>
                         </FormControl>
-                        <ErrorMessage
-                            errors={errors}
-                            name="house_person_konut_usage"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <FormControl className='!mb-3' size='small' fullWidth>
@@ -248,11 +187,6 @@ function HouseInsurance() {
                                 <MenuItem value={"bos"}>Boş</MenuItem>
                             </Select>
                         </FormControl>
-                        <ErrorMessage
-                            errors={errors}
-                            name="house_person_konut_usage"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
                     </div>
                     <div>
                         <TextField
@@ -263,11 +197,6 @@ function HouseInsurance() {
 
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="house_person_konut_yearOfBuild"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
                     </div>
                     <div>
                         <TextField
@@ -275,13 +204,7 @@ function HouseInsurance() {
                             label="Eşya Bedeli"
                             {...register("house_person_konut_priceOfitems", {
                                 required: "Zorunlu Alan",
-
                             })}
-                        />
-                        <ErrorMessage
-                            errors={errors}
-                            name="house_person_konut_priceOfitems"
-                            render={({ message }) => <ErrMessage message={message} />}
                         />
                     </div>
                     <div>
@@ -290,20 +213,16 @@ function HouseInsurance() {
                             label="Eşya Bedeli"
                             {...register("house_person_konut_priceOfGlass", {
                                 required: "Zorunlu Alan",
-
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="house_person_konut_priceOfGlass"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
                     </div>
-
                 </div>
-
-
                 <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+                {!isEmpty(errors) ?
+                    <p className='flex justify-center item-center' >  <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />  <span> Lütfen Tüm Alanları Doldurun. </span> </p>
+                    : undefined
+
+                }
 
             </form>
         )
@@ -325,38 +244,20 @@ function HouseInsurance() {
                         <TextField
                             className='!mb-3' size='small' fullWidth
                             label="Firma Unvanı"
-                            {...register("car_business_kasko_companyName", {
+                            {...register("house_business_konut_companyName", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isDate: (value) =>
-                                        validator?.isAlpha(value, 'tr-TR', { ignore: " " }) ||
-                                        "Lütfen sadece harf girin.",
-                                },
+
                             })}
-                        />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_kasko_companyName"
-                            render={({ message }) => <ErrMessage message={message} />}
                         />
                     </div>
                     <div>
                         <TextField
                             className='!mb-3' size='small' fullWidth
                             label="Vergi Numarası"
-                            {...register("car_business_kasko_taxNumber", {
+                            {...register("house_business_konut_taxNumber", {
                                 required: "Zorunlu Alan",
-                                // validate: {
-                                //     isMobilePhone: (value) =>
-                                //         validator?.isMobilePhone(value, 'tr-TR') ||
-                                //         "Lütfen geçerli bir telefon numarası girin.",
-                                // },
+
                             })}
-                        />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_kasko_taxNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
                         />
                     </div>
                     <div>
@@ -364,108 +265,147 @@ function HouseInsurance() {
                         <TextField
                             className='!mb-3' size='small' fullWidth
                             label="İl-İlçe"
-                            {...register("car_business_kasko_location", {
+                            {...register("house_business_konut_location", {
                                 required: "Zorunlu Alan",
                             })}
-                        />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_kasko_location"
-                            render={({ message }) => <ErrMessage message={message} />}
                         />
                     </div>
                     <div>
                         <TextField
                             className='!mb-3' size='small' fullWidth
                             label="Telefon Numarası"
-                            {...register("car_business_kasko_phoneNumber", {
+                            {...register("house_business_konut_phoneNumber", {
                                 required: "Zorunlu Alan",
                             })}
-                        />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_kasko_phoneNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
                         />
                     </div>
                     <div>
                         <TextField
                             className='!mb-3' size='small' fullWidth
-                            label="Araç Plakası"
-                            {...register("car_business_kasko_carNumber", {
+                            label="Açık Adres"
+                            {...register("house_business_konut_adress", {
                                 required: "Zorunlu Alan",
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="seriesNo"
-                            render={({ message }) => <ErrMessage message={message} />}
+
+                    </div>
+                    <div>
+                        <TextField
+                            className='!mb-3' size='small' fullWidth
+                            label="Evin Büyüklüğü (m2)"
+                            {...register("house_business_konut_area", {
+                                required: "Zorunlu Alan",
+                            })}
+                        />
+
+                    </div>
+                    <div>
+                        <TextField
+                            className='!mb-3' size='small' fullWidth
+                            label="Binanın Kat Sayısı"
+                            {...register("house_business_konut_flat", {
+                                required: "Zorunlu Alan",
+
+                            })}
                         />
                     </div>
                     <div>
                         <TextField
                             className='!mb-3' size='small' fullWidth
-                            label="Ruhsat Seri No"
-                            {...register("car_business_kasko_seriesNumber", {
+                            label="Bulunduğu Kat"
+                            {...register("house_business_konut_wflat", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isDate: (value) =>
-                                        validator?.isAlpha(value, 'tr-TR', { ignore: " " }) ||
-                                        "Lütfen sadece harf girin.",
-                                },
+
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_kasko_seriesNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
                     </div>
                     <div>
                         <FormControl className='!mb-3' size='small' fullWidth>
-                            <InputLabel size='small'>Lpg</InputLabel>
+                            <InputLabel size='small'>Yapı Tarzı</InputLabel>
                             <Select
                                 labelId="dlabel-carIns"
-                                label="Lpg"
-                                {...register("car_business_kasko_lpg", {
+                                label="Yapı Tarzı"
+                                {...register("house_business_konut_madeOf", {
                                     required: "Zorunlu Alan",
                                 })}
                             >
-                                <MenuItem value={"lgpTrue"}>Lpg Var</MenuItem>
-                                <MenuItem value={"lpgFalse"}>Lpg Yok</MenuItem>
+                                <MenuItem value={"kargir"}>Kargir</MenuItem>
+                                <MenuItem value={"yigmaKargir"}>Yığma Kargir</MenuItem>
+                                <MenuItem value={"betonarme"}>Betonarme</MenuItem>
+                                <MenuItem value={"ahsap"}>Ahşap</MenuItem>
+                                <MenuItem value={"celikKarkas"}>Çelik Karkas</MenuItem>
                             </Select>
                         </FormControl>
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_kasko_lpg"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <FormControl className='!mb-3' size='small' fullWidth>
-                            <InputLabel size='small'>Orjinal Harici Aksesuar</InputLabel>
+                            <InputLabel size='small'>Kullanim Şekli</InputLabel>
                             <Select
                                 labelId="dlabel-carIns"
-                                label="Orjinal Harici Aksesuar"
-                                {...register("car_business_kasko_plugin", {
+                                label="Kullanım Şekli"
+                                {...register("house_business_konut_usage", {
                                     required: "Zorunlu Alan",
                                 })}
                             >
-                                <MenuItem value={"lgpTrue"}>Orjinal Aksesuar Var</MenuItem>
-                                <MenuItem value={"lpgFalse"}>Orjinal Aksesuar Yok</MenuItem>
+                                <MenuItem value={"mesken"}>Mesken</MenuItem>
+                                <MenuItem value={"ısyerı"}>İş Yeri</MenuItem>
+                                <MenuItem value={"depo"}>Depo</MenuItem>
                             </Select>
                         </FormControl>
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_kasko_plugin"
-                            render={({ message }) => <ErrMessage message={message} />}
+
+                    </div>
+                    <div>
+                        <FormControl className='!mb-3' size='small' fullWidth>
+                            <InputLabel size='small'>Kullanim Şekli</InputLabel>
+                            <Select
+                                labelId="dlabel-carIns"
+                                label="Kullanım Şekli"
+                                {...register("house_business_konut_usage", {
+                                    required: "Zorunlu Alan",
+                                })}
+                            >
+                                <MenuItem value={"malSahibi"}>Mal Sahibi</MenuItem>
+                                <MenuItem value={"kiraci"}>Kiracı</MenuItem>
+                                <MenuItem value={"bos"}>Boş</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </div>
+                    <div>
+                        <TextField
+                            className='!mb-3' size='small' fullWidth
+                            label="Bina İnşa Yılı"
+                            {...register("house_business_konut_yearOfBuild", {
+                                required: "Zorunlu Alan",
+
+                            })}
+                        />
+                    </div>
+                    <div>
+                        <TextField
+                            className='!mb-3' size='small' fullWidth
+                            label="Eşya Bedeli"
+                            {...register("house_business_konut_priceOfitems", {
+                                required: "Zorunlu Alan",
+                            })}
+                        />
+                    </div>
+                    <div>
+                        <TextField
+                            className='!mb-3' size='small' fullWidth
+                            label="Eşya Bedeli"
+                            {...register("house_business_konut_priceOfGlass", {
+                                required: "Zorunlu Alan",
+                            })}
                         />
                     </div>
                 </div>
-
-
                 <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+                {!isEmpty(errors) ?
+                    <p className='flex justify-center item-center' >  <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />  <span> Lütfen Tüm Alanları Doldurun. </span> </p>
+                    : undefined
 
+                }
             </form>)
     }
 
@@ -510,108 +450,89 @@ function DaskInsurance() {
                         <TextField
                             className='!mb-3' size='small' fullWidth
                             label="Ad/Soyad"
-                            {...register("car_person_traffic_nameSurname", {
+                            {...register("house_person_dask_nameSurname", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isDate: (value) =>
-                                        validator?.isAlpha(value, 'tr-TR', { ignore: " " }) ||
-                                        "Lütfen sadece harf girin.",
-                                },
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_traffic_nameSurname"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
                             className='!mb-3' size='small' fullWidth
                             label="Cep Telefonu"
-                            {...register("car_person_traffic_phoneNumber", {
+                            {...register("house_person_dask_phoneNumber", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isMobilePhone: (value) =>
-                                        validator?.isMobilePhone(value, 'tr-TR') ||
-                                        "Lütfen geçerli bir telefon numarası girin.",
-                                },
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_traffic_phoneNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
-                    </div>
-                    <div>
 
-                        <TextField
-                            className='!mb-3' size='small' fullWidth
-                            label="Ruhsat Sahibi Tc No"
-                            {...register("car_person_traffic_TcNo", {
-                                required: "Zorunlu Alan",
-                            })}
-                        />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_traffic_TcNo"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
                     </div>
                     <div>
                         <TextField
                             className='!mb-3' size='small' fullWidth
-                            label="Araç Plakası"
-                            {...register("car_person_traffic_carNumber", {
+                            label="Tc No"
+                            {...register("house_person_dask_TcNo", {
                                 required: "Zorunlu Alan",
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_traffic_carNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
-                    </div>
-                    <div>
-                        <TextField
-                            className='!mb-3' size='small' fullWidth
-                            label="Ruhsat Seri No"
-                            {...register("car_person_traffic_seriesNo", {
-                                required: "Zorunlu Alan",
-                            })}
-                        />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_traffic_seriesNo"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
                             className='!mb-3' size='small' fullWidth
                             label="Doğum Tarihi"
-                            {...register("car_person_traffic_birthdate", {
+                            {...register("house_person_dask_birthdate", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isDate: (value) =>
-                                        validator?.isDate(value, {
-                                            ...options,
-                                        }) ||
-                                        "Lütfen GG/AA/YYYY veya GG-AA-YY şeklinde girin.",
-                                },
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_traffic_birthdate"
-                            render={({ message }) => <ErrMessage message={message} />}
+                    </div>
+                    <div>
+                        <TextField
+                            className='!mb-3' size='small' fullWidth
+                            label="Açık Adres"
+                            {...register("house_person_dask_adress", {
+                                required: "Zorunlu Alan",
+                            })}
+                        />
+
+                    </div>
+                    <div>
+                        <TextField
+                            className='!mb-3' size='small' fullWidth
+                            label="Evin Büyüklüğü (m2)"
+                            {...register("house_person_dask_area", {
+                                required: "Zorunlu Alan",
+                            })}
+                        />
+
+                    </div>
+                    <div>
+                        <TextField
+                            className='!mb-3' size='small' fullWidth
+                            label="Binanın Kat Sayısı"
+                            {...register("house_person_dask_flat", {
+                                required: "Zorunlu Alan",
+
+                            })}
                         />
                     </div>
+
+                    <div>
+                        <TextField
+                            className='!mb-3' size='small' fullWidth
+                            label="Bina İnşa Yılı"
+                            {...register("house_person_dask_yearOfBulding", {
+                                required: "Zorunlu Alan",
+                            })}
+                        />
+
+                    </div>
                 </div>
-
-
                 <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+                {!isEmpty(errors) ?
+                    <p className='flex justify-center item-center' >  <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />  <span> Lütfen Tüm Alanları Doldurun. </span> </p>
+                    : undefined
+
+                }
 
             </form>
         )
@@ -633,38 +554,20 @@ function DaskInsurance() {
                         <TextField
                             className='!mb-3' size='small' fullWidth
                             label="Firma Unvanı"
-                            {...register("car_business_traffic_companyName", {
+                            {...register("house_business_dask_companyName", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isDate: (value) =>
-                                        validator?.isAlpha(value, 'tr-TR', { ignore: " " }) ||
-                                        "Lütfen sadece harf girin.",
-                                },
+
                             })}
-                        />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_traffic_companyName"
-                            render={({ message }) => <ErrMessage message={message} />}
                         />
                     </div>
                     <div>
                         <TextField
                             className='!mb-3' size='small' fullWidth
                             label="Vergi Numarası"
-                            {...register("car_business_traffic_taxNumber", {
+                            {...register("house_business_dask_taxNumber", {
                                 required: "Zorunlu Alan",
-                                // validate: {
-                                //     isMobilePhone: (value) =>
-                                //         validator?.isMobilePhone(value, 'tr-TR') ||
-                                //         "Lütfen geçerli bir telefon numarası girin.",
-                                // },
+
                             })}
-                        />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_traffic_taxNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
                         />
                     </div>
                     <div>
@@ -672,74 +575,89 @@ function DaskInsurance() {
                         <TextField
                             className='!mb-3' size='small' fullWidth
                             label="İl-İlçe"
-                            {...register("car_business_traffic_location", {
+                            {...register("house_business_dask_location", {
                                 required: "Zorunlu Alan",
                             })}
-                        />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_traffic_location"
-                            render={({ message }) => <ErrMessage message={message} />}
                         />
                     </div>
                     <div>
                         <TextField
                             className='!mb-3' size='small' fullWidth
                             label="Telefon Numarası"
-                            {...register("car_business_traffic_phoneNumber", {
+                            {...register("house_business_dask_phoneNumber", {
                                 required: "Zorunlu Alan",
                             })}
-                        />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_traffic_phoneNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
                         />
                     </div>
                     <div>
                         <TextField
                             className='!mb-3' size='small' fullWidth
-                            label="Araç Plakası"
-                            {...register("car_business_traffic_carNumber", {
+                            label="Tc No"
+                            {...register("house_business_dask_TcNo", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isAlphanumeric: (value) =>
-                                        validator?.isAlphanumeric(value, 'tr-TR') ||
-                                        "Lütfen sadece sayı ve harf girin.",
-                                },
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_traffic_carNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
+
+                    </div>
+                    <div>
+                        <TextField
+                            className='!mb-3' size='small' fullWidth
+                            label="Doğum Tarihi"
+                            {...register("house_business_dask_birthdate", {
+                                required: "Zorunlu Alan",
+                            })}
                         />
                     </div>
                     <div>
                         <TextField
                             className='!mb-3' size='small' fullWidth
-                            label="Ruhsat Seri No"
-                            {...register("car_business_traffic_seriesNumber", {
+                            label="Açık Adres"
+                            {...register("house_business_dask_adress", {
                                 required: "Zorunlu Alan",
-                                // validate: {
-                                //     isDate: (value) =>
-                                //         validator?.isAlpha(value, 'tr-TR', { ignore: " " }) ||
-                                //         "Lütfen sadece harf girin.",
-                                // },
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_traffic_seriesNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
+
+                    </div>
+                    <div>
+                        <TextField
+                            className='!mb-3' size='small' fullWidth
+                            label="Evin Büyüklüğü (m2)"
+                            {...register("house_business_dask_area", {
+                                required: "Zorunlu Alan",
+                            })}
+                        />
+
+                    </div>
+                    <div>
+                        <TextField
+                            className='!mb-3' size='small' fullWidth
+                            label="Binanın Kat Sayısı"
+                            {...register("house_business_dask_flat", {
+                                required: "Zorunlu Alan",
+
+                            })}
                         />
                     </div>
+
+                    <div>
+                        <TextField
+                            className='!mb-3' size='small' fullWidth
+                            label="Bina İnşa Yılı"
+                            {...register("house_business_dask_yearOfBulding", {
+                                required: "Zorunlu Alan",
+                            })}
+                        />
+
+                    </div>
+
 
                 </div>
-
-
                 <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+                {!isEmpty(errors) ?
+                    <p className='flex justify-center item-center' >  <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />  <span> Lütfen Tüm Alanları Doldurun. </span> </p>
+                    : undefined
 
+                }
             </form>)
     }
 }
