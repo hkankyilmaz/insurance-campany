@@ -144,8 +144,8 @@
 }
 
 .ticker-container .ticker-viewer .ticker-scroll.infinite-animation {
-  -webkit-animation: tickerScroll 120s linear infinite normal;
-  animation: tickerScroll 120s linear infinite normal;
+  -webkit-animation: tickerScroll 60s linear infinite normal;
+  animation: tickerScroll 60s linear infinite normal;
   -webkit-transform: translateX(0);
   transform: translateX(0);
 }

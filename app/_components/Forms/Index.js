@@ -7,6 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 import CarForm from './CarForm';
+import HouseForm from './HouseForm';
 
 
 function Form() {
@@ -68,7 +69,7 @@ function Form() {
                             onChange={(e) => setValue({ ...value, second: e.target.value })}
                         >
                             <MenuItem value={"houseIns"}>Konut Sigortası</MenuItem>
-                            <MenuItem value={"daskIcins"}>Dask</MenuItem>
+                            <MenuItem value={"daskIns"}>Dask</MenuItem>
                         </Select>
                     </FormControl>
                     : value.first == "business" ?
@@ -116,7 +117,9 @@ function Form() {
             {
                 value.first == "car"
                     ? <CarForm variety={value.second} />
-                    : undefined
+                    : value.first == "house"
+                        ? <HouseForm variety={value.second} />
+                        : undefined
 
             }
 
