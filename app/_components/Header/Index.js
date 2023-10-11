@@ -91,6 +91,7 @@ export default function Header() {
                         <div>Sigortalı</div>
                     </div>
                 </Link>
+
             </div>
             {
                 !menu ? <button onClick={(e) => handleClickClose(e)} className='absolute top-4 right-4' >
@@ -100,7 +101,7 @@ export default function Header() {
                         < GiHamburgerMenu className='text-4xl md:hidden' />
                     </button>
             }
-            <Link href={"/oturumac"} className='absolute top-5 right-10' > <GoPerson className=' max-md:hidden text-3xl cursor-pointer' /></Link>
+            <Link href={"/oturumac"} className='absolute right-16 top-5 md:top-5 md:right-10' > <GoPerson className='text-3xl cursor-pointer' /></Link>
 
         </header>
     )
