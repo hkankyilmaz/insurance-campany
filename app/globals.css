@@ -52,11 +52,11 @@ header {
 /* Header */
 
 .m-link {
-  @apply text-black rounded-lg px-4 py-1 pr-3;
+  @apply text-black rounded-lg px-8 py-1 pr-3;
 }
 
 .menu-item {
-  @apply ml-2 md:hidden;
+  @apply ml-2 md:hidden flex flex-col justify-center items-center leading-[16px];
 }
 /* Footer */
 .footer p {
