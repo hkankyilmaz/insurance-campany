@@ -52,7 +52,7 @@ header {
 /* Header */
 
 .m-link {
-  @apply text-black rounded-lg px-8 py-1 pr-3;
+  @apply text-black md:rounded-lg px-6 py-1 max-md:border-b-2 max-md:pb-2 max-md:border-[orange];
 }
 
 .menu-item {
