@@ -32,17 +32,23 @@ export default function Header() {
     const ref = React.useRef()
     const ref_ = React.useRef()
 
-    const onEnter = () => window.innerWidth > 750 && gsap.to(ref.current, { height: "105px", duration: 0.1 })
-    const onLeave = () => window.innerWidth > 750 && gsap.to(ref.current, { height: "74px", duration: 0.1 })
+    const onEnter = () => window.innerWidth > 768 && gsap.to(ref.current, { height: "105px", duration: 0.1 })
+    const onLeave = () => window.innerWidth > 768 && gsap.to(ref.current, { height: "74px", duration: 0.1 })
     const handleClickOpen = () => {
-        setMenu(prev => !prev)
-        gsap.to(ref.current, { height: "100vh", duration: 0.1 })
-        gsap.to(ref_.current, { display: "flex", duration: 0.1, delay: 0.2 })
+        if (window.innerWidth < 768) {
+            setMenu(prev => !prev)
+            gsap.to(ref.current, { height: "100vh", duration: 0.1 })
+            gsap.to(ref_.current, { display: "flex", duration: 0.1, delay: 0.2 })
+        }
+
     }
     const handleClickClose = () => {
-        setMenu(prev => !prev)
-        gsap.to(ref.current, { height: "70px", duration: 0.1 })
-        gsap.to(ref_.current, { display: "none", duration: 0.1 })
+        if (window.innerWidth < 768) {
+            setMenu(prev => !prev)
+            gsap.to(ref.current, { height: "70px", duration: 0.1 })
+            gsap.to(ref_.current, { display: "none", duration: 0.1 })
+        }
+
     }
 
 
