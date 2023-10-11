@@ -81,7 +81,7 @@ export default function SignUp() {
                             <LockOutlinedIcon />
                         </Avatar>
                         <Typography component="h1" variant="h5">
-                            Oturum Aç
+                            Kayıt Ol
                         </Typography>
                         <Box
                             className="w-[350px]"
@@ -168,7 +168,7 @@ export default function SignUp() {
                                 </Grid>
                                 <Grid item>
                                     <Link className="text-blue-800 underline" href="/oturumac">
-                                        {"Hesabın yok mu ? Kayıt ol."}
+                                        {"Hesabın var mı ? Giriş yap."}
                                     </Link>
                                 </Grid>
                             </Grid>
