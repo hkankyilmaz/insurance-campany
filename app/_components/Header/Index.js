@@ -18,6 +18,7 @@ import heart from "../../_assets/Çalışma Yüzeyi 1_7.png"
 
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { GoPerson } from 'react-icons/go';
 
 
 import logo from "../../_assets/AKDAĞCI SİGORTA LOGO 750x350-100.jpg"
@@ -99,7 +100,7 @@ export default function Header() {
                         < GiHamburgerMenu className='text-4xl md:hidden' />
                     </button>
             }
-
+            <Link href={"/oturumac"} className='absolute top-5 right-10' > <GoPerson className=' max-md:hidden text-3xl cursor-pointer' /></Link>
 
         </header>
     )

@@ -44,7 +44,7 @@ function Card() {
                     <p className='flex justify-start items-center text-xs' > <HiOutlineDocumentText color='red' className='text-lg' /> <span className='ml-1' > Sigorta Yaptirmanin Onemi</span></p>
                 </div>
                 <div>
-                    <p className='flex items-center mt-1'> <CgCalendarDates color='red' className='text-lg' /> <span className='ml-1' >04-10-2023</span> </p>
+                    <p className='flex items-center mt-1'> <CgCalendarDates color='red' className='text-lg' /> <span className='ml-1 text-xs' >04-10-2023</span> </p>
                 </div>
             </div>
         </div>

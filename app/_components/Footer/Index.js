@@ -11,10 +11,10 @@ import Link from 'next/link';
 function Footer() {
     return (
         <section className='text-white bg-slate-800 py-[100px] max-xl+:px-[25px] px-[25px] md:px-[150px] footer'>
-            <div className='mb-[50px]'>
+            {/* <div className='mb-[50px]'>
                 <Image className='w-[300px]' src={logo} />
 
-            </div>
+            </div> */}
             <div className='my-10'>
                 <button className='max-md:text-xs max-md:px-8 px-12 py-3 bg-white text-black rounded-3xl border my-2' >Teklif Al</button>
             </div>
