@@ -19,6 +19,7 @@ import Footer from "../_components/Footer/Index";
 function Copyright(props) {
   return (
     <Typography
+      className="max-md:xs"
       variant="body2"
       color="text.secondary"
       align="center"
@@ -59,7 +60,7 @@ export default function SignIn() {
 
   return (
     <>
-      <section className="pt-[150px] h-[90vh]">
+      <section className="pt-[100px] md:pt-[150px] h-[90vh]">
         <ThemeProvider theme={defaultTheme}>
           <CssBaseline />
           <Box
@@ -84,6 +85,7 @@ export default function SignIn() {
             >
               <TextField
                 margin="normal"
+                size="small"
                 required
                 fullWidth
                 id="email"
@@ -106,6 +108,7 @@ export default function SignIn() {
               />
               <TextField
                 margin="normal"
+                size="small"
                 required
                 fullWidth
                 name="password"
@@ -143,7 +146,7 @@ export default function SignIn() {
                       </Link> */}
                 </Grid>
                 <Grid item>
-                  <Link className="text-blue-800 underline" href="/kayitol">
+                  <Link className="text-blue-800 underline max-md:xs" href="/kayitol">
                     {"Hesabın yok mu ? Kayıt ol."}
                   </Link>
                 </Grid>

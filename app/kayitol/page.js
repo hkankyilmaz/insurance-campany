@@ -22,6 +22,7 @@ import Footer from "../_components/Footer/Index";
 function Copyright(props) {
     return (
         <Typography
+            className="max-md:text-xs"
             variant="body2"
             color="text.secondary"
             align="center"
@@ -65,7 +66,7 @@ export default function SignUp() {
 
     return (
         <>
-            <section className="pt-[150px] h-[90vh]">
+            <section className="pt-[100px] md:pt-[150px] h-[90vh]">
 
                 <ThemeProvider theme={defaultTheme}>
                     <CssBaseline />
@@ -91,6 +92,7 @@ export default function SignUp() {
                             sx={{ mt: 1 }}
                         >
                             <TextField
+                                size="small"
                                 margin="normal"
                                 required
                                 fullWidth
@@ -109,6 +111,7 @@ export default function SignUp() {
                                 })}
                             />
                             <TextField
+                                size="small"
                                 margin="normal"
                                 required
                                 fullWidth
@@ -130,6 +133,7 @@ export default function SignUp() {
                                 render={({ message }) => <ErrMessage message={message} />}
                             />
                             <TextField
+                                size="small"
                                 margin="normal"
                                 required
                                 fullWidth
@@ -167,7 +171,7 @@ export default function SignUp() {
                       </Link> */}
                                 </Grid>
                                 <Grid item>
-                                    <Link className="text-blue-800 underline" href="/oturumac">
+                                    <Link className="text-blue-800 underline max-md:text-xs" href="/oturumac">
                                         {"Hesabın var mı ? Giriş yap."}
                                     </Link>
                                 </Grid>
