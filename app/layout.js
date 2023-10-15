@@ -1,5 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import AuthProvider from './_context/AuthProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,14 +12,32 @@ export const metadata = {
 import Header from './_components/Header/Index'
 import Footer from './_components/Footer/Index'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Header />
-        {children}
-      </body>
+      <AuthProvider>
+        <body suppressHydrationWarning={true} className={inter.className}>
+          <Header />
+          {children}
+          <ToastContainer
+            className="z-50"
+            position="bottom-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+        </body>
+      </AuthProvider>
     </html>
   )
 }

@@ -15,17 +15,21 @@ import trip_ from "../../_assets/Çalışma Yüzeyi 1.png"
 import trip from "../../_assets/Çalışma Yüzeyi 1_1.png"
 import heart_ from "../../_assets/Çalışma Yüzeyi 1_6.png"
 import heart from "../../_assets/Çalışma Yüzeyi 1_7.png"
+import { useSession } from "next-auth/react"
 
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { GoPerson } from 'react-icons/go';
+import { PiSignInFill } from 'react-icons/pi';
+import { signOut } from 'next-auth/react'
 
 
 import logo from "../../_assets/AKDAĞCI SİGORTA LOGO 750x350-100.jpg"
 import gsap from "gsap"
 
 export default function Header() {
-
+    const { data: session, status } = useSession()
+    console.log(session)
     const [menu, setMenu] = React.useState(true)
 
     const pathname = usePathname()
@@ -107,7 +111,12 @@ export default function Header() {
                         < GiHamburgerMenu className='text-4xl md:hidden' />
                     </button>
             }
-            <Link href={"/oturumac"} className='absolute right-16 top-5 md:top-5 md:right-10' > <GoPerson className='text-3xl cursor-pointer' /></Link>
+            {session ?
+                <button onClick={() => signOut()} className='absolute right-16 top-5 md:top-5 md:right-10' > <PiSignInFill className='text-3xl cursor-pointer' /></button>
+                :
+                <Link href={"/oturumac"} className='absolute right-16 top-5 md:top-5 md:right-10' > <GoPerson className='text-3xl cursor-pointer' /></Link>
+            }
+
 
         </header>
     )

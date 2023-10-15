@@ -4,17 +4,21 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Link from "next/link";
-import ErrMessage from "../_components/Forms";
+import ErrMessage from "../_components/ErrMessage";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import Footer from "../_components/Footer/Index";
+import app from "../_connect/connect";
+import { doc, setDoc, getDoc, collection, getDocs, addDoc } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
+import { signIn } from "next-auth/react";
+import { toast, ToastContainer } from 'react-toastify';
 
 function Copyright(props) {
   return (
@@ -39,9 +43,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-
-
-
+  const db = getFirestore(app);
   const {
     register,
     handleSubmit,
@@ -49,12 +51,43 @@ export default function SignIn() {
     watch,
     formState: { errors },
   } = useForm();
-  console.log(errors);
+
 
   const onSubmit = async (data) => {
 
+    try {
+      const docRef = doc(db, "users", data.email);
+      const docSnap = await getDoc(docRef);
+      console.log(docSnap.data())
+      if (docSnap.data() == undefined) {
+        console.log(docSnap.data())
+        setError("email", { type: "focus", message: "Kayıtlı Kullanıcı Yok" })
+        return;
+      }
+      if (!docSnap.data().password === data.password) {
+        setError("password", { type: "focus", message: "Yanlış Şifre" })
+        return;
+      }
+      const { email, password } = data;
+      let options = { callbackUrl: '/', email, password };
+      await signIn("credentials", options);
 
-    console.log(data);
+
+    } catch (error) {
+      console.log(error)
+    }
+
+
+    // const docRef = doc(db, "users", data.email);
+    // setDoc(docRef, data)
+    //   .then((res) => {
+    //     console.log("Document has been added successfully", res);
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   })
+
+
   };
 
 
@@ -94,10 +127,10 @@ export default function SignIn() {
                 autoComplete="email"
                 autoFocus
                 {...register("email", {
-                  required: "This is required field",
+                  required: "Zorunlu Alan",
                   pattern: {
                     value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-                    message: "Please enter valid e-mail",
+                    message: "Lütfen geçerli bir email adresi girin",
                   },
                 })}
               />
@@ -117,11 +150,7 @@ export default function SignIn() {
                 id="password"
                 autoComplete="current-password"
                 {...register("password", {
-                  required: "This is required field",
-                  minLength: {
-                    value: 6,
-                    message: "You Password must have minimum 6 Character",
-                  },
+                  required: "Zorunlu Alan",
                 })}
               />
               <ErrorMessage
@@ -131,7 +160,7 @@ export default function SignIn() {
               />
 
               <Button
-
+                type="sunmit"
                 className="!bg-[orange]"
                 fullWidth
                 variant="contained"

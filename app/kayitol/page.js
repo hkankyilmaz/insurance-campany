@@ -4,7 +4,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-
+import { doc, setDoc, getDoc, getFirestore } from "firebase/firestore";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -13,11 +13,13 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import ErrMessage from "../_components/Forms";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import ErrMessage from "../_components/ErrMessage";
 import validator from "validator";
 import Footer from "../_components/Footer/Index";
+import app from "../_connect/connect";
+import { toast, ToastContainer } from 'react-toastify';
 
 function Copyright(props) {
     return (
@@ -42,7 +44,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-
+    const db = getFirestore(app);
     const router = useRouter();
 
 
@@ -55,12 +57,31 @@ export default function SignUp() {
     } = useForm();
 
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
+        console.log(data)
+        try {
+            const docRef = doc(db, "users", data.email);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.data() !== undefined) {
+                setError("email", { type: "focus", message: "Kayıtlı Kullanıcı" })
+                return;
+            }
 
-        // const { email, password } = data;
-        // let options = { redirect: false, email, password };
+            setDoc(docRef, data)
+                .then((res) => {
+                    toast.success("Kayıt işlemi tamamlandı.Lütfen Oturum Açın.");
+                    router.push('/oturumac')
+                })
+                .catch(error => {
+                    console.log(error);
+                })
 
-        console.log(data);
+        } catch (error) {
+            console.log(error)
+        }
+
+
+
     };
 
 
@@ -110,6 +131,11 @@ export default function SignUp() {
                                     },
                                 })}
                             />
+                            <ErrorMessage
+                                errors={errors}
+                                name="fullname"
+                                render={({ message }) => <ErrMessage message={message} />}
+                            />
                             <TextField
                                 size="small"
                                 margin="normal"
@@ -120,10 +146,10 @@ export default function SignUp() {
                                 name="email"
                                 autoComplete="email"
                                 {...register("email", {
-                                    required: "This is required field",
+                                    required: "Zorunlu Alan",
                                     pattern: {
                                         value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-                                        message: "Please enter valid e-mail",
+                                        message: "Lütfen geçerli bir email adresi girin",
                                     },
                                 })}
                             />
@@ -143,10 +169,10 @@ export default function SignUp() {
                                 id="password"
                                 autoComplete="current-password"
                                 {...register("password", {
-                                    required: "This is required field",
+                                    required: "Zorunlu Alan",
                                     minLength: {
                                         value: 6,
-                                        message: "You Password must have minimum 6 Character",
+                                        message: "En az 6 krakter girin",
                                     },
                                 })}
                             />
@@ -157,6 +183,7 @@ export default function SignUp() {
                             />
 
                             <Button
+                                type="submit"
                                 className="!bg-[orange]"
                                 fullWidth
                                 variant="contained"

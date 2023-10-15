@@ -2,7 +2,7 @@ import ErrorIcon from "@mui/icons-material/Error";
 
 export default function ErrMessage({ message }) {
   return (
-    <p className="flex text-xs w-full items-center text-red-900 ml-1 mb-4">
+    <p className="flex text-xs w-full items-center text-red-900 ml-1">
       <ErrorIcon
         className="translate-y-[2px]"
         sx={{
