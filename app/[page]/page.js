@@ -3,6 +3,7 @@ import React from 'react'
 import Footer from '../_components/Footer/Index'
 import SectionThree from '../_components/Sections/SectionThree'
 import SectionFour from '../_components/Sections/SectionFour'
+import SectionSix from '../_components/Sections/SectionSix'
 
 function Index(props) {
     const param = props.params.page
@@ -13,7 +14,9 @@ function Index(props) {
             <SectionOne param={param} />
             <SectionThree />
             <SectionFour />
+            <SectionSix />
             <Footer />
+
         </main>
 
     )

@@ -9,7 +9,9 @@ import Select from '@mui/material/Select';
 import { useForm } from "react-hook-form";
 import ErrMessage from '../ErrMessage';
 import { ErrorMessage } from '@hookform/error-message';
+import ErrorIcon from "@mui/icons-material/Error";
 import validator from "validator";
+import isEmpty from 'lodash.isempty';
 
 function CarForm({ variety }) {
     if (variety == "carIns") {
@@ -62,18 +64,10 @@ function CarInsurance() {
                             label="Ad/Soyad"
                             {...register("car_person_kasko_nameSurname", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isDate: (value) =>
-                                        validator?.isAlpha(value, 'tr-TR', { ignore: " " }) ||
-                                        "Lütfen sadece harf girin.",
-                                },
+
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_kasko_nameSurname"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -81,18 +75,14 @@ function CarInsurance() {
                             label="Cep Telefonu"
                             {...register("car_person_kasko_phoneNumber", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isMobilePhone: (value) =>
-                                        validator?.isMobilePhone(value, 'tr-TR') ||
-                                        "Lütfen geçerli bir telefon numarası girin.",
-                                },
+                                // validate: {
+                                //     isMobilePhone: (value) =>
+                                //         validator?.isMobilePhone(value, 'tr-TR') ||
+                                //         "Lütfen geçerli bir telefon numarası girin.",
+                                // },
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_kasko_phoneNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
 
@@ -103,11 +93,7 @@ function CarInsurance() {
                                 required: "Zorunlu Alan",
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_kasko_TcNo"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -117,11 +103,7 @@ function CarInsurance() {
                                 required: "Zorunlu Alan",
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_kasko_carNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -131,11 +113,7 @@ function CarInsurance() {
                                 required: "Zorunlu Alan",
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_kasko_seriesNo"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -143,18 +121,10 @@ function CarInsurance() {
                             label="Meslek"
                             {...register("car_person_kasko_job", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isDate: (value) =>
-                                        validator?.isAlpha(value, 'tr-TR', { ignore: " " }) ||
-                                        "Lütfen sadece harf girin.",
-                                },
+
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_kasko_job"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <FormControl className='!mb-3' size='small' fullWidth>
@@ -172,11 +142,7 @@ function CarInsurance() {
 
                             </Select>
                         </FormControl>
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_kasko_lpg"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <FormControl className='!mb-3' size='small' fullWidth>
@@ -194,11 +160,7 @@ function CarInsurance() {
 
                             </Select>
                         </FormControl>
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_kasko_plugin"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -206,26 +168,20 @@ function CarInsurance() {
                             label="Doğum Tarihi"
                             {...register("car_person_kasko_birthdate", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isDate: (value) =>
-                                        validator?.isDate(value, {
-                                            ...options,
-                                        }) ||
-                                        "Lütfen GG/AA/YYYY veya GG-AA-YY şeklinde girin.",
-                                },
+
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_kasko_birthdate"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                 </div>
 
 
                 <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+                {!isEmpty(errors) ?
+                    <p className='flex justify-center item-center' >  <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />  <span> Lütfen Tüm Alanları Doldurun. </span> </p>
+                    : undefined
 
+                }
             </form>
         )
     } else {
@@ -248,18 +204,10 @@ function CarInsurance() {
                             label="Firma Unvanı"
                             {...register("car_business_kasko_companyName", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isDate: (value) =>
-                                        validator?.isAlpha(value, 'tr-TR', { ignore: " " }) ||
-                                        "Lütfen sadece harf girin.",
-                                },
+
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_kasko_companyName"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -267,18 +215,10 @@ function CarInsurance() {
                             label="Vergi Numarası"
                             {...register("car_business_kasko_taxNumber", {
                                 required: "Zorunlu Alan",
-                                // validate: {
-                                //     isMobilePhone: (value) =>
-                                //         validator?.isMobilePhone(value, 'tr-TR') ||
-                                //         "Lütfen geçerli bir telefon numarası girin.",
-                                // },
+
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_kasko_taxNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
 
@@ -289,11 +229,7 @@ function CarInsurance() {
                                 required: "Zorunlu Alan",
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_kasko_location"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -303,11 +239,7 @@ function CarInsurance() {
                                 required: "Zorunlu Alan",
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_kasko_phoneNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -317,11 +249,7 @@ function CarInsurance() {
                                 required: "Zorunlu Alan",
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="seriesNo"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -329,18 +257,14 @@ function CarInsurance() {
                             label="Ruhsat Seri No"
                             {...register("car_business_kasko_seriesNumber", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isDate: (value) =>
-                                        validator?.isAlpha(value, 'tr-TR', { ignore: " " }) ||
-                                        "Lütfen sadece harf girin.",
-                                },
+                                // validate: {
+                                //     isDate: (value) =>
+                                //         validator?.isAlpha(value, 'tr-TR', { ignore: " " }) ||
+                                //         "Lütfen sadece harf girin.",
+                                // },
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_kasko_seriesNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <FormControl className='!mb-3' size='small' fullWidth defaultValue={" "}>
@@ -358,11 +282,7 @@ function CarInsurance() {
 
                             </Select>
                         </FormControl>
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_kasko_lpg"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <FormControl className='!mb-3' size='small' fullWidth>
@@ -378,17 +298,22 @@ function CarInsurance() {
                                 <MenuItem value={"lpgFalse"}>Orjinal Aksesuar Yok</MenuItem>
                             </Select>
                         </FormControl>
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_kasko_plugin"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                 </div>
 
 
                 <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+                {!isEmpty(errors) ?
+                    <p className='flex justify-center item-center' >
+                        <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
+                        <span>
+                            Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
+                        </span>
+                    </p>
+                    : undefined
 
+                }
             </form>)
     }
 
@@ -435,18 +360,14 @@ function TrafficInsurance() {
                             label="Ad/Soyad"
                             {...register("car_person_traffic_nameSurname", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isDate: (value) =>
-                                        validator?.isAlpha(value, 'tr-TR', { ignore: " " }) ||
-                                        "Lütfen sadece harf girin.",
-                                },
+                                // validate: {
+                                //     isDate: (value) =>
+                                //         validator?.isAlpha(value, 'tr-TR', { ignore: " " }) ||
+                                //         "Lütfen sadece harf girin.",
+                                // },
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_traffic_nameSurname"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -454,18 +375,10 @@ function TrafficInsurance() {
                             label="Cep Telefonu"
                             {...register("car_person_traffic_phoneNumber", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isMobilePhone: (value) =>
-                                        validator?.isMobilePhone(value, 'tr-TR') ||
-                                        "Lütfen geçerli bir telefon numarası girin.",
-                                },
+
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_traffic_phoneNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
 
@@ -476,11 +389,7 @@ function TrafficInsurance() {
                                 required: "Zorunlu Alan",
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_traffic_TcNo"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -490,11 +399,7 @@ function TrafficInsurance() {
                                 required: "Zorunlu Alan",
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_traffic_carNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -504,11 +409,7 @@ function TrafficInsurance() {
                                 required: "Zorunlu Alan",
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_traffic_seriesNo"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -516,26 +417,25 @@ function TrafficInsurance() {
                             label="Doğum Tarihi"
                             {...register("car_person_traffic_birthdate", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isDate: (value) =>
-                                        validator?.isDate(value, {
-                                            ...options,
-                                        }) ||
-                                        "Lütfen GG/AA/YYYY veya GG-AA-YY şeklinde girin.",
-                                },
+
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_person_traffic_birthdate"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                 </div>
 
 
                 <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+                {!isEmpty(errors) ?
+                    <p className='flex justify-center item-center' >
+                        <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
+                        <span>
+                            Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
+                        </span>
+                    </p>
+                    : undefined
 
+                }
             </form>
         )
     } else {
@@ -558,18 +458,10 @@ function TrafficInsurance() {
                             label="Firma Unvanı"
                             {...register("car_business_traffic_companyName", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isDate: (value) =>
-                                        validator?.isAlpha(value, 'tr-TR', { ignore: " " }) ||
-                                        "Lütfen sadece harf girin.",
-                                },
+
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_traffic_companyName"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -584,11 +476,7 @@ function TrafficInsurance() {
                                 // },
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_traffic_taxNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
 
@@ -599,11 +487,7 @@ function TrafficInsurance() {
                                 required: "Zorunlu Alan",
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_traffic_location"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -613,11 +497,7 @@ function TrafficInsurance() {
                                 required: "Zorunlu Alan",
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_traffic_phoneNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -625,18 +505,14 @@ function TrafficInsurance() {
                             label="Araç Plakası"
                             {...register("car_business_traffic_carNumber", {
                                 required: "Zorunlu Alan",
-                                validate: {
-                                    isAlphanumeric: (value) =>
-                                        validator?.isAlphanumeric(value, 'tr-TR') ||
-                                        "Lütfen sadece sayı ve harf girin.",
-                                },
+                                // validate: {
+                                //     isAlphanumeric: (value) =>
+                                //         validator?.isAlphanumeric(value, 'tr-TR') ||
+                                //         "Lütfen sadece sayı ve harf girin.",
+                                // },
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_traffic_carNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
                     <div>
                         <TextField
@@ -644,25 +520,25 @@ function TrafficInsurance() {
                             label="Ruhsat Seri No"
                             {...register("car_business_traffic_seriesNumber", {
                                 required: "Zorunlu Alan",
-                                // validate: {
-                                //     isDate: (value) =>
-                                //         validator?.isAlpha(value, 'tr-TR', { ignore: " " }) ||
-                                //         "Lütfen sadece harf girin.",
-                                // },
+
                             })}
                         />
-                        <ErrorMessage
-                            errors={errors}
-                            name="car_business_traffic_seriesNumber"
-                            render={({ message }) => <ErrMessage message={message} />}
-                        />
+
                     </div>
 
                 </div>
 
-
                 <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+                {!isEmpty(errors) ?
+                    <p className='flex justify-center item-center' >
+                        <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
+                        <span>
+                            Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
+                        </span>
+                    </p>
+                    : undefined
 
+                }
             </form>)
     }
 }
@@ -698,18 +574,10 @@ function ResInsurance() {
                         label="Ad/Soyad"
                         {...register("car_financial_nameSurname", {
                             required: "Zorunlu Alan",
-                            validate: {
-                                isDate: (value) =>
-                                    validator?.isAlpha(value, 'tr-TR', { ignore: " " }) ||
-                                    "Lütfen sadece harf girin.",
-                            },
+
                         })}
                     />
-                    <ErrorMessage
-                        errors={errors}
-                        name="car_financial_nameSurname"
-                        render={({ message }) => <ErrMessage message={message} />}
-                    />
+
                 </div>
                 <div>
                     <TextField
@@ -717,18 +585,10 @@ function ResInsurance() {
                         label="Cep Telefonu"
                         {...register("car_financial_phoneNumber", {
                             required: "Zorunlu Alan",
-                            validate: {
-                                isMobilePhone: (value) =>
-                                    validator?.isMobilePhone(value, 'tr-TR') ||
-                                    "Lütfen geçerli bir telefon numarası girin.",
-                            },
+
                         })}
                     />
-                    <ErrorMessage
-                        errors={errors}
-                        name="car_financial_phoneNumber"
-                        render={({ message }) => <ErrMessage message={message} />}
-                    />
+
                 </div>
                 <div>
 
@@ -739,11 +599,7 @@ function ResInsurance() {
                             required: "Zorunlu Alan",
                         })}
                     />
-                    <ErrorMessage
-                        errors={errors}
-                        name="car_financial_TcNo"
-                        render={({ message }) => <ErrMessage message={message} />}
-                    />
+
                 </div>
                 <div>
                     <TextField
@@ -753,11 +609,7 @@ function ResInsurance() {
                             required: "Zorunlu Alan",
                         })}
                     />
-                    <ErrorMessage
-                        errors={errors}
-                        name="car_financial_carNumber"
-                        render={({ message }) => <ErrMessage message={message} />}
-                    />
+
                 </div>
                 <div>
                     <TextField
@@ -767,11 +619,7 @@ function ResInsurance() {
                             required: "Zorunlu Alan",
                         })}
                     />
-                    <ErrorMessage
-                        errors={errors}
-                        name="car_financial_seriesNo"
-                        render={({ message }) => <ErrMessage message={message} />}
-                    />
+
                 </div>
                 <div>
                     <TextField
@@ -779,25 +627,24 @@ function ResInsurance() {
                         label="Doğum Tarihi"
                         {...register("car_financial_birthdate", {
                             required: "Zorunlu Alan",
-                            validate: {
-                                isDate: (value) =>
-                                    validator?.isDate(value, {
-                                        ...options,
-                                    }) ||
-                                    "Lütfen GG/AA/YYYY veya GG-AA-YY şeklinde girin.",
-                            },
+
                         })}
                     />
-                    <ErrorMessage
-                        errors={errors}
-                        name="car_financial_birthdate"
-                        render={({ message }) => <ErrMessage message={message} />}
-                    />
+
                 </div>
             </div>
 
             <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+            {!isEmpty(errors) ?
+                <p className='flex justify-center item-center' >
+                    <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
+                    <span>
+                        Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
+                    </span>
+                </p>
+                : undefined
 
+            }
         </form>
     )
 

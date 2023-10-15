@@ -64,10 +64,11 @@ export default function SignIn() {
         setError("email", { type: "focus", message: "Kayıtlı Kullanıcı Yok" })
         return;
       }
-      if (!docSnap.data().password === data.password) {
+      if (docSnap.data().password !== data.password) {
         setError("password", { type: "focus", message: "Yanlış Şifre" })
         return;
       }
+      console.log(data)
       const { email, password } = data;
       let options = { callbackUrl: '/', email, password };
       await signIn("credentials", options);

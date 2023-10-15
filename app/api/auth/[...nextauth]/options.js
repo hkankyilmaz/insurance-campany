@@ -2,6 +2,9 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import { signIn } from 'next-auth/react'
 
 export const options = {
+    session: {
+        strategy: "jwt",
+    },
     providers: [
 
         CredentialsProvider({

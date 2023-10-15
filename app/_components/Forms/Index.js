@@ -8,6 +8,9 @@ import Select from '@mui/material/Select';
 
 import CarForm from './CarForm';
 import HouseForm from './HouseForm';
+import BusinessForm from './Business';
+import Trip from './Trip';
+import Health from './Health';
 
 
 function Form() {
@@ -119,7 +122,13 @@ function Form() {
                     ? <CarForm variety={value.second} />
                     : value.first == "house"
                         ? <HouseForm variety={value.second} />
-                        : undefined
+                        : value.first == "business"
+                            ? <BusinessForm />
+                            : value.first == "trip"
+                                ? <Trip />
+                                : value.first == "healt"
+                                    ? <Health />
+                                    : undefined
 
             }
 

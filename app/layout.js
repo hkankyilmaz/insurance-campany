@@ -14,6 +14,9 @@ import Footer from './_components/Footer/Index'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Link from 'next/link'
+import Image from 'next/image'
+import wp from "./_assets/wp.png"
 
 export default function RootLayout({ children }) {
 
@@ -36,7 +39,9 @@ export default function RootLayout({ children }) {
             pauseOnHover
             theme="light"
           />
+          <Link target='_blank' className='fixed right-[10px] top-[86vh] md:right-[40px] md:top-[88vh] translate-[-200%]' href="http://wa.me/905515539872" > <Image className='hover:scale-[1.1] transition-all duration-700' width={80} height={80} src={wp} /> </Link>
         </body>
+
       </AuthProvider>
     </html>
   )
