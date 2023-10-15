@@ -56,7 +56,7 @@ header {
 }
 
 .menu-item {
-  @apply md:ml-2 md:hidden flex flex-col justify-center items-center leading-[16px];
+  @apply md:hidden flex flex-col justify-center items-center leading-[16px];
 }
 /* Footer */
 .footer p {
