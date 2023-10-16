@@ -13,9 +13,9 @@ export default function Home() {
   return (
     <main >
       <SectionTwo />
-      <SectionsOne />
-      <SectionThree />
       <SectionFour />
+      <SectionThree />
+      <SectionsOne />
       <SectionSix />
       <SectionFive />
       <Footer />

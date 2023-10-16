@@ -1,10 +1,74 @@
-import React from 'react'
+"use client"
+
+import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion"
 
 function SectionFour() {
-    return (
-        <section className='flex flex-col justify-start items-center h-[100vh] max-md:h-[70vh] w-[100vw] pt-[50px] md:pt-[300px] relative' >
 
+    const ref = useRef(null)
+    const isInView = useInView(ref)
+    console.log(isInView)
+
+    const [count, setCount] = useState({ first: 0, second: 0, third: 0, fourth: 0 })
+
+
+    useEffect(() => {
+
+    }, [isInView])
+
+    return (
+        <section className='flex flex-col justify-start items-center h-[100vh] max-md:h-[70vh] w-[100vw] pt-[50px] md:pt-[150px] relative' >
+
+
+            <div ref={ref} className='flex justify-center items-center mb-20 ' >
+
+
+                <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7 }}
+                    className='_increament-item'
+                >
+                    <p>10.000+</p>
+                    <p>Müşteri</p>
+                </motion.div>
+                <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7 }}
+                    className='_increament-item'
+                >
+                    <p>30+</p>
+                    <p>Yıllık Sektör Deneyimi</p>
+                </motion.div>
+                <motion.div
+                    initial={{ opacity: 0, x: 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7 }}
+                    className='_increament-item'
+                >
+                    <p>25</p>
+                    <p>Marka İşbirliği</p>
+                </motion.div>
+                <motion.div
+                    initial={{ opacity: 0, x: 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7 }}
+                    className='_increament-item'
+                >
+                    <p>60.000+</p>
+                    <p>Kesilen Poliçe</p>
+                </motion.div>
+
+
+
+            </div>
             <h2 className='max-md:text-lg font-bold text-2xl text-center mb-3'>Bizimle Çalışan Firmalar</h2>
             <p className='text-center max-md:text-xs max-w-[1000px]'>
                 Qui mollit nostrud excepteur consectetur veniam consectetur. Dolor ea culpa laborum in in nostrud culpa amet sit laborum cupidatat non magna nulla. Exercitation laborum nisi ut Lorem minim enim eiusmod.
