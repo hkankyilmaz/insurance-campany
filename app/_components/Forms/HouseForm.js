@@ -11,7 +11,10 @@ import ErrMessage from '../ErrMessage';
 import { ErrorMessage } from '@hookform/error-message';
 import validator from "validator";
 import isEmpty from 'lodash.isempty';
+import app from '@/app/_connect/connect';
 import ErrorIcon from "@mui/icons-material/Error";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { toast, ToastContainer } from 'react-toastify';
 function HouseForm({ variety }) {
     if (variety == "houseIns") {
         return <HouseInsurance />
@@ -30,19 +33,77 @@ function HouseInsurance() {
         strictMode: false,
     };
     const [values, setValues] = React.useState({ person: true, business: false })
+    React.useEffect(() => {
+        reset()
 
+    }, [values])
     const {
         register,
+        reset,
         handleSubmit,
         formState: { errors },
     } = useForm();
     console.log(errors);
     const onSubmit = async (data) => {
+        const db = getFirestore(app);
+        const dbRef = collection(db, "requests");
+        console.log(data)
+        let filteredData = {}
+        if (values.person) {
+            filteredData = {
+                insure: "Evim Sigortalı",
+                varietyInsure: "Konut Sigortası",
+                isPerson: "Şahıs",
+                tcNo: data.house_person_konut_TcNo,
+                adress: data.house_person_konut_adress,
+                area: data.house_person_konut_area,
+                birthdate: data.house_person_konut_birthdate,
+                flat: data.house_person_konut_flat,
+                madeOf: data.house_person_konut_madeOf,
+                nameSurname: data.house_person_konut_nameSurname,
+                phoneNumber: data.house_person_konut_phoneNumber,
+                priceOfGlass: data.house_person_konut_priceOfGlass,
+                priceOfItems: data.house_person_konut_priceOfitems,
+                usage: data.house_person_konut_usage,
+                wflat: data.house_person_konut_wflat,
+                yearOfBuild: data.house_person_konut_yearOfBuild
 
-        const { email, password } = data;
-        let options = { redirect: false, email, password };
+            }
+        } else {
+            filteredData = {
+                insure: "Evim Sigortalı",
+                varietyInsure: "Konut Sigortası",
+                isPerson: "Şirket",
+                adress: data.house_business_konut_adress,
+                area: data.house_business_konut_area,
+                companyName: data.house_business_konut_companyName,
+                flat: data.house_business_konut_flat,
+                location: data.house_business_konut_location,
+                madeOf: data.house_business_konut_madeOf,
+                phoneNumber: data.house_business_konut_phoneNumber,
+                priceOfGlass: data.house_business_konut_priceOfGlass,
+                priceOfItems: data.house_business_konut_priceOfitems,
+                taxNumber: data.house_business_konut_taxNumber,
+                usage: data.house_business_konut_usage,
+                wflat: data.house_business_konut_wflat,
+                yearOfBuild: data.house_business_konut_yearOfBuild
+            }
+        }
 
-        console.log(data);
+
+        try {
+            addDoc(dbRef, filteredData)
+                .then((res) => {
+                    toast.success("Form Gönderildi");
+                })
+                .catch(error => {
+                    toast.error("Form Gönderilemedi");
+                    console.log(error);
+                })
+
+        } catch (error) {
+            console.log(error)
+        }
     };
     if (values.person) {
         return (
@@ -428,19 +489,71 @@ function DaskInsurance() {
         strictMode: false,
     };
     const [values, setValues] = React.useState({ person: true, business: false })
+    React.useEffect(() => {
+        reset()
 
+    }, [values])
     const {
         register,
+        reset,
         handleSubmit,
         formState: { errors },
     } = useForm();
     console.log(errors);
     const onSubmit = async (data) => {
+        const db = getFirestore(app);
+        const dbRef = collection(db, "requests");
+        console.log(data)
+        let filteredData = {}
+        if (values.person) {
+            filteredData = {
+                insure: "Evim Sigortalı",
+                varietyInsure: "Dask Sigortası",
+                isPerson: "Şahıs",
+                tcNo: data.house_person_dask_TcNo,
+                adress: data.house_person_dask_adress,
+                area: data.house_person_dask_area,
+                birthdate: data.house_person_dask_birthdate,
+                flat: data.house_person_dask_flat,
+                nameSurname: data.house_person_dask_nameSurname,
+                phoneNumber: data.house_person_dask_phoneNumber,
+                yearOfBuild: data.house_person_dask_yearOfBulding
 
-        const { email, password } = data;
-        let options = { redirect: false, email, password };
 
-        console.log(data);
+            }
+        } else {
+            filteredData = {
+                insure: "Evim Sigortalı",
+                varietyInsure: "Dask Sigortası",
+                isPerson: "Şirket",
+                tcNo: house_business_dask_TcNo,
+                adress: house_business_dask_adress,
+                area: data.house_business_dask_area,
+                birthdate: data.house_business_dask_birthdate,
+                companyName: data.house_business_dask_companyName,
+                flat: data.house_business_dask_flat,
+                location: data.house_business_dask_location,
+                phoneNumber: data.house_business_dask_phoneNumber,
+                taxNumber: data.house_business_dask_taxNumber,
+                yearOfBuild: data.house_business_dask_yearOfBulding
+
+            }
+        }
+
+
+        try {
+            addDoc(dbRef, filteredData)
+                .then((res) => {
+                    toast.success("Form Gönderildi");
+                })
+                .catch(error => {
+                    toast.error("Form Gönderilemedi");
+                    console.log(error);
+                })
+
+        } catch (error) {
+            console.log(error)
+        }
     };
     if (values.person) {
         return (

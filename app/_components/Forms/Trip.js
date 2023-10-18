@@ -3,6 +3,9 @@ import TextField from "@mui/material/TextField";
 import { useForm } from "react-hook-form";
 import isEmpty from 'lodash.isempty';
 import ErrorIcon from "@mui/icons-material/Error";
+import app from '@/app/_connect/connect';
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { toast, ToastContainer } from 'react-toastify';
 
 export default function Trip({ variety }) {
     return <T />
@@ -18,16 +21,48 @@ function T() {
         strictMode: false,
     };
     const [values, setValues] = React.useState({ person: true, business: false })
+    React.useEffect(() => {
+        reset()
 
+    }, [values])
     const {
         register,
         handleSubmit,
         formState: { errors },
-        clearErrors
+        clearErrors,
+        reset,
     } = useForm();
     console.log(errors)
     const onSubmit = async (data) => {
+        const db = getFirestore(app);
+        const dbRef = collection(db, "requests");
         console.log(data);
+        let filteredData;
+
+        filteredData = {
+            insure: "Seyahatim Sigortalı",
+            varietyInsure: "Seyehat Sigortası",
+            birthdate: data.trip_person_kasko_birthdate,
+            tcNo: data.trip_person_trip_TcNo,
+            about: data.trip_person_trip_about,
+            date1: data.trip_person_trip_date1,
+            trip_person_trip_date2: data.trip_person_trip_date2,
+            nameSurname: data.trip_person_trip_nameSurname,
+            phoneNumber: data.trip_person_trip_phoneNumber
+        }
+        try {
+            addDoc(dbRef, filteredData)
+                .then((res) => {
+                    toast.success("Form Gönderildi");
+                })
+                .catch(error => {
+                    toast.error("Form Gönderilemedi");
+                    console.log(error);
+                })
+
+        } catch (error) {
+            console.log(error)
+        }
     };
 
     return (

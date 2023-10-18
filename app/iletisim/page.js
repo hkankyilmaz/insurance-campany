@@ -20,7 +20,7 @@ function Contact() {
 
                     <div className='flex max-lg:flex-col max-lg:space-y-12 justify-center items-center lg:space-x-16 text-slate-600'>
                         <div >
-                            <h3 className='text-xl italic mb-1 text-black font-light' >Her Konu Hakkında Bize Ulaşın...</h3>
+                            <h3 className='text-xs italic mb-1 text-black font-light' >Her Konu Hakkında Bize Ulaşın...</h3>
                             <h2 className='text-3xl md:text-4xl mb-2 ' >İletişim Bilgileri</h2>
                             <div className='flex items-center space-x-2' >
                                 <AiFillPhone className='text-3xl text-black' />

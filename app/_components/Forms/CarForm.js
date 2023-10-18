@@ -12,6 +12,9 @@ import { ErrorMessage } from '@hookform/error-message';
 import ErrorIcon from "@mui/icons-material/Error";
 import validator from "validator";
 import isEmpty from 'lodash.isempty';
+import app from '@/app/_connect/connect';
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { toast, ToastContainer } from 'react-toastify';
 
 function CarForm({ variety }) {
     if (variety == "carIns") {
@@ -27,6 +30,7 @@ export default CarForm
 
 function CarInsurance() {
 
+
     const options = {
         format: 'DD/MM/YYYY',
         delimiters: ['/', '-'],
@@ -34,15 +38,68 @@ function CarInsurance() {
     };
     const [values, setValues] = React.useState({ person: true, business: false })
 
+    React.useEffect(() => {
+        reset()
+
+    }, [values])
+
     const {
         register,
         handleSubmit,
         formState: { errors },
+        reset,
         clearErrors
     } = useForm();
     console.log(errors)
     const onSubmit = async (data) => {
+        const db = getFirestore(app);
+        const dbRef = collection(db, "requests");
         console.log(data);
+        let filteredData;
+        if (values.person) {
+            filteredData = {
+                insure: "Arabam Sigortalı",
+                varietyInsure: "Kasko",
+                tcNo: data.car_person_kasko_TcNo,
+                BirthDate: data.car_person_kasko_birthdate,
+                carNumber: data.car_person_kasko_carNumber,
+                job: data.car_person_kasko_job,
+                lpg: data.car_person_kasko_lpg,
+                nameSurname: data.car_person_kasko_nameSurname,
+                phoneNumber: data.car_person_kasko_phoneNumber,
+                plugin: data.car_person_kasko_plugin,
+                seriesNo: data.car_person_kasko_seriesNo,
+            }
+        } else {
+            filteredData = {
+                insure: "Arabam Sigortalı",
+                varietyInsure: "Kasko",
+                isPerson: "Şirket",
+                carNumber: data.car_business_kasko_carNumber,
+                companyNameName: data.car_business_kasko_companyName,
+                location: data.car_business_kasko_location,
+                lpg: data.car_business_kasko_lpg,
+                phoneNumber: data.car_business_kasko_phoneNumber,
+                plugin: data.car_business_kasko_plugin,
+                seriesNo: data.car_business_kasko_seriesNumber,
+                taxNumber: data.car_business_kasko_taxNumber,
+            }
+
+        }
+
+        try {
+            addDoc(dbRef, filteredData)
+                .then((res) => {
+                    toast.success("Form Gönderildi");
+                })
+                .catch(error => {
+                    toast.error("Form Gönderilemedi");
+                    console.log(error);
+                })
+
+        } catch (error) {
+            console.log(error)
+        }
     };
     if (values.person) {
         return (
@@ -326,19 +383,65 @@ function TrafficInsurance() {
         strictMode: false,
     };
     const [values, setValues] = React.useState({ person: true, business: false })
+    React.useEffect(() => {
+        reset()
 
+    }, [values])
     const {
         register,
+        reset,
         handleSubmit,
         formState: { errors },
     } = useForm();
-    console.log(errors);
+
     const onSubmit = async (data) => {
+        const db = getFirestore(app);
+        const dbRef = collection(db, "requests");
+        console.log(data)
+        let filteredData = {}
+        if (values.person) {
+            filteredData = {
+                insure: "Arabam Sigortalı",
+                varietyInsure: "Trafik Sigortası",
+                isPerson: "Şahıs",
+                tcNo: data.car_person_traffic_TcNo,
+                BirthDate: data.car_person_traffic_birthdate,
+                carNumber: data.car_person_traffic_carNumber,
+                job: data.car_person_traffic_phoneNumber,
+                nameSurname: data.car_person_traffic_nameSurname,
+                phoneNumber: data.car_person_traffic_phoneNumber,
 
-        const { email, password } = data;
-        let options = { redirect: false, email, password };
 
-        console.log(data);
+            }
+        } else {
+            filteredData = {
+                insure: "Arabam Sigortalı",
+                varietyInsure: "Trafik Sigortası",
+                isPerson: "Şirket",
+                carNumber: data.car_business_traffic_carNumber,
+                companyNameName: data.car_business_traffic_companyName,
+                location: data.car_business_traffic_location,
+                phoneNumber: data.car_business_traffic_phoneNumber,
+                seriesNo: data.car_business_traffic_seriesNumber,
+                taxNumber: data.car_business_traffic_taxNumber,
+
+            }
+        }
+
+
+        try {
+            addDoc(dbRef, filteredData)
+                .then((res) => {
+                    toast.success("Form Gönderildi");
+                })
+                .catch(error => {
+                    toast.error("Form Gönderilemedi");
+                    console.log(error);
+                })
+
+        } catch (error) {
+            console.log(error)
+        }
     };
     if (values.person) {
         return (
@@ -552,16 +655,37 @@ function ResInsurance() {
 
     const {
         register,
+        reset,
         handleSubmit,
         formState: { errors },
     } = useForm();
-    console.log(errors);
     const onSubmit = async (data) => {
-
-        const { email, password } = data;
-        let options = { redirect: false, email, password };
-
+        const db = getFirestore(app);
+        const dbRef = collection(db, "requests");
         console.log(data);
+        let filteredData = {
+            insure: "Arabam Sigortalı",
+            varietyInsure: "İhtiyari Mali Mesuliyet Sigortası",
+            tcNo: data.car_financial_TcNo,
+            BirthDate: data.car_financial_birthdate,
+            carNumber: data.car_financial_carNumber,
+            job: data.car_financial_seriesNo,
+            nameSurname: data.car_financial_nameSurname,
+            phoneNumber: data.car_financial_phoneNumber,
+        }
+        try {
+            addDoc(dbRef, filteredData)
+                .then((res) => {
+                    toast.success("Form Gönderildi");
+                })
+                .catch(error => {
+                    toast.error("Form Gönderilemedi");
+                    console.log(error);
+                })
+
+        } catch (error) {
+            console.log(error)
+        }
     };
 
     return (

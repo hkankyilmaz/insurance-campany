@@ -5,7 +5,9 @@ import TextField from "@mui/material/TextField";
 import { useForm } from "react-hook-form";
 import isEmpty from 'lodash.isempty';
 import ErrorIcon from "@mui/icons-material/Error";
-
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { toast, ToastContainer } from 'react-toastify';
+import app from '@/app/_connect/connect';
 export default function BusinessForm({ variety }) {
     return <Business />
 }
@@ -20,16 +22,71 @@ function Business() {
         strictMode: false,
     };
     const [values, setValues] = React.useState({ person: true, business: false })
+    React.useEffect(() => {
+        reset()
 
+    }, [values])
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
         clearErrors
     } = useForm();
     console.log(errors)
     const onSubmit = async (data) => {
-        console.log(data);
+        const db = getFirestore(app);
+        const dbRef = collection(db, "requests");
+        console.log(data)
+        let filteredData = {}
+        if (values.person) {
+            filteredData = {
+                insure: "İşyerim Sigortalı",
+                varietyInsure: "İşyeri Sigortası",
+                isPerson: "Şahıs",
+                tcNo: data.business_person_business_TcNo,
+                phoneNumber: data.business_person_business_about,
+                adress: data.business_person_business_adress,
+                area: data.business_person_business_area,
+                itemsPrice: data.business_person_business_itemsPrice,
+                itemsPrice2: data.business_person_business_itemsPrice2,
+                nameSurname: data.business_person_business_nameSurname,
+                phoneNumber: data.business_person_business_phoneNumber,
+                birthdate: data.business_person_kasko_birthdate,
+
+            }
+        } else {
+            filteredData = {
+                insure: "İşyerim Sigortalı",
+                varietyInsure: "İşyeri Sigortası",
+                isPerson: "Şirket",
+                about: data.business_business_business_about,
+                adress: data.business_business_business_adress,
+                area: data.business_business_business_area,
+                companyName: data.business_business_business_companyName,
+                itemsPrice: data.business_business_business_itemsPrice,
+                itemsPrice2: data.business_business_business_itemsPrice2,
+                location: data.business_business_business_location,
+                phoneNumber: data.business_business_business_phoneNumber,
+                taxNumber: data.business_business_business_taxNumber,
+
+            }
+        }
+
+
+        try {
+            addDoc(dbRef, filteredData)
+                .then((res) => {
+                    toast.success("Form Gönderildi");
+                })
+                .catch(error => {
+                    toast.error("Form Gönderilemedi");
+                    console.log(error);
+                })
+
+        } catch (error) {
+            console.log(error)
+        }
     };
     if (values.person) {
         return (
@@ -75,7 +132,7 @@ function Business() {
 
                         <TextField
                             className='!mb-3' size='small' fullWidth
-                            label="Ruhsat Sahibi Tc No"
+                            label="Tc No"
                             {...register("business_person_business_TcNo", {
                                 required: "Zorunlu Alan",
                             })}

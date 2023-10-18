@@ -5,6 +5,10 @@ import TextField from "@mui/material/TextField";
 import { useForm } from "react-hook-form";
 import isEmpty from 'lodash.isempty';
 import ErrorIcon from "@mui/icons-material/Error";
+import app from '@/app/_connect/connect';
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { toast, ToastContainer } from 'react-toastify';
+
 
 export default function Health({ variety }) {
     return <H />
@@ -20,16 +24,63 @@ function H() {
         strictMode: false,
     };
     const [values, setValues] = React.useState({ person: true, business: false })
+    React.useEffect(() => {
+        reset()
 
+    }, [values])
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
         clearErrors
     } = useForm();
     console.log(errors)
     const onSubmit = async (data) => {
+        const db = getFirestore(app);
+        const dbRef = collection(db, "requests");
         console.log(data);
+        let filteredData;
+        if (values.person) {
+            filteredData = {
+                insure: "Sağlığım Sigortalı",
+                varietyInsure: "Tamamlayıcı Sağlık Sigortası",
+                weight: data.health_person_health_weight,
+                tcNo: data.health_sup_health_TcNo,
+                birthdate: data.health_sup_health_birthdate,
+                nameSurname: data.health_sup_health_nameSurname,
+                phoneNumber: data.health_sup_health_phoneNumber,
+                tall: data.health_sup_health_tall
+
+            }
+        } else {
+            filteredData = {
+                insure: "Sağlığım Sigortalı",
+                varietyInsure: "Özel Sağlık Sigortası",
+                weight: data.health_special_health_weight,
+                tcNo: data.health_special_health_TcNo,
+                birthdate: data.health_special_health_birthdate,
+                nameSurname: data.health_special_health_nameSurname,
+                phoneNumber: data.health_special_health_phoneNumber,
+                tall: data.health_special_health_tall
+
+            }
+
+        }
+
+        try {
+            addDoc(dbRef, filteredData)
+                .then((res) => {
+                    toast.success("Form Gönderildi");
+                })
+                .catch(error => {
+                    toast.error("Form Gönderilemedi");
+                    console.log(error);
+                })
+
+        } catch (error) {
+            console.log(error)
+        }
     };
     if (values.person) {
         return (
