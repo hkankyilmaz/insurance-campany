@@ -4,12 +4,22 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .MuiFormControl-root * {
-  font-size: 0.75rem !important;
+@font-face {
+  font-family: "avenir-normal";
+  src: url("../app/_assets/Avenir-Roman.woff") format("woff");
 }
-.form_ *:not(h2, .MuiFormControl-root *) {
-  font-size: 0.9rem !important;
-} */
+@font-face {
+  font-family: "avenir-light";
+  src: url("../app/_assets/AVENIR-LIGHT.woff") format("woff");
+}
+@font-face {
+  font-family: "avenir-book";
+  src: url("../app/_assets/AVENIR-BOOK.woff") format("woff");
+}
+@font-face {
+  font-family: "avenir-medium";
+  src: url("../app//_assets/AVENIR-MEDIUM.woff") format("woff");
+}
 
 body {
   position: relative;

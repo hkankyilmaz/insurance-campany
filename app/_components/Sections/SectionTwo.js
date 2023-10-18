@@ -14,6 +14,22 @@ function SectionTwo() {
                 <button className='mr-6 w-[200px] px-4 py-2 rounded-md bg-white text-black hover:bg-orange-400 hover:text-white transition-all ease-in'>Tekif Al</button>
                 <button className='w-[200px]  px-4 py-2 rounded-md hover:bg-white hover:text-black bg-orange-400 text-white transition-all ease-in mt-3' >Bana Ulaşın</button>
             </div>
+            <div className='max-lg:hidden absolute left-10 top-[50%] translate-y-[-50%] max-w-xl text-4xl text-white'>
+                Sit elit minim do elit in ad enim aliquip tempor deserunt et laborum.
+            </div>
+            <div className='max-lg:hidden absolute right-10 top-[50%] translate-y-[-50%] max-w-xl text-xl text-white text-right'>
+                Sit elit minim do elit in ad enim aliquip tempor deserunt et laborum.
+            </div>
+            <div className='lg:hidden absolute top-[50%] translate-y-[-50%] w-full px-5 right-[50%] translate-x-[50%]' >
+                <div className='text-2xl text-white'>
+                    Sit elit minim do elit in ad enim aliquip tempor deserunt et laborum.
+                </div>
+                <div className='text-normal text-white'>
+                    Sit elit minim do elit in ad enim aliquip tempor deserunt et laborum.
+                </div>
+
+            </div>
+
         </section>
     )
 }
