@@ -1,7 +1,9 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
 import comment from "../../_assets/comment.png"
 import Rating from '@mui/material/Rating';
+import { motion } from "framer-motion";
 
 function SectionSeven() {
     return (
@@ -12,7 +14,13 @@ function SectionSeven() {
                 <div className='w-full md:w-[50%] flex justify-end'>
                     <Image className='w-[725px]' src={comment} />
                 </div>
-                <div className='w-full md:w-[50%] rounded-3xl pb-10 md:py-10'>
+                <motion.div
+                    initial={{ opacity: 0, x: -150, filter: "blur(5px)" }}
+                    whileInView={{ opacity: 1, x: 0, filter: "blur(0)" }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7 }}
+                    className='w-full md:w-[50%] rounded-3xl pb-10 md:py-10'
+                >
                     <div className='h-[60vh] mx-10 overflow-y-auto'>
                         <Comment
                             rate={5}
@@ -40,7 +48,7 @@ function SectionSeven() {
                             comment={"Sint cillum nostrud quis nisi laboris officia ex Lorem non enim. Magna ex fugiat enim velit culpa aliquip non. Aute consectetur laborum anim elit. Consectetur velit consectetur ad cupidatat ut sunt occaecat. Mollit ipsum reprehenderit culpa officia laborum ullamco."}
                         />
                     </div>
-                </div>
+                </motion.div>
 
             </div>
 
