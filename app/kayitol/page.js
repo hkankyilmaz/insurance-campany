@@ -198,7 +198,7 @@ export default function SignUp() {
                       </Link> */}
                                 </Grid>
                                 <Grid item>
-                                    <Link className="text-blue-800 underline max-md:text-xs" href="/oturumac">
+                                    <Link className="text-blue-800 underline text-xs" href="/oturumac">
                                         {"Hesabın var mı ? Giriş yap."}
                                     </Link>
                                 </Grid>
