@@ -19,7 +19,7 @@ function SectionFour() {
     }, [isInView])
 
     return (
-        <section className='flex flex-col justify-start items-center h-[107vh] md:h-[100vh] w-[100vw] pt-[50px] md:pt-[150px] relative' >
+        <section className='flex flex-col justify-start items-center h-[105vh] md:h-[100vh] w-[100vw] pt-[50px] md:pt-[150px] relative' >
 
 
             <div ref={ref} className='max-md:px-5 max-lg:gap-y-2 max-lg:grid grid-cols-2 lg:flex lg:justify-center lg:items-center mb-10 md:mb-20 ' >
