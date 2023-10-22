@@ -1,9 +1,11 @@
+"use client"
 import React from 'react'
 
 import Footer from '../_components/Footer/Index'
 import SectionThree from '../_components/Sections/SectionThree'
 import SectionFour from '../_components/Sections/SectionFour'
 import SectionSix from '../_components/Sections/SectionSix'
+import { Link } from 'react-scroll'
 
 function Index(props) {
     const param = props.params.page
@@ -65,6 +67,20 @@ function SectionOne({ param }) {
     return (
         <section className='h-[100vh] w-[100vw] relative'>
             <main className='max-md:hidden h-[100vh] w-[100vw]' style={{ backgroundPosition: "center", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundImage: `url(${image})` }}  >
+                <div className='absolute bottom-24 left-[50%] translate-x-[-50%] max-md:flex max-md:flex-col max-md:item-center max-md:justify-center'>
+                    <Link
+                        className='md:hidden'
+                        to="form"
+                        spy={true}
+                        smooth={true}
+                        offset={-35}
+                        duration={500}
+                    >
+                        <button className='mr-6 w-[200px] px-4 py-2 rounded-md bg-white text-black hover:bg-orange-400 hover:text-white transition-all ease-in'>Tekif Al</button>
+                    </Link>
+                    <button onClick={(e) => document.querySelector("#form").scrollIntoView({ behavior: "smooth", block: "start", inline: "start" })} className='max-md:hidden mr-6 w-[200px] px-4 py-2 rounded-md bg-white text-black hover:bg-orange-400 hover:text-white transition-all ease-in'>Tekif Al</button>
+                    <button className='w-[200px]  px-4 py-2 rounded-md hover:bg-white hover:text-black bg-orange-400 text-white transition-all ease-in mt-3' >Bana Ulaşın</button>
+                </div>
             </main>
             <main className='md:hidden h-[100vh] w-[100vw]' style={{ backgroundPosition: "center", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundImage: `url(${mobileImage})` }}  >
             </main>

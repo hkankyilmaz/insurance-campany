@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from "@mui/material/TextField";
@@ -15,6 +15,8 @@ export default function BusinessForm({ variety }) {
 
 
 function Business() {
+
+    const [isLoading, setIsLoading] = useState(false)
 
     const options = {
         format: 'DD/MM/YYYY',
@@ -35,6 +37,7 @@ function Business() {
     } = useForm();
     console.log(errors)
     const onSubmit = async (data) => {
+        setIsLoading(true)
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
         console.log(data)
@@ -79,10 +82,12 @@ function Business() {
                 .then((res) => {
                     toast.success("Form Gönderildi");
                     reset();
+                    setIsLoading(false)
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");
                     reset();
+                    setIsLoading(false)
                     console.log(error);
                 })
 
@@ -205,7 +210,9 @@ function Business() {
                 </div>
 
 
-                <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+                <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >
+                    {isLoading ? "Gönderiliyor..." : "Formu Gönder"}
+                </button>
                 {!isEmpty(errors) ?
                     <p className='flex justify-center item-center' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
@@ -322,8 +329,9 @@ function Business() {
 
                     </div>
                 </div>
-
-                <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+                <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >
+                    {isLoading ? "Gönderiliyor..." : "Formu Gönder"}
+                </button>
                 {!isEmpty(errors) ?
                     <p className='flex justify-center item-center' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />

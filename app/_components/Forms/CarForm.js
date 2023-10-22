@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from "@mui/material/TextField";
@@ -30,6 +30,8 @@ export default CarForm
 
 function CarInsurance() {
 
+    const [isLoading, setIsLoading] = useState(false)
+
     const options = {
         format: 'DD/MM/YYYY',
         delimiters: ['/', '-'],
@@ -40,7 +42,7 @@ function CarInsurance() {
     const {
         register,
         handleSubmit,
-        formState: { errors, isSubmitSuccessful, isLoading },
+        formState: { errors, isSubmitSuccessful },
         reset,
         clearErrors,
     } = useForm({ defaultValue: { car_person_kasko_lpg: undefined } });
@@ -93,9 +95,13 @@ function CarInsurance() {
             addDoc(dbRef, filteredData)
                 .then((res) => {
                     toast.success("Form Gönderildi");
+                    reset();
+                    setIsLoading(false)
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");
+                    reset();
+                    setIsLoading(false)
                     console.log(error);
                 })
 
@@ -234,7 +240,9 @@ function CarInsurance() {
                 </div>
 
 
-                <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+                <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >
+                    {isLoading ? "Gönderiliyor..." : "Formu Gönder"}
+                </button>
                 {!isEmpty(errors) ?
                     <p className='flex justify-center item-center' >  <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />  <span> Lütfen Tüm Alanları Doldurun. </span> </p>
                     : undefined
@@ -361,7 +369,9 @@ function CarInsurance() {
                 </div>
 
 
-                <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+                <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >
+                    {isLoading ? "Gönderiliyor..." : "Formu Gönder"}
+                </button>
                 {!isEmpty(errors) ?
                     <p className='flex justify-center item-center' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
@@ -378,6 +388,7 @@ function CarInsurance() {
 }
 
 function TrafficInsurance() {
+    const [isLoading, setIsLoading] = useState(false)
     const options = {
         format: 'DD/MM/YYYY',
         delimiters: ['/', '-'],
@@ -435,10 +446,12 @@ function TrafficInsurance() {
                 .then((res) => {
                     toast.success("Form Gönderildi");
                     reset();
+                    setIsLoading(false)
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");
                     reset();
+                    setIsLoading(false)
                     console.log(error);
                 })
 
@@ -530,8 +543,10 @@ function TrafficInsurance() {
                     </div>
                 </div>
 
+                <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >
+                    {isLoading ? "Gönderiliyor..." : "Formu Gönder"}
+                </button>
 
-                <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
                 {!isEmpty(errors) ?
                     <p className='flex justify-center item-center' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
@@ -634,7 +649,9 @@ function TrafficInsurance() {
 
                 </div>
 
-                <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+                <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >
+                    {isLoading ? "Gönderiliyor..." : "Formu Gönder"}
+                </button>
                 {!isEmpty(errors) ?
                     <p className='flex justify-center item-center' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
@@ -650,6 +667,7 @@ function TrafficInsurance() {
 }
 
 function ResInsurance() {
+    const [isLoading, setIsLoading] = useState(false)
     const options = {
         format: 'DD/MM/YYYY',
         delimiters: ['/', '-'],
@@ -681,10 +699,12 @@ function ResInsurance() {
                 .then((res) => {
                     toast.success("Form Gönderildi");
                     reset();
+                    setIsLoading(false)
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");
                     reset();
+                    setIsLoading(false)
                     console.log(error);
                 })
 
@@ -763,7 +783,9 @@ function ResInsurance() {
                 </div>
             </div>
 
-            <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+            <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >
+                {isLoading ? "Gönderiliyor..." : "Formu Gönder"}
+            </button>
             {!isEmpty(errors) ?
                 <p className='flex justify-center item-center' >
                     <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />

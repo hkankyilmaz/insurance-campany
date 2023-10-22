@@ -17,6 +17,8 @@ export default function Trip({ variety }) {
 
 function T() {
 
+    const [isLoading, setIsLoading] = useState(false)
+
     const options = {
         format: 'DD/MM/YYYY',
         delimiters: ['/', '-'],
@@ -57,24 +59,14 @@ function T() {
                 .then((res) => {
                     toast.success("Form Gönderildi");
                     reset();
+                    setIsLoading(false)
 
-                    // const mailgun = new Mailgun(formData);
-                    // const mg = mailgun.client({ username: 'api', key: "1b0dce67dff44776aa730a4507771b29-3750a53b-ff0e525d" || 'key-yourkeyhere' });
 
-                    // mg.messages.create('sandboxec4c5e4621884ae2aba4a6b367589e93.mailgun.org', {
-                    //     from: "Excited User <mailgun@sandbox-123.mailgun.org>",
-                    //     to: ["hkankyilmazz@gmail.com"],
-                    //     subject: "Hello",
-                    //     text: "Testing some Mailgun awesomeness!",
-                    //     html: "<h1>Testing some Mailgun awesomeness!</h1>"
-                    // })
-                    //     .then(msg => console.log(msg)) // logs response data
-                    //     .catch(err => console.log(err)); // logs any error
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");
                     reset();
-                    console.log(error);
+                    setIsLoading(false)
                 })
 
         } catch (error) {
@@ -158,7 +150,9 @@ function T() {
             </div>
 
 
-            <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+            <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >
+                {isLoading ? "Gönderiliyor..." : "Formu Gönder"}
+            </button>
             {!isEmpty(errors) ?
                 <p className='flex justify-center item-center' >
                     <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />

@@ -26,6 +26,7 @@ function HouseForm({ variety }) {
 export default HouseForm
 
 function HouseInsurance() {
+    const [isLoading, setIsLoading] = useState(false)
 
     const options = {
         format: 'DD/MM/YYYY',
@@ -96,10 +97,12 @@ function HouseInsurance() {
                 .then((res) => {
                     toast.success("Form Gönderildi");
                     reset();
+                    setIsLoading(false)
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");
                     reset();
+                    setIsLoading(false)
                     console.log(error);
                 })
 
@@ -280,7 +283,9 @@ function HouseInsurance() {
                         />
                     </div>
                 </div>
-                <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+                <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >
+                    {isLoading ? "Gönderiliyor..." : "Formu Gönder"}
+                </button>
                 {!isEmpty(errors) ?
                     <p className='flex justify-center item-center' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
@@ -468,7 +473,9 @@ function HouseInsurance() {
                         />
                     </div>
                 </div>
-                <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+                <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >
+                    {isLoading ? "Gönderiliyor..." : "Formu Gönder"}
+                </button>
                 {!isEmpty(errors) ?
                     <p className='flex justify-center item-center' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
@@ -654,7 +661,9 @@ function DaskInsurance() {
 
                     </div>
                 </div>
-                <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+                <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >
+                    {isLoading ? "Gönderiliyor..." : "Formu Gönder"}
+                </button>
                 {!isEmpty(errors) ?
                     <p className='flex justify-center item-center' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
@@ -784,7 +793,9 @@ function DaskInsurance() {
 
 
                 </div>
-                <button className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >Formu Gönder</button>
+                <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >
+                    {isLoading ? "Gönderiliyor..." : "Formu Gönder"}
+                </button>
                 {!isEmpty(errors) ?
                     <p className='flex justify-center item-center' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />

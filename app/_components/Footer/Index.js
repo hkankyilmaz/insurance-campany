@@ -16,7 +16,11 @@ function Footer() {
 
             </div> */}
             <div className='my-10'>
-                <button className='max-md:text-xs max-md:px-8 px-12 py-3 bg-white text-black rounded-3xl border my-2' >Teklif Al</button>
+                <button
+                    onClick={(e) => document.querySelector("#form").scrollIntoView({ behavior: "smooth", block: "start", inline: "start" })}
+                    className='max-md:text-xs max-md:px-8 px-12 py-3 bg-white text-black rounded-3xl my-2 hover:bg-orange-400 hover:text-white transition-all duration-500' >
+                    Teklif Al
+                </button>
             </div>
             <div className='flex justify-between' >
 
