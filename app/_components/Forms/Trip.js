@@ -72,6 +72,7 @@ function T() {
                 })
 
         } catch (error) {
+            setIsLoading(false)
             console.log(error)
         }
     };

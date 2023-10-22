@@ -93,6 +93,7 @@ function Business() {
 
         } catch (error) {
             console.log(error)
+            setIsLoading(false)
         }
     };
     if (values.person) {

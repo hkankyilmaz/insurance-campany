@@ -90,7 +90,7 @@ function HouseInsurance() {
                 priceOfItems: data.house_business_konut_priceOfitems,
                 taxNumber: data.house_business_konut_taxNumber,
                 usage: data.house_business_konut_usage,
-                owner: data.house_person_konut_own,
+                owner: data.house_business_konut_own,
                 wflat: data.house_business_konut_wflat,
                 yearOfBuild: data.house_business_konut_yearOfBuild
             }
@@ -113,6 +113,7 @@ function HouseInsurance() {
 
         } catch (error) {
             console.log(error)
+            setIsLoading(false)
         }
     };
     if (values.person) {
@@ -638,6 +639,7 @@ function DaskInsurance() {
 
         } catch (error) {
             console.log(error)
+            setIsLoading(false)
         }
     };
     if (values.person) {

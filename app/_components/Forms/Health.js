@@ -88,6 +88,7 @@ function H() {
                 })
 
         } catch (error) {
+            setIsLoading(false)
             console.log(error)
         }
     };

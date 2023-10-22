@@ -111,6 +111,7 @@ function CarInsurance() {
                 })
 
         } catch (error) {
+            setIsLoading(false)
             console.log(error)
         }
     };
@@ -492,6 +493,7 @@ function TrafficInsurance() {
                 })
 
         } catch (error) {
+            setIsLoading(false)
             console.log(error)
         }
     };
@@ -763,6 +765,7 @@ function ResInsurance() {
                 })
 
         } catch (error) {
+            setIsLoading(false)
             console.log(error)
         }
     };
