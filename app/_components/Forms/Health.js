@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from "@mui/material/TextField";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import isEmpty from 'lodash.isempty';
 import ErrorIcon from "@mui/icons-material/Error";
 import app from '@/app/_connect/connect';
@@ -34,11 +34,14 @@ function H() {
         register,
         handleSubmit,
         reset,
+        watch,
+        control,
         formState: { errors },
         clearErrors
     } = useForm();
-    console.log(errors)
+    const watchFields = watch()
     const onSubmit = async (data) => {
+        setIsLoading(true)
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
         console.log(data);
@@ -104,6 +107,7 @@ function H() {
                 <div className='grid grid-cols-2 gap-x-2 max-md:grid-cols-1' >
                     <div>
                         <TextField
+                            value={watchFields.health_sup_health_nameSurname ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Ad/Soyad"
                             {...register("health_sup_health_nameSurname", {
@@ -115,6 +119,7 @@ function H() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.health_sup_health_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Cep Telefonu"
                             {...register("health_sup_health_phoneNumber", {
@@ -126,6 +131,7 @@ function H() {
                     <div>
 
                         <TextField
+                            value={watchFields.health_sup_health_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Tc No"
                             {...register("health_sup_health_TcNo", {
@@ -136,6 +142,7 @@ function H() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.health_sup_health_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Doğum Tarihi"
                             {...register("health_sup_health_birthdate", {
@@ -147,6 +154,7 @@ function H() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.health_sup_health_tall ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Boy(cm)"
                             {...register("health_sup_health_tall", {
@@ -157,6 +165,7 @@ function H() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.health_person_health_weight ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Kilo(kg)"
                             {...register("health_person_health_weight", {
@@ -210,6 +219,7 @@ function H() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.health_special_health_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Cep Telefonu"
                             {...register("health_special_health_phoneNumber", {
@@ -226,6 +236,7 @@ function H() {
                     <div>
 
                         <TextField
+                            value={watchFields.health_special_health_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Tc No"
                             {...register("health_special_health_TcNo", {
@@ -236,6 +247,7 @@ function H() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.health_special_health_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Doğum Tarihi"
                             {...register("health_special_health_birthdate", {
@@ -247,6 +259,7 @@ function H() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.health_special_health_tall ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Boy(cm)"
                             {...register("health_special_health_tall", {
@@ -257,6 +270,7 @@ function H() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.health_special_health_weight ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Kilo(kg)"
                             {...register("health_special_health_weight", {

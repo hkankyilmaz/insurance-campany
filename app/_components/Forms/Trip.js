@@ -1,13 +1,11 @@
 import React from 'react'
 import TextField from "@mui/material/TextField";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import isEmpty from 'lodash.isempty';
 import ErrorIcon from "@mui/icons-material/Error";
 import app from '@/app/_connect/connect';
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { toast, ToastContainer } from 'react-toastify';
-import formData from 'form-data';
-import Mailgun from 'mailgun.js';
 
 export default function Trip({ variety }) {
     return <T />
@@ -34,10 +32,14 @@ function T() {
         handleSubmit,
         formState: { errors },
         clearErrors,
+        control,
+        watch,
         reset,
     } = useForm();
-    console.log(errors)
+    const watchFields = watch()
+
     const onSubmit = async (data) => {
+        setIsLoading(true)
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
         console.log(data);
@@ -79,6 +81,7 @@ function T() {
             <div className='grid grid-cols-2 gap-x-2 max-md:grid-cols-1' >
                 <div>
                     <TextField
+                        value={watchFields.trip_person_trip_nameSurname ?? ""}
                         className='!mb-3' size='small' fullWidth
                         label="Ad/Soyad"
                         {...register("trip_person_trip_nameSurname", {
@@ -89,6 +92,7 @@ function T() {
                 </div>
                 <div>
                     <TextField
+                        value={watchFields.trip_person_trip_phoneNumber ?? ""}
                         className='!mb-3' size='small' fullWidth
                         label="Cep Telefonu"
                         {...register("trip_person_trip_phoneNumber", {
@@ -100,6 +104,7 @@ function T() {
                 <div>
 
                     <TextField
+                        value={watchFields.trip_person_trip_TcNo ?? ""}
                         className='!mb-3' size='small' fullWidth
                         label="Tc No"
                         {...register("trip_person_trip_TcNo", {
@@ -110,6 +115,7 @@ function T() {
                 </div>
                 <div>
                     <TextField
+                        value={watchFields.trip_person_kasko_birthdate ?? ""}
                         className='!mb-3' size='small' fullWidth
                         label="Doğum Tarihi"
                         {...register("trip_person_kasko_birthdate", {
@@ -121,6 +127,7 @@ function T() {
                 </div>
                 <div>
                     <TextField
+                        value={watchFields.trip_person_trip_date1 ?? ""}
                         className='!mb-3' size='small' fullWidth
                         label="Gidiş Tarihi"
                         {...register("trip_person_trip_date1", {
@@ -131,6 +138,7 @@ function T() {
                 </div>
                 <div>
                     <TextField
+                        value={watchFields.trip_person_trip_date2 ?? ""}
                         className='!mb-3' size='small' fullWidth
                         label="Dönüş Tarihi"
                         {...register("trip_person_trip_date2", {
@@ -140,6 +148,7 @@ function T() {
                 </div>
                 <div>
                     <TextField
+                        value={watchFields.trip_person_trip_about ?? ""}
                         className='!mb-3' size='small' fullWidth
                         label="Seyehat Edilecek Yer"
                         {...register("trip_person_trip_about", {

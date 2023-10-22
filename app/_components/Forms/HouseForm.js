@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from "@mui/material/TextField";
@@ -6,7 +6,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import ErrMessage from '../ErrMessage';
 import { ErrorMessage } from '@hookform/error-message';
 import validator from "validator";
@@ -42,13 +42,16 @@ function HouseInsurance() {
         register,
         reset,
         handleSubmit,
+        watch,
+        control,
         formState: { errors },
     } = useForm();
-    console.log(errors);
+    const watchFields = watch()
     const onSubmit = async (data) => {
+        setIsLoading(true)
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
-        console.log(data)
+
         let filteredData = {}
         if (values.person) {
             filteredData = {
@@ -66,6 +69,7 @@ function HouseInsurance() {
                 priceOfGlass: data.house_person_konut_priceOfGlass,
                 priceOfItems: data.house_person_konut_priceOfitems,
                 usage: data.house_person_konut_usage,
+                owner: data.house_person_konut_own,
                 wflat: data.house_person_konut_wflat,
                 yearOfBuild: data.house_person_konut_yearOfBuild
 
@@ -86,6 +90,7 @@ function HouseInsurance() {
                 priceOfItems: data.house_business_konut_priceOfitems,
                 taxNumber: data.house_business_konut_taxNumber,
                 usage: data.house_business_konut_usage,
+                owner: data.house_person_konut_own,
                 wflat: data.house_business_konut_wflat,
                 yearOfBuild: data.house_business_konut_yearOfBuild
             }
@@ -126,6 +131,7 @@ function HouseInsurance() {
                 <div className='grid grid-cols-2 gap-x-2 max-md:grid-cols-1' >
                     <div>
                         <TextField
+                            value={watchFields.house_person_konut_nameSurname ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Ad/Soyad"
                             {...register("house_person_konut_nameSurname", {
@@ -135,6 +141,7 @@ function HouseInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_person_konut_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Cep Telefonu"
                             {...register("house_person_konut_phoneNumber", {
@@ -144,6 +151,7 @@ function HouseInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_person_konut_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Tc No"
                             {...register("house_person_konut_TcNo", {
@@ -154,6 +162,7 @@ function HouseInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_person_konut_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Doğum Tarihi"
                             {...register("house_person_konut_birthdate", {
@@ -164,6 +173,7 @@ function HouseInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_person_konut_adress ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Açık Adres"
                             {...register("house_person_konut_adress", {
@@ -174,6 +184,7 @@ function HouseInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_person_konut_area ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Evin Büyüklüğü (m2)"
                             {...register("house_person_konut_area", {
@@ -184,6 +195,7 @@ function HouseInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_person_konut_flat ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Binanın Kat Sayısı"
                             {...register("house_person_konut_flat", {
@@ -194,6 +206,7 @@ function HouseInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_person_konut_wflat ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Bulunduğu Kat"
                             {...register("house_person_konut_wflat", {
@@ -203,59 +216,80 @@ function HouseInsurance() {
                         />
                     </div>
                     <div>
-                        <FormControl className='!mb-3' size='small' fullWidth>
-                            <InputLabel size='small'>Yapı Tarzı</InputLabel>
-                            <Select
-                                labelId="dlabel-carIns"
-                                label="Yapı Tarzı"
-                                {...register("house_person_konut_madeOf", {
-                                    required: "Zorunlu Alan",
-                                })}
-                            >
-                                <MenuItem value={"kargir"}>Kargir</MenuItem>
-                                <MenuItem value={"yigmaKargir"}>Yığma Kargir</MenuItem>
-                                <MenuItem value={"betonarme"}>Betonarme</MenuItem>
-                                <MenuItem value={"ahsap"}>Ahşap</MenuItem>
-                                <MenuItem value={"celikKarkas"}>Çelik Karkas</MenuItem>
-                            </Select>
-                        </FormControl>
+                        <Controller
+                            name='house_person_konut_madeOf'
+                            control={control}
+                            rules={{ required: "Zorunlu Alan", }}
+                            render={({ field: { onChange, onBlur, value, ref } }) => (
+                                <FormControl className='!mb-3' size='small' fullWidth>
+                                    <InputLabel size='small'>Yapı Tarzı</InputLabel>
+                                    <Select
+                                        value={value == undefined ? "" : value}
+                                        onChange={onChange}
+                                        labelId="dlabel-carIns"
+                                        label="Yapı Tarzı"
+                                    >
+                                        <MenuItem value={"kargir"}>Kargir</MenuItem>
+                                        <MenuItem value={"yigmaKargir"}>Yığma Kargir</MenuItem>
+                                        <MenuItem value={"betonarme"}>Betonarme</MenuItem>
+                                        <MenuItem value={"ahsap"}>Ahşap</MenuItem>
+                                        <MenuItem value={"celikKarkas"}>Çelik Karkas</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            )}
+                        />
+                    </div>
+                    <div>
+
+
+                        <Controller
+                            name='house_person_konut_usage'
+                            control={control}
+                            rules={{ required: "Zorunlu Alan", }}
+                            render={({ field: { onChange, onBlur, value, ref } }) => (
+                                <FormControl className='!mb-3' size='small' fullWidth>
+                                    <InputLabel size='small'>Kullanim Şekli</InputLabel>
+                                    <Select
+                                        value={value == undefined ? "" : value}
+                                        onChange={onChange}
+                                        labelId="dlabel-carIns"
+                                        label="Kullanım Şekli"
+                                    >
+                                        <MenuItem value={"mesken"}>Mesken</MenuItem>
+                                        <MenuItem value={"ısyerı"}>İş Yeri</MenuItem>
+                                        <MenuItem value={"depo"}>Depo</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            )}
+                        />
 
                     </div>
                     <div>
-                        <FormControl className='!mb-3' size='small' fullWidth>
-                            <InputLabel size='small'>Kullanim Şekli</InputLabel>
-                            <Select
-                                labelId="dlabel-carIns"
-                                label="Kullanım Şekli"
-                                {...register("house_person_konut_usage", {
-                                    required: "Zorunlu Alan",
-                                })}
-                            >
-                                <MenuItem value={"mesken"}>Mesken</MenuItem>
-                                <MenuItem value={"ısyerı"}>İş Yeri</MenuItem>
-                                <MenuItem value={"depo"}>Depo</MenuItem>
-                            </Select>
-                        </FormControl>
 
-                    </div>
-                    <div>
-                        <FormControl className='!mb-3' size='small' fullWidth>
-                            <InputLabel size='small'>Kullanim Şekli</InputLabel>
-                            <Select
-                                labelId="dlabel-carIns"
-                                label="Kullanım Şekli"
-                                {...register("house_person_konut_usage", {
-                                    required: "Zorunlu Alan",
-                                })}
-                            >
-                                <MenuItem value={"malSahibi"}>Mal Sahibi</MenuItem>
-                                <MenuItem value={"kiraci"}>Kiracı</MenuItem>
-                                <MenuItem value={"bos"}>Boş</MenuItem>
-                            </Select>
-                        </FormControl>
+                        <Controller
+                            name='house_person_konut_own'
+                            control={control}
+                            rules={{ required: "Zorunlu Alan", }}
+                            render={({ field: { onChange, onBlur, value, ref } }) => (
+                                <FormControl className='!mb-3' size='small' fullWidth>
+                                    <InputLabel size='small'>Kullanim Şekli</InputLabel>
+                                    <Select
+                                        value={value == undefined ? "" : value}
+                                        onChange={onChange}
+                                        labelId="dlabel-carIns"
+                                        label="Kullanım Şekli"
+                                    >
+                                        <MenuItem value={"malSahibi"}>Mal Sahibi</MenuItem>
+                                        <MenuItem value={"kiraci"}>Kiracı</MenuItem>
+                                        <MenuItem value={"bos"}>Boş</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            )}
+                        />
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_person_konut_yearOfBuild ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Bina İnşa Yılı"
                             {...register("house_person_konut_yearOfBuild", {
@@ -266,6 +300,7 @@ function HouseInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_person_konut_priceOfitems ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Eşya Bedeli"
                             {...register("house_person_konut_priceOfitems", {
@@ -275,6 +310,7 @@ function HouseInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_person_konut_priceOfGlass ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Eşya Bedeli"
                             {...register("house_person_konut_priceOfGlass", {
@@ -315,6 +351,7 @@ function HouseInsurance() {
                 <div className='grid grid-cols-2 gap-x-2' >
                     <div>
                         <TextField
+                            value={watchFields.house_business_konut_companyName ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Firma Unvanı"
                             {...register("house_business_konut_companyName", {
@@ -325,6 +362,7 @@ function HouseInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_business_konut_taxNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Vergi Numarası"
                             {...register("house_business_konut_taxNumber", {
@@ -336,6 +374,7 @@ function HouseInsurance() {
                     <div>
 
                         <TextField
+                            value={watchFields.house_business_konut_location ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="İl-İlçe"
                             {...register("house_business_konut_location", {
@@ -345,6 +384,7 @@ function HouseInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_business_konut_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Telefon Numarası"
                             {...register("house_business_konut_phoneNumber", {
@@ -354,6 +394,7 @@ function HouseInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_business_konut_adress ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Açık Adres"
                             {...register("house_business_konut_adress", {
@@ -364,6 +405,7 @@ function HouseInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_business_konut_area ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Evin Büyüklüğü (m2)"
                             {...register("house_business_konut_area", {
@@ -374,6 +416,7 @@ function HouseInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_business_konut_flat ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Binanın Kat Sayısı"
                             {...register("house_business_konut_flat", {
@@ -384,6 +427,7 @@ function HouseInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_business_konut_wflat ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Bulunduğu Kat"
                             {...register("house_business_konut_wflat", {
@@ -393,59 +437,80 @@ function HouseInsurance() {
                         />
                     </div>
                     <div>
-                        <FormControl className='!mb-3' size='small' fullWidth>
-                            <InputLabel size='small'>Yapı Tarzı</InputLabel>
-                            <Select
-                                labelId="dlabel-carIns"
-                                label="Yapı Tarzı"
-                                {...register("house_business_konut_madeOf", {
-                                    required: "Zorunlu Alan",
-                                })}
-                            >
-                                <MenuItem value={"kargir"}>Kargir</MenuItem>
-                                <MenuItem value={"yigmaKargir"}>Yığma Kargir</MenuItem>
-                                <MenuItem value={"betonarme"}>Betonarme</MenuItem>
-                                <MenuItem value={"ahsap"}>Ahşap</MenuItem>
-                                <MenuItem value={"celikKarkas"}>Çelik Karkas</MenuItem>
-                            </Select>
-                        </FormControl>
+                        <Controller
+                            name='house_business_konut_madeOf'
+                            control={control}
+                            rules={{ required: "Zorunlu Alan", }}
+                            render={({ field: { onChange, onBlur, value, ref } }) => (
+                                <FormControl className='!mb-3' size='small' fullWidth>
+                                    <InputLabel size='small'>Yapı Tarzı</InputLabel>
+                                    <Select
+                                        value={value == undefined ? "" : value}
+                                        onChange={onChange}
+                                        labelId="dlabel-carIns"
+                                        label="Yapı Tarzı"
+                                    >
+                                        <MenuItem value={"kargir"}>Kargir</MenuItem>
+                                        <MenuItem value={"yigmaKargir"}>Yığma Kargir</MenuItem>
+                                        <MenuItem value={"betonarme"}>Betonarme</MenuItem>
+                                        <MenuItem value={"ahsap"}>Ahşap</MenuItem>
+                                        <MenuItem value={"celikKarkas"}>Çelik Karkas</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            )}
+                        />
+                    </div>
+                    <div>
+
+
+                        <Controller
+                            name='house_business_konut_usage'
+                            control={control}
+                            rules={{ required: "Zorunlu Alan", }}
+                            render={({ field: { onChange, onBlur, value, ref } }) => (
+                                <FormControl className='!mb-3' size='small' fullWidth>
+                                    <InputLabel size='small'>Kullanim Şekli</InputLabel>
+                                    <Select
+                                        value={value == undefined ? "" : value}
+                                        onChange={onChange}
+                                        labelId="dlabel-carIns"
+                                        label="Kullanım Şekli"
+                                    >
+                                        <MenuItem value={"mesken"}>Mesken</MenuItem>
+                                        <MenuItem value={"ısyerı"}>İş Yeri</MenuItem>
+                                        <MenuItem value={"depo"}>Depo</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            )}
+                        />
 
                     </div>
                     <div>
-                        <FormControl className='!mb-3' size='small' fullWidth>
-                            <InputLabel size='small'>Kullanim Şekli</InputLabel>
-                            <Select
-                                labelId="dlabel-carIns"
-                                label="Kullanım Şekli"
-                                {...register("house_business_konut_usage", {
-                                    required: "Zorunlu Alan",
-                                })}
-                            >
-                                <MenuItem value={"mesken"}>Mesken</MenuItem>
-                                <MenuItem value={"ısyerı"}>İş Yeri</MenuItem>
-                                <MenuItem value={"depo"}>Depo</MenuItem>
-                            </Select>
-                        </FormControl>
 
-                    </div>
-                    <div>
-                        <FormControl className='!mb-3' size='small' fullWidth>
-                            <InputLabel size='small'>Kullanim Şekli</InputLabel>
-                            <Select
-                                labelId="dlabel-carIns"
-                                label="Kullanım Şekli"
-                                {...register("house_business_konut_usage", {
-                                    required: "Zorunlu Alan",
-                                })}
-                            >
-                                <MenuItem value={"malSahibi"}>Mal Sahibi</MenuItem>
-                                <MenuItem value={"kiraci"}>Kiracı</MenuItem>
-                                <MenuItem value={"bos"}>Boş</MenuItem>
-                            </Select>
-                        </FormControl>
+                        <Controller
+                            name='house_business_konut_own'
+                            control={control}
+                            rules={{ required: "Zorunlu Alan", }}
+                            render={({ field: { onChange, onBlur, value, ref } }) => (
+                                <FormControl className='!mb-3' size='small' fullWidth>
+                                    <InputLabel size='small'>Kullanim Şekli</InputLabel>
+                                    <Select
+                                        value={value == undefined ? "" : value}
+                                        onChange={onChange}
+                                        labelId="dlabel-carIns"
+                                        label="Kullanım Şekli"
+                                    >
+                                        <MenuItem value={"malSahibi"}>Mal Sahibi</MenuItem>
+                                        <MenuItem value={"kiraci"}>Kiracı</MenuItem>
+                                        <MenuItem value={"bos"}>Boş</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            )}
+                        />
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_business_konut_yearOfBuild ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Bina İnşa Yılı"
                             {...register("house_business_konut_yearOfBuild", {
@@ -456,6 +521,7 @@ function HouseInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_business_konut_priceOfitems ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Eşya Bedeli"
                             {...register("house_business_konut_priceOfitems", {
@@ -465,6 +531,7 @@ function HouseInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_business_konut_priceOfGlass ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Eşya Bedeli"
                             {...register("house_business_konut_priceOfGlass", {
@@ -492,6 +559,7 @@ function HouseInsurance() {
 }
 
 function DaskInsurance() {
+    const [isLoading, setIsLoading] = useState(false)
     const options = {
         format: 'DD/MM/YYYY',
         delimiters: ['/', '-'],
@@ -506,10 +574,14 @@ function DaskInsurance() {
         register,
         reset,
         handleSubmit,
+        control,
+        watch,
         formState: { errors },
     } = useForm();
-    console.log(errors);
+    const watchFields = watch()
+
     const onSubmit = async (data) => {
+        setIsLoading(true)
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
         console.log(data)
@@ -555,10 +627,12 @@ function DaskInsurance() {
                 .then((res) => {
                     toast.success("Form Gönderildi");
                     reset();
+                    setIsLoading(false)
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");
                     reset();
+                    setIsLoading(false)
                     console.log(error);
                 })
 
@@ -582,6 +656,7 @@ function DaskInsurance() {
                 <div className='grid grid-cols-2 gap-x-2' >
                     <div>
                         <TextField
+                            value={watchFields.house_person_dask_nameSurname ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Ad/Soyad"
                             {...register("house_person_dask_nameSurname", {
@@ -592,6 +667,7 @@ function DaskInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_person_dask_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Cep Telefonu"
                             {...register("house_person_dask_phoneNumber", {
@@ -602,6 +678,7 @@ function DaskInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_person_dask_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Tc No"
                             {...register("house_person_dask_TcNo", {
@@ -612,6 +689,7 @@ function DaskInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_person_dask_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Doğum Tarihi"
                             {...register("house_person_dask_birthdate", {
@@ -621,6 +699,7 @@ function DaskInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_person_dask_adress ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Açık Adres"
                             {...register("house_person_dask_adress", {
@@ -631,6 +710,7 @@ function DaskInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_person_dask_area ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Evin Büyüklüğü (m2)"
                             {...register("house_person_dask_area", {
@@ -641,6 +721,7 @@ function DaskInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_person_dask_flat ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Binanın Kat Sayısı"
                             {...register("house_person_dask_flat", {
@@ -652,6 +733,7 @@ function DaskInsurance() {
 
                     <div>
                         <TextField
+                            value={watchFields.house_person_dask_yearOfBulding ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Bina İnşa Yılı"
                             {...register("house_person_dask_yearOfBulding", {
@@ -693,6 +775,7 @@ function DaskInsurance() {
                 <div className='grid grid-cols-2 gap-x-2' >
                     <div>
                         <TextField
+                            value={watchFields.house_business_dask_companyName ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Firma Unvanı"
                             {...register("house_business_dask_companyName", {
@@ -703,6 +786,7 @@ function DaskInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_business_dask_taxNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Vergi Numarası"
                             {...register("house_business_dask_taxNumber", {
@@ -714,6 +798,7 @@ function DaskInsurance() {
                     <div>
 
                         <TextField
+                            value={watchFields.house_business_dask_location ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="İl-İlçe"
                             {...register("house_business_dask_location", {
@@ -723,6 +808,7 @@ function DaskInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_business_dask_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Telefon Numarası"
                             {...register("house_business_dask_phoneNumber", {
@@ -732,6 +818,7 @@ function DaskInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_business_dask_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Tc No"
                             {...register("house_business_dask_TcNo", {
@@ -742,6 +829,7 @@ function DaskInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_business_dask_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Doğum Tarihi"
                             {...register("house_business_dask_birthdate", {
@@ -751,6 +839,7 @@ function DaskInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_business_dask_adress ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Açık Adres"
                             {...register("house_business_dask_adress", {
@@ -761,6 +850,7 @@ function DaskInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_business_dask_area ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Evin Büyüklüğü (m2)"
                             {...register("house_business_dask_area", {
@@ -771,6 +861,7 @@ function DaskInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.house_business_dask_flat ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Binanın Kat Sayısı"
                             {...register("house_business_dask_flat", {
@@ -782,6 +873,7 @@ function DaskInsurance() {
 
                     <div>
                         <TextField
+                            value={watchFields.house_business_dask_yearOfBulding ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Bina İnşa Yılı"
                             {...register("house_business_dask_yearOfBulding", {

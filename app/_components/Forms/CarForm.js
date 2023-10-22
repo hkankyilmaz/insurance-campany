@@ -45,7 +45,11 @@ function CarInsurance() {
         formState: { errors, isSubmitSuccessful },
         reset,
         clearErrors,
-    } = useForm({ defaultValue: { car_person_kasko_lpg: undefined } });
+        watch,
+        control,
+    } = useForm();
+
+    const watchFields = watch()
 
     React.useEffect(() => {
         reset()
@@ -55,10 +59,11 @@ function CarInsurance() {
 
     console.log(errors)
     const onSubmit = async (data) => {
-        console.log(data)
+        setIsLoading(true)
+
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
-        console.log(data);
+
         let filteredData;
         if (values.person) {
             filteredData = {
@@ -125,6 +130,7 @@ function CarInsurance() {
                 <div className='grid grid-cols-2 gap-x-2 max-md:grid-cols-1' >
                     <div>
                         <TextField
+                            value={watchFields.car_person_kasko_nameSurname ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Ad/Soyad"
                             {...register("car_person_kasko_nameSurname", {
@@ -136,6 +142,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.car_person_kasko_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Cep Telefonu"
                             {...register("car_person_kasko_phoneNumber", {
@@ -152,6 +159,7 @@ function CarInsurance() {
                     <div>
 
                         <TextField
+                            value={watchFields.car_person_kasko_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Ruhsat Sahibi Tc No"
                             {...register("car_person_kasko_TcNo", {
@@ -162,6 +170,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.car_person_kasko_carNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Araç Plakası"
                             {...register("car_person_kasko_carNumber", {
@@ -171,6 +180,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.car_person_kasko_seriesNo ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Ruhsat Seri No"
                             {...register("car_person_kasko_seriesNo", {
@@ -181,6 +191,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.car_person_kasko_job ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Meslek"
                             {...register("car_person_kasko_job", {
@@ -191,43 +202,50 @@ function CarInsurance() {
 
                     </div>
                     <div>
-                        <FormControl className='!mb-3' size='small' fullWidth>
-                            <InputLabel size='small'>Lpg</InputLabel>
-                            <Select
-                                onChange={() => clearErrors("car_person_kasko_lpg")}
-                                labelId="dlabel-carIns"
-                                label="Lpg"
-                                {...register("car_person_kasko_lpg", {
-                                    required: "Zorunlu Alan",
-                                })}
-                            >
-                                <MenuItem className='hidden' value={undefined}></MenuItem>
-                                <MenuItem value={"lgpTrue"}>Lpg Var</MenuItem>
-                                <MenuItem value={"lpgFalse"}>Lpg Yok</MenuItem>
-                            </Select>
-                        </FormControl>
+                        <Controller
+                            name='car_person_kasko_lpg'
+                            control={control}
+                            rules={{ required: "Zorunlu Alan", }}
+                            render={({ field: { onChange, onBlur, value, ref } }) => (
+                                <FormControl className='!mb-3' size='small' fullWidth>
+                                    <InputLabel size='small'>Lpg</InputLabel>
+                                    <Select
+                                        value={value == undefined ? "" : value}
+                                        onChange={onChange}
+                                        labelId="dlabel-carIns"
+                                        label="Lpg"
+                                    >
+                                        <MenuItem value={"lgpTrue"}>Lpg Var</MenuItem>
+                                        <MenuItem value={"lpgFalse"}>Lpg Yok</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            )}
+                        />
                     </div>
                     <div>
-                        <FormControl className='!mb-3' size='small' fullWidth>
-                            <InputLabel size='small'>Orjinal Harici Aksesuar</InputLabel>
-                            <Select
-                                labelId="dlabel-carIns"
-                                label="Orjinal Harici Aksesuar"
-                                {...register("car_person_kasko_plugin", {
-                                    required: "Zorunlu Alan",
-                                })}
-                            >
-                                <MenuItem className='hidden' value={undefined}></MenuItem>
-                                <MenuItem value={"pluginTrue"}>Orjinal Aksesuar Var</MenuItem>
-                                <MenuItem value={"pluginFalse"}>Orjinal Aksesuar Yok</MenuItem>
-
-
-                            </Select>
-                        </FormControl>
-
+                        <Controller
+                            name='car_person_kasko_plugin'
+                            control={control}
+                            rules={{ required: "Zorunlu Alan", }}
+                            render={({ field: { onChange, onBlur, value, ref } }) => (
+                                <FormControl className='!mb-3' size='small' fullWidth>
+                                    <InputLabel size='small'>Orjinal Harici Aksesuar</InputLabel>
+                                    <Select
+                                        value={value == undefined ? "" : value}
+                                        onChange={onChange}
+                                        labelId="dlabel-carIns"
+                                        label="Orjinal Harici Aksesuar"
+                                    >
+                                        <MenuItem value={"pluginTrue"}>Orjinal Aksesuar Var</MenuItem>
+                                        <MenuItem value={"pluginFalse"}>Orjinal Aksesuar Yok</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            )}
+                        />
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.car_person_kasko_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Doğum Tarihi"
                             {...register("car_person_kasko_birthdate", {
@@ -266,6 +284,7 @@ function CarInsurance() {
                 <div className='grid grid-cols-2 gap-x-2' >
                     <div>
                         <TextField
+                            value={watchFields.car_business_kasko_companyName ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Firma Unvanı"
                             {...register("car_business_kasko_companyName", {
@@ -277,6 +296,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.car_business_kasko_taxNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Vergi Numarası"
                             {...register("car_business_kasko_taxNumber", {
@@ -289,6 +309,7 @@ function CarInsurance() {
                     <div>
 
                         <TextField
+                            value={watchFields.car_business_kasko_location ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="İl-İlçe"
                             {...register("car_business_kasko_location", {
@@ -299,6 +320,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.car_business_kasko_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Telefon Numarası"
                             {...register("car_business_kasko_phoneNumber", {
@@ -309,6 +331,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.car_business_kasko_carNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Araç Plakası"
                             {...register("car_business_kasko_carNumber", {
@@ -319,6 +342,7 @@ function CarInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.car_business_kasko_seriesNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Ruhsat Seri No"
                             {...register("car_business_kasko_seriesNumber", {
@@ -333,38 +357,46 @@ function CarInsurance() {
 
                     </div>
                     <div>
-                        <FormControl className='!mb-3' size='small' fullWidth defaultValue={" "}>
-
-                            <InputLabel size='small'>Lpg</InputLabel>
-                            <Select
-                                labelId="dlabel-carIns"
-                                label="Lpg"
-                                {...register("car_business_kasko_lpg", {
-                                    required: "Zorunlu Alan",
-                                })}
-                            >
-                                <MenuItem value={"lgpTrue"}>Lpg Var</MenuItem>
-                                <MenuItem value={"lpgFalse"}>Lpg Yok</MenuItem>
-
-                            </Select>
-                        </FormControl>
-
+                        <Controller
+                            name='car_business_kasko_lpg'
+                            control={control}
+                            rules={{ required: "Zorunlu Alan", }}
+                            render={({ field: { onChange, onBlur, value, ref } }) => (
+                                <FormControl className='!mb-3' size='small' fullWidth>
+                                    <InputLabel size='small'>Lpg</InputLabel>
+                                    <Select
+                                        value={value == undefined ? "" : value}
+                                        onChange={onChange}
+                                        labelId="dlabel-carIns"
+                                        label="Lpg"
+                                    >
+                                        <MenuItem value={"lgpTrue"}>Lpg Var</MenuItem>
+                                        <MenuItem value={"lpgFalse"}>Lpg Yok</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            )}
+                        />
                     </div>
                     <div>
-                        <FormControl className='!mb-3' size='small' fullWidth>
-                            <InputLabel size='small'>Orjinal Harici Aksesuar</InputLabel>
-                            <Select
-                                labelId="dlabel-carIns"
-                                label="Orjinal Harici Aksesuar"
-                                {...register("car_business_kasko_plugin", {
-                                    required: "Zorunlu Alan",
-                                })}
-                            >
-                                <MenuItem value={"lgpTrue"}>Orjinal Aksesuar Var</MenuItem>
-                                <MenuItem value={"lpgFalse"}>Orjinal Aksesuar Yok</MenuItem>
-                            </Select>
-                        </FormControl>
-
+                        <Controller
+                            name='car_business_kasko_plugin'
+                            control={control}
+                            rules={{ required: "Zorunlu Alan", }}
+                            render={({ field: { onChange, onBlur, value, ref } }) => (
+                                <FormControl className='!mb-3' size='small' fullWidth>
+                                    <InputLabel size='small'>Orjinal Harici Aksesuar</InputLabel>
+                                    <Select
+                                        value={value == undefined ? "" : value}
+                                        onChange={onChange}
+                                        labelId="dlabel-carIns"
+                                        label="Orjinal Harici Aksesuar"
+                                    >
+                                        <MenuItem value={"pluginTrue"}>Orjinal Aksesuar Var</MenuItem>
+                                        <MenuItem value={"pluginFalse"}>Orjinal Aksesuar Yok</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            )}
+                        />
                     </div>
                 </div>
 
@@ -403,10 +435,14 @@ function TrafficInsurance() {
         register,
         reset,
         handleSubmit,
+        watch,
         formState: { errors },
     } = useForm();
 
+    const watchFields = watch()
+
     const onSubmit = async (data) => {
+        setIsLoading(true)
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
         console.log(data)
@@ -475,6 +511,7 @@ function TrafficInsurance() {
                 <div className='grid grid-cols-2 gap-x-2' >
                     <div>
                         <TextField
+                            value={watchFields.car_person_traffic_nameSurname ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Ad/Soyad"
                             {...register("car_person_traffic_nameSurname", {
@@ -490,6 +527,7 @@ function TrafficInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.car_person_traffic_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Cep Telefonu"
                             {...register("car_person_traffic_phoneNumber", {
@@ -502,6 +540,7 @@ function TrafficInsurance() {
                     <div>
 
                         <TextField
+                            value={watchFields.car_person_traffic_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Ruhsat Sahibi Tc No"
                             {...register("car_person_traffic_TcNo", {
@@ -511,7 +550,9 @@ function TrafficInsurance() {
 
                     </div>
                     <div>
+
                         <TextField
+                            value={watchFields.car_person_traffic_carNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Araç Plakası"
                             {...register("car_person_traffic_carNumber", {
@@ -522,6 +563,7 @@ function TrafficInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.car_person_traffic_seriesNo ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Ruhsat Seri No"
                             {...register("car_person_traffic_seriesNo", {
@@ -531,7 +573,9 @@ function TrafficInsurance() {
 
                     </div>
                     <div>
+
                         <TextField
+                            value={watchFields.car_person_traffic_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Doğum Tarihi"
                             {...register("car_person_traffic_birthdate", {
@@ -575,6 +619,7 @@ function TrafficInsurance() {
                 <div className='grid grid-cols-2 gap-x-2' >
                     <div>
                         <TextField
+                            value={watchFields.car_business_traffic_companyName ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Firma Unvanı"
                             {...register("car_business_traffic_companyName", {
@@ -586,6 +631,7 @@ function TrafficInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.car_business_traffic_taxNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Vergi Numarası"
                             {...register("car_business_traffic_taxNumber", {
@@ -602,6 +648,7 @@ function TrafficInsurance() {
                     <div>
 
                         <TextField
+                            value={watchFields.car_business_traffic_location ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="İl-İlçe"
                             {...register("car_business_traffic_location", {
@@ -612,6 +659,7 @@ function TrafficInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.car_business_traffic_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Telefon Numarası"
                             {...register("car_business_traffic_phoneNumber", {
@@ -622,6 +670,7 @@ function TrafficInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.car_business_traffic_carNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Araç Plakası"
                             {...register("car_business_traffic_carNumber", {
@@ -637,6 +686,7 @@ function TrafficInsurance() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.car_business_traffic_seriesNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Ruhsat Seri No"
                             {...register("car_business_traffic_seriesNumber", {
@@ -679,8 +729,12 @@ function ResInsurance() {
         reset,
         handleSubmit,
         formState: { errors },
+        watch
     } = useForm();
+    const watchFields = watch()
+
     const onSubmit = async (data) => {
+        setIsLoading(true)
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
         console.log(data);
@@ -718,7 +772,9 @@ function ResInsurance() {
 
             <div className='grid grid-cols-2 gap-x-2' >
                 <div>
+
                     <TextField
+                        value={watchFields.car_financial_nameSurname ?? ""}
                         className='!mb-3' size='small' fullWidth
                         label="Ad/Soyad"
                         {...register("car_financial_nameSurname", {
@@ -730,6 +786,7 @@ function ResInsurance() {
                 </div>
                 <div>
                     <TextField
+                        value={watchFields.car_financial_phoneNumber ?? ""}
                         className='!mb-3' size='small' fullWidth
                         label="Cep Telefonu"
                         {...register("car_financial_phoneNumber", {
@@ -742,6 +799,7 @@ function ResInsurance() {
                 <div>
 
                     <TextField
+                        value={watchFields.car_financial_TcNo ?? ""}
                         className='!mb-3' size='small' fullWidth
                         label="Ruhsat Sahibi Tc No"
                         {...register("car_financial_TcNo", {
@@ -752,6 +810,7 @@ function ResInsurance() {
                 </div>
                 <div>
                     <TextField
+                        value={watchFields.car_financial_carNumber ?? ""}
                         className='!mb-3' size='small' fullWidth
                         label="Araç Plakası"
                         {...register("car_financial_carNumber", {
@@ -762,6 +821,7 @@ function ResInsurance() {
                 </div>
                 <div>
                     <TextField
+                        value={watchFields.car_financial_seriesNo ?? ""}
                         className='!mb-3' size='small' fullWidth
                         label="Ruhsat Seri No"
                         {...register("car_financial_seriesNo", {
@@ -772,6 +832,7 @@ function ResInsurance() {
                 </div>
                 <div>
                     <TextField
+                        value={watchFields.car_financial_birthdate ?? ""}
                         className='!mb-3' size='small' fullWidth
                         label="Doğum Tarihi"
                         {...register("car_financial_birthdate", {

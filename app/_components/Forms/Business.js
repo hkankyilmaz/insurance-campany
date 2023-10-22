@@ -33,9 +33,9 @@ function Business() {
         handleSubmit,
         reset,
         formState: { errors },
-        clearErrors
+        watch
     } = useForm();
-    console.log(errors)
+    const watchFields = watch()
     const onSubmit = async (data) => {
         setIsLoading(true)
         const db = getFirestore(app);
@@ -111,6 +111,7 @@ function Business() {
                 <div className='grid grid-cols-2 gap-x-2 max-md:grid-cols-1' >
                     <div>
                         <TextField
+                            value={watchFields.business_person_business_nameSurname ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Ad/Soyad"
                             {...register("business_person_business_nameSurname", {
@@ -122,6 +123,7 @@ function Business() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.business_person_business_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Cep Telefonu"
                             {...register("business_person_business_phoneNumber", {
@@ -138,6 +140,7 @@ function Business() {
                     <div>
 
                         <TextField
+                            value={watchFields.business_person_business_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Tc No"
                             {...register("business_person_business_TcNo", {
@@ -148,6 +151,7 @@ function Business() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.business_person_kasko_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Doğum Tarihi"
                             {...register("business_person_kasko_birthdate", {
@@ -159,6 +163,7 @@ function Business() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.business_person_business_adress ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Açık Adres"
                             {...register("business_person_business_adress", {
@@ -169,6 +174,7 @@ function Business() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.business_person_business_area ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="İşyerinin Büyüklüğü (m2)"
                             {...register("business_person_business_area", {
@@ -179,6 +185,7 @@ function Business() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.business_person_business_about ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Faliyet Konusu"
                             {...register("business_person_business_about", {
@@ -189,6 +196,7 @@ function Business() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.business_person_business_itemsPrice ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Demirbaş Değeri(TL)"
                             {...register("business_person_business_itemsPrice", {
@@ -199,6 +207,7 @@ function Business() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.business_person_business_itemsPrice2 ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="İçindeki Emtia Değeri(TL)"
                             {...register("business_person_business_itemsPrice2", {
@@ -241,6 +250,7 @@ function Business() {
                 <div className='grid grid-cols-2 gap-x-2 max-md:grid-cols-1' >
                     <div>
                         <TextField
+                            value={watchFields.business_business_business_companyName ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Firma Unvanı"
                             {...register("business_business_business_companyName", {
@@ -251,6 +261,7 @@ function Business() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.business_business_business_taxNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Vergi Numarası"
                             {...register("business_business_business_taxNumber", {
@@ -271,6 +282,7 @@ function Business() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.business_business_business_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Telefon Numarası"
                             {...register("business_business_business_phoneNumber", {
@@ -280,6 +292,7 @@ function Business() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.business_business_business_adress ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Açık Adres"
                             {...register("business_business_business_adress", {
@@ -290,6 +303,7 @@ function Business() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.business_business_business_area ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="İşyerinin Büyüklüğü (m2)"
                             {...register("business_business_business_area", {
@@ -300,6 +314,7 @@ function Business() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.business_business_business_about ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Faliyet Konusu"
                             {...register("business_business_business_about", {
@@ -310,6 +325,7 @@ function Business() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.business_business_business_itemsPrice ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Demirbaş Değeri(TL)"
                             {...register("business_business_business_itemsPrice", {
@@ -320,6 +336,7 @@ function Business() {
                     </div>
                     <div>
                         <TextField
+                            value={watchFields.business_business_business_itemsPrice2 ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="İçindeki Emtia Değeri(TL)"
                             {...register("business_business_business_itemsPrice2", {
