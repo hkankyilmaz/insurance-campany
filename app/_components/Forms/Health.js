@@ -208,6 +208,7 @@ function H() {
                 <div className='grid grid-cols-2 gap-x-2 max-md:grid-cols-1' >
                     <div>
                         <TextField
+                            value={watchFields.health_special_health_nameSurname ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Ad/Soyad"
                             {...register("health_special_health_nameSurname", {
