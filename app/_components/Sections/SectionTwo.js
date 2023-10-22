@@ -31,7 +31,7 @@ function SectionTwo() {
             <div className='max-lg:hidden absolute right-10 top-[50%] translate-y-[-50%] max-w-xl text-xl text-white text-right'>
                 Sit elit minim do elit in ad enim aliquip tempor deserunt et laborum.
             </div>
-            <div className='lg:hidden absolute top-[70px]  w-full px-5 right-[50%] translate-x-[50%]' >
+            <div className='lg:hidden absolute top-[120px] text-center  w-full px-5 right-[50%] translate-x-[50%]' >
                 <div className='text-xl text-white'>
                     Sit elit minim do elit in ad enim aliquip tempor deserunt et laborum.
                 </div>
