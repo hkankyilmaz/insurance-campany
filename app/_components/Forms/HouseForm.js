@@ -95,9 +95,11 @@ function HouseInsurance() {
             addDoc(dbRef, filteredData)
                 .then((res) => {
                     toast.success("Form Gönderildi");
+                    reset();
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");
+                    reset();
                     console.log(error);
                 })
 
@@ -545,9 +547,11 @@ function DaskInsurance() {
             addDoc(dbRef, filteredData)
                 .then((res) => {
                     toast.success("Form Gönderildi");
+                    reset();
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");
+                    reset();
                     console.log(error);
                 })
 

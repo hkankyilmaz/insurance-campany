@@ -1,6 +1,7 @@
 "use client"
 import React from 'react'
 import Image from 'next/image';
+import { Link } from "react-scroll"
 
 
 function SectionTwo() {
@@ -11,7 +12,17 @@ function SectionTwo() {
         <section className='relative h-[100vh] w-[100vw] bg-black'>
             <Slider slides={SLIDES} options={OPTIONS} />
             <div className='absolute bottom-24 left-[50%] translate-x-[-50%] max-md:flex max-md:flex-col max-md:item-center max-md:justify-center'>
-                <button className='mr-6 w-[200px] px-4 py-2 rounded-md bg-white text-black hover:bg-orange-400 hover:text-white transition-all ease-in'>Tekif Al</button>
+                <Link
+                    className='md:hidden'
+                    to="form"
+                    spy={true}
+                    smooth={true}
+                    offset={-35}
+                    duration={500}
+                >
+                    <button className='mr-6 w-[200px] px-4 py-2 rounded-md bg-white text-black hover:bg-orange-400 hover:text-white transition-all ease-in'>Tekif Al</button>
+                </Link>
+                <button onClick={(e) => document.querySelector("#form").scrollIntoView({ behavior: "smooth", block: "start", inline: "start" })} className='max-md:hidden mr-6 w-[200px] px-4 py-2 rounded-md bg-white text-black hover:bg-orange-400 hover:text-white transition-all ease-in'>Tekif Al</button>
                 <button className='w-[200px]  px-4 py-2 rounded-md hover:bg-white hover:text-black bg-orange-400 text-white transition-all ease-in mt-3' >Bana Ulaşın</button>
             </div>
             <div className='max-lg:hidden absolute left-10 top-[50%] translate-y-[-50%] max-w-xl text-4xl text-white'>

@@ -72,9 +72,11 @@ function H() {
             addDoc(dbRef, filteredData)
                 .then((res) => {
                     toast.success("Form Gönderildi");
+                    reset();
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");
+                    reset();
                     console.log(error);
                 })
 
@@ -113,11 +115,6 @@ function H() {
                             label="Cep Telefonu"
                             {...register("health_sup_health_phoneNumber", {
                                 required: "Zorunlu Alan",
-                                // validate: {
-                                //     isMobilePhone: (value) =>
-                                //         validator?.isMobilePhone(value, 'tr-TR') ||
-                                //         "Lütfen geçerli bir telefon numarası girin.",
-                                // },
                             })}
                         />
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from "@mui/material/TextField";
@@ -6,7 +6,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import ErrMessage from '../ErrMessage';
 import { ErrorMessage } from '@hookform/error-message';
 import ErrorIcon from "@mui/icons-material/Error";
@@ -30,7 +30,6 @@ export default CarForm
 
 function CarInsurance() {
 
-
     const options = {
         format: 'DD/MM/YYYY',
         delimiters: ['/', '-'],
@@ -38,20 +37,23 @@ function CarInsurance() {
     };
     const [values, setValues] = React.useState({ person: true, business: false })
 
-    React.useEffect(() => {
-        reset()
-
-    }, [values])
-
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors, isSubmitSuccessful, isLoading },
         reset,
-        clearErrors
-    } = useForm();
+        clearErrors,
+    } = useForm({ defaultValue: { car_person_kasko_lpg: undefined } });
+
+    React.useEffect(() => {
+        reset()
+
+    }, [values, isSubmitSuccessful])
+
+
     console.log(errors)
     const onSubmit = async (data) => {
+        console.log(data)
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
         console.log(data);
@@ -160,7 +162,6 @@ function CarInsurance() {
                                 required: "Zorunlu Alan",
                             })}
                         />
-
                     </div>
                     <div>
                         <TextField
@@ -194,12 +195,11 @@ function CarInsurance() {
                                     required: "Zorunlu Alan",
                                 })}
                             >
+                                <MenuItem className='hidden' value={undefined}></MenuItem>
                                 <MenuItem value={"lgpTrue"}>Lpg Var</MenuItem>
                                 <MenuItem value={"lpgFalse"}>Lpg Yok</MenuItem>
-
                             </Select>
                         </FormControl>
-
                     </div>
                     <div>
                         <FormControl className='!mb-3' size='small' fullWidth>
@@ -211,6 +211,7 @@ function CarInsurance() {
                                     required: "Zorunlu Alan",
                                 })}
                             >
+                                <MenuItem className='hidden' value={undefined}></MenuItem>
                                 <MenuItem value={"pluginTrue"}>Orjinal Aksesuar Var</MenuItem>
                                 <MenuItem value={"pluginFalse"}>Orjinal Aksesuar Yok</MenuItem>
 
@@ -433,9 +434,11 @@ function TrafficInsurance() {
             addDoc(dbRef, filteredData)
                 .then((res) => {
                     toast.success("Form Gönderildi");
+                    reset();
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");
+                    reset();
                     console.log(error);
                 })
 
@@ -677,9 +680,11 @@ function ResInsurance() {
             addDoc(dbRef, filteredData)
                 .then((res) => {
                     toast.success("Form Gönderildi");
+                    reset();
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");
+                    reset();
                     console.log(error);
                 })
 

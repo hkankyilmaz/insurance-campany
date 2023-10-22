@@ -78,9 +78,11 @@ function Business() {
             addDoc(dbRef, filteredData)
                 .then((res) => {
                     toast.success("Form Gönderildi");
+                    reset();
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");
+                    reset();
                     console.log(error);
                 })
 

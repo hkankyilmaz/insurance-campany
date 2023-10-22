@@ -21,6 +21,10 @@
   src: url("../app//_assets/AVENIR-MEDIUM.woff") format("woff");
 }
 
+:root {
+  --type: y mandatory;
+}
+
 body {
   position: relative;
   overflow-x: hidden;
@@ -35,7 +39,7 @@ main {
   @media (min-width: 760px) {
     height: 100vh;
     overflow-y: scroll;
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: var(--type);
   }
 }
 /* main::-webkit-scrollbar {

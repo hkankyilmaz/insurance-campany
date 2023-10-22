@@ -6,6 +6,8 @@ import ErrorIcon from "@mui/icons-material/Error";
 import app from '@/app/_connect/connect';
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { toast, ToastContainer } from 'react-toastify';
+import formData from 'form-data';
+import Mailgun from 'mailgun.js';
 
 export default function Trip({ variety }) {
     return <T />
@@ -54,9 +56,24 @@ function T() {
             addDoc(dbRef, filteredData)
                 .then((res) => {
                     toast.success("Form Gönderildi");
+                    reset();
+
+                    // const mailgun = new Mailgun(formData);
+                    // const mg = mailgun.client({ username: 'api', key: "1b0dce67dff44776aa730a4507771b29-3750a53b-ff0e525d" || 'key-yourkeyhere' });
+
+                    // mg.messages.create('sandboxec4c5e4621884ae2aba4a6b367589e93.mailgun.org', {
+                    //     from: "Excited User <mailgun@sandbox-123.mailgun.org>",
+                    //     to: ["hkankyilmazz@gmail.com"],
+                    //     subject: "Hello",
+                    //     text: "Testing some Mailgun awesomeness!",
+                    //     html: "<h1>Testing some Mailgun awesomeness!</h1>"
+                    // })
+                    //     .then(msg => console.log(msg)) // logs response data
+                    //     .catch(err => console.log(err)); // logs any error
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");
+                    reset();
                     console.log(error);
                 })
 
