@@ -244,7 +244,7 @@ function CarInsurance() {
                     {isLoading ? "Gönderiliyor..." : "Formu Gönder"}
                 </button>
                 {!isEmpty(errors) ?
-                    <p className='flex justify-center item-center' >  <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />  <span> Lütfen Tüm Alanları Doldurun. </span> </p>
+                    <p className='flex justify-center item-center' >  <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />  <span>    Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin. </span> </p>
                     : undefined
 
                 }
