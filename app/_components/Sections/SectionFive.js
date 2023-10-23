@@ -4,18 +4,24 @@ import Image from 'next/image';
 
 function SectionFive() {
     return (
-        <section className='w-[100vw] max-md:py-[25px] md:h-[100vh] md:pt-[100px] flex flex-col justify-start items-center' >
+        <section className='md:min-h-[900px] w-[100vw] max-md:py-[25px] md:h-[100vh] md:pt-[100px] flex flex-col justify-start items-center' >
 
 
             <div className='max-w-[1500px]'>
                 <h1 className='text-xl font-bold md:text-2xl text-center mb-5 md:mb-10 ' >Blog Yazilarimiz</h1>
-                <div className='grid grid-cols-3 gap-x-10 gap-y-10 max-md:grid-cols-1' >
+                <div className='grid grid-cols-3 gap-x-10 gap-y-10 max-xl:grid-cols-2 max-md:grid-cols-1' >
                     <Card />
                     <Card />
                     <Card />
                     <Card />
-                    <Card />
-                    <Card />
+                    <div className='max-xl:hidden' >
+                        <Card />
+                    </div>
+                    <div className='max-xl:hidden' >
+                        <Card />
+                    </div>
+
+
                 </div>
             </div>
 
