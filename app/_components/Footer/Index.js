@@ -15,38 +15,21 @@ function Footer() {
                 <Image className='w-[300px]' src={logo} />
 
             </div> */}
-            <div className='my-10'>
-                <button
-                    onClick={(e) => document.querySelector("#form").scrollIntoView({ behavior: "smooth", block: "start", inline: "start" })}
-                    className='max-md:text-xs max-md:px-8 px-12 py-3 bg-white text-black rounded-3xl my-2 hover:bg-orange-400 hover:text-white transition-all duration-500' >
-                    Teklif Al
-                </button>
-            </div>
+
             <div className='flex justify-between' >
 
                 <div className='grid grid-cols-4 max-sm:gap-5 gap-2 [&>p]:text-4xl w-[85%] max-lg:w-[100%] max-sm:grid-cols-1' >
                     <div>
 
                         <ul>
-                            <li>e-sigortam.com</li>
-                            <li>bir Arıcıoğlu Sigorta markasıdır.</li>
-                            <br />
-                            <li>Havaalanı Mah. Mehmet Akif İnan Cad.</li>
-                            <li>No:67 Kat:3 Arıcıoğlu Sigorta</li>
-                            <li>No:67 Kat:3 Arıcıoğlu Sigorta</li>
-                            <li> Esenler / İSTANBUL</li>
-                            <br />
-                            <li> bilgi@e-sigortam.com</li>
-                            <br />
-                            <li> Müşteri Hizmetleri</li>
-                            <br />
-                            <li> Haftaiçi</li>
-                            <li> 09:00-18:00</li>
-                            <br />
-                            <li> Haftaiçi</li>
-                            <li> 09:00-18:00</li>
 
-
+                            <li>Ayhan Akdağcı Sigorta Aracılık Hizmetleri</li>
+                            <br />
+                            <li>Muammer Sencer Cd. No:60E</li>
+                            <li> Hendek Sakarya 54300</li>
+                            <br />
+                            <li> bilgi@akdagcisigorta.com</li>
+                            <br />
                         </ul>
                     </div>
                     <div>
@@ -55,7 +38,6 @@ function Footer() {
                         <ul>
                             <li> Gizlilik ve Çerez Politikası</li>
                             <li>Kişisel Verileri Koruma Kanunu</li>
-                            <li>Geçmiş piyasa verileri</li>
                             <li>Hasar Yardım Merkezi</li>
                             <li>Kullanıcı Sözleşmesi</li>
                             <li>Kaza Tespit Tutanağı</li>
@@ -72,15 +54,11 @@ function Footer() {
                     <div>
                         <p>Ürünlerimiz</p>
                         <ul>
-                            <li>Trafik Sigortası</li>
-                            <li>Kasko Sigortası</li>
-                            <li>Özel Sağlık Sigortası</li>
-                            <li>Konut Sigortası</li>
-                            <li>Seyahat Sigortası</li>
-                            <li>DASK Sigortası</li>
-                            <li>Tamamlayıcı Sağlık Sigortası</li>
-                            <li>Ferdi Kaza Sigortası</li>
-                            <li>Yabancı Sağlık Sigortası</li>
+                            <li>Arabam Sigortalı</li>
+                            <li>Evim Sigortalı</li>
+                            <li>İşyerim Sigortalı</li>
+                            <li>Seyahatim Sigortalı</li>
+                            <li>Sağlığım Sigortalı</li>
                         </ul>
                     </div>
                 </div>

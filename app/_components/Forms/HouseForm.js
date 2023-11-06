@@ -320,8 +320,8 @@ function HouseInsurance() {
                         />
                     </div>
                 </div>
-                <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >
-                    {isLoading ? "Gönderiliyor..." : "Formu Gönder"}
+                <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-orange-400  hover:bg-orange-500' type='submit' >
+                    {isLoading ? "Gönderiliyor..." : "Formu Gönder ve Teklif Al"}
                 </button>
                 {!isEmpty(errors) ?
                     <p className='flex justify-center item-center' >
@@ -541,8 +541,8 @@ function HouseInsurance() {
                         />
                     </div>
                 </div>
-                <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >
-                    {isLoading ? "Gönderiliyor..." : "Formu Gönder"}
+                <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-orange-400  hover:bg-orange-500' type='submit' >
+                    {isLoading ? "Gönderiliyor..." : "Formu Gönder ve Teklif Al"}
                 </button>
                 {!isEmpty(errors) ?
                     <p className='flex justify-center item-center' >
@@ -745,8 +745,8 @@ function DaskInsurance() {
 
                     </div>
                 </div>
-                <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >
-                    {isLoading ? "Gönderiliyor..." : "Formu Gönder"}
+                <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-orange-400  hover:bg-orange-500' type='submit' >
+                    {isLoading ? "Gönderiliyor..." : "Formu Gönder ve Teklif Al"}
                 </button>
                 {!isEmpty(errors) ?
                     <p className='flex justify-center item-center' >
@@ -887,8 +887,8 @@ function DaskInsurance() {
 
 
                 </div>
-                <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-[#1976D2] hover:bg-[#1566b7]' type='submit' >
-                    {isLoading ? "Gönderiliyor..." : "Formu Gönder"}
+                <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-orange-400  hover:bg-orange-500' type='submit' >
+                    {isLoading ? "Gönderiliyor..." : "Formu Gönder ve Teklif Al"}
                 </button>
                 {!isEmpty(errors) ?
                     <p className='flex justify-center item-center' >

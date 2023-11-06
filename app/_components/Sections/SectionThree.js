@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 function SectionThree() {
     return (
         <section className='md:h-[100vh] w-[100vw] pt-[120px] md:min-h-[900px] max-md:py-[25px] px-[25px] lg:px-[200px] xl:px-[300px] flex flex-col justify-start items-center relative max-md:bg-slate-50' >
-            <p className='font-bold text-2xl max-md:text-lg my-4' >Akdağcı Sigortam Nasıl Çalışır...</p>
+            <p className='font-bold text-2xl max-md:text-lg my-4' >Nasıl Çalışır?</p>
             <motion.div
                 className='max-md::lex-col md:flcenter'
                 initial={{ opacity: 0, x: 50 }}

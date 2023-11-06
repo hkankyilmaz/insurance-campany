@@ -69,10 +69,10 @@ function SectionFour() {
 
 
             </div>
-            <h2 className='max-md:text-lg font-bold text-2xl text-center mb-3'>Bizimle Çalışan Firmalar</h2>
+            <h2 className='max-md:text-lg font-bold text-2xl text-center mb-3'>Aracılık Ettiğimiz Kurumlar</h2>
             <p className='text-center max-md:text-xs max-w-[1000px]'>
-                Qui mollit nostrud excepteur consectetur veniam consectetur. Dolor ea culpa laborum in in nostrud culpa amet sit laborum cupidatat non magna nulla. Exercitation laborum nisi ut Lorem minim enim eiusmod.
-                tion laborum nisi ut Lorem minim enim eiusmod.
+                Sigorta, gelecekte mülk ya da bireylerin maddi hasar alması halinde en başta teminat altına alınan tutarın sigorta şirketi tarafından sigortalı bireye/şirkete ödenmesidir.
+                Ayhan Akdağcı Sigorta 25'ten fazla marka ile etkin çalışarak sizin için en iyi teklifi hızla hazırlar.
             </p>
             <TickerContainer />
         </section>
