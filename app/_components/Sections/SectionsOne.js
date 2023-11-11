@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 import Image from 'next/image';
 import { Link } from 'react-scroll';
 
@@ -8,9 +8,10 @@ function SectionsOne() {
     const OPTIONS = { containScroll: 'trimSnaps' }
     const SLIDE_COUNT = 7;
     const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
+    const [text, setText] = React.useState({ textOne: "Trafik Kazaları", textTwo: "Arabam Sigortalı" })
     return (
         <section className='relative'>
-            <Slider slides={SLIDES} options={OPTIONS} />
+            <Slider slides={SLIDES} options={OPTIONS} text={text} setText={setText} />
             <div className='absolute bottom-24 left-[50%] translate-x-[-50%] max-md:flex max-md:flex-col max-md:item-center max-md:justify-center'>
                 <Link
                     className='md:hidden'
@@ -26,17 +27,17 @@ function SectionsOne() {
                 <button className='w-[200px]  px-4 py-2 rounded-md hover:bg-white hover:text-black bg-orange-400 text-white transition-all ease-in mt-3' >Aranma Talebi Oluşturun</button>
             </div>
             <div className='max-lg:hidden absolute left-10 top-[50%] translate-y-[-50%] max-w-xl text-4xl text-white'>
-                Sit elit minim do elit in ad enim aliquip tempor deserunt et laborum.
+                {text.textOne}
             </div>
             <div className='max-lg:hidden absolute right-10 top-[50%] translate-y-[-50%] max-w-xl text-xl text-white text-right'>
-                Sit elit minim do elit in ad enim aliquip tempor deserunt et laborum.
+                {text.textTwo}
             </div>
             <div className='lg:hidden absolute top-[50%] translate-y-[-50%] w-full px-5 right-[50%] translate-x-[50%]' >
                 <div className='text-2xl text-white'>
-                    Sit elit minim do elit in ad enim aliquip tempor deserunt et laborum.
+                    {text.textOne}
                 </div>
                 <div className='text-normal text-white'>
-                    Sit elit minim do elit in ad enim aliquip tempor deserunt et laborum.
+                    {text.textTwo}
                 </div>
 
             </div>
@@ -83,6 +84,35 @@ function Slider(props) {
         rootNode: (emblaRoot) => emblaRoot.parentElement,
     }
     const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay(autoplayOptions)])
+
+    const onSelect = useCallback((emblaApi, eventName) => {
+        if (emblaApi?.selectedScrollSnap() == 0) {
+            props.setText({ textOne: "Trafik Kazaları", textTwo: "Arabam Sigortalı" })
+        } else if (emblaApi?.selectedScrollSnap() == 1) {
+            props.setText({ textOne: "Trafik Kazaları", textTwo: "Arabam Sigortalı" })
+        } else if (emblaApi?.selectedScrollSnap() == 2) {
+            props.setText({ textOne: "Ev Yangını", textTwo: "Evim Sigortalı" })
+        } else if (emblaApi?.selectedScrollSnap() == 3) {
+            props.setText({ textOne: "İş Yeri Yangını", textTwo: "İşyerim Sigortalı" })
+        } else if (emblaApi?.selectedScrollSnap() == 4) {
+            props.setText({ textOne: "Sağlık", textTwo: "Sağlığım Sigortalı" })
+        }
+        else if (emblaApi?.selectedScrollSnap() == 5) {
+            props.setText({ textOne: "Seyahatler", textTwo: "Seyahatim Sigortalı" })
+        }
+        else if (emblaApi?.selectedScrollSnap() == 6) {
+            props.setText({ textOne: "Seyahatler", textTwo: "Seyahatim Sigortalı" })
+        }
+        else if (emblaApi?.selectedScrollSnap() == 7) {
+            props.setText({ textOne: "Seyahatler", textTwo: "Seyahatim Sigortalı" })
+        }
+    }, [])
+
+    useEffect(() => {
+        if (emblaApi) emblaApi.on('select', onSelect)
+    }, [emblaApi, onSelect])
+
+
 
     return (
         <div className="embla">

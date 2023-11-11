@@ -118,7 +118,7 @@ import brand31 from "../../_assets/Çalışma Yüzeyi 1_30-100.jpg"
 
 function TickerContainer() {
 
-    const images = [brand1, brand2, brand3, brand4, brand5, brand6, brand7.brand8, brand9, brand10, brand11, brand12, brand13, brand14, brand15, brand16, brand17, brand18, brand19, brand20, brand21, brand22, brand23, brand24, brand25, brand26, brand27, brand28, brand29, brand30, brand31]
+    const images = [brand1, brand2, brand3, brand4, brand5, brand6, brand7, brand8, brand9, brand10, brand11, brand12, brand13, brand14, brand15, brand16, brand17, brand18, brand19, brand20, brand21, brand22, brand23, brand24, brand25, brand26, brand27, brand28, brand29, brand30, brand31]
 
     return (
         <div className='ticker-container'>

@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useCallback } from 'react'
 import Image from 'next/image';
 import { Link } from "react-scroll"
 
@@ -8,9 +8,10 @@ function SectionTwo() {
     const OPTIONS = { containScroll: 'trimSnaps' }
     const SLIDE_COUNT = 4;
     const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
+    const [text, setText] = React.useState({ textOne: "Yarının Riskine Bir Poliçe Yeter", textTwo: "Evinizi ve işyerinizi yangın gibi afetlerin olumsuz sonuçlarından koruyun." })
     return (
         <section className='relative h-[100vh] w-[100vw] bg-black'>
-            <Slider slides={SLIDES} options={OPTIONS} />
+            <Slider slides={SLIDES} options={OPTIONS} setText={setText} text={text} />
             <div className='absolute bottom-24 left-[50%] translate-x-[-50%] max-md:flex max-md:flex-col max-md:item-center max-md:justify-center'>
                 <Link
                     className='md:hidden'
@@ -26,17 +27,17 @@ function SectionTwo() {
                 <button className='w-[200px]  px-4 py-2 rounded-md hover:bg-white hover:text-black bg-orange-400 text-white transition-all ease-in mt-3' >Aranma Talebi Oluşturun</button>
             </div>
             <div className='max-lg:hidden absolute left-10 top-[50%] translate-y-[-50%] max-w-xl text-4xl text-white'>
-                Yarının Riskine Bir Poliçe Yeter
+                {text.textOne}
             </div>
             <div className='max-lg:hidden absolute right-10 top-[50%] translate-y-[-50%] max-w-xl text-xl text-white text-right'>
-                Sit elit minim do elit in ad enim aliquip tempor deserunt et laborum.
+                {text.textTwo}
             </div>
-            <div className='lg:hidden absolute top-[120px] text-center  w-full px-5 right-[50%] translate-x-[50%]' >
+            <div className='lg:hidden absolute top-[120px] text-center  w-full px-5 right-[50%] translate-x-[50%]'>
                 <div className='text-xl text-white'>
-                    Yarının Riskine Bir Poliçe Yeter
+                    {text.textOne}
                 </div>
                 <div className='text-normal text-white'>
-                    Sit elit minim do elit in ad enim aliquip tempor deserunt et laborum.
+                    {text.textTwo}
                 </div>
 
             </div>
@@ -75,10 +76,26 @@ const imageByIndex = (index) => imagesMobile[index % imagesMobile.length]
 function Slider(props) {
     const { slides, options } = props
     const autoplayOptions = {
-        delay: 10000,
+        delay: 6000,
         rootNode: (emblaRoot) => emblaRoot.parentElement,
     }
     const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay(autoplayOptions)])
+
+    const onSelect = useCallback((emblaApi, eventName) => {
+        if (emblaApi?.selectedScrollSnap() == 0) {
+            props.setText({ ...props.text, textTwo: "Evinizi ve işyerinizi yangın gibi afetlerin olumsuz sonuçlarından koruyun." })
+        } else if (emblaApi?.selectedScrollSnap() == 2) {
+            props.setText({ ...props.text, textTwo: "Hastalandığınızda tek amacınız yeniden iyileşmek olsun. Gerisiyle sigortanız ilgilenir." })
+        } else if (emblaApi?.selectedScrollSnap() == 3) {
+            props.setText({ ...props.text, textTwo: "Kaza anında sigortan varsa dert yok." })
+        } else if (emblaApi?.selectedScrollSnap() == 1) {
+            props.setText({ ...props.text, textTwo: "Yolculuklar yeni maceralara açıktır. Maceralara güvenle açılın." })
+        }
+    }, [])
+
+    useEffect(() => {
+        if (emblaApi) emblaApi.on('select', onSelect)
+    }, [emblaApi, onSelect])
 
     return (
         <div className="embla relative">
