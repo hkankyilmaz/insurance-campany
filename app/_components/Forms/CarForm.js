@@ -63,6 +63,7 @@ function CarInsurance() {
 
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
+        const dbRefTwo = collection(db, "maıl");
 
         let filteredData;
         if (values.person) {
@@ -70,7 +71,7 @@ function CarInsurance() {
                 insure: "Arabam Sigortalı",
                 varietyInsure: "Kasko",
                 tcNo: data.car_person_kasko_TcNo,
-                BirthDate: data.car_person_kasko_birthdate,
+                birthDate: data.car_person_kasko_birthdate,
                 carNumber: data.car_person_kasko_carNumber,
                 job: data.car_person_kasko_job,
                 lpg: data.car_person_kasko_lpg,
@@ -78,6 +79,7 @@ function CarInsurance() {
                 phoneNumber: data.car_person_kasko_phoneNumber,
                 plugin: data.car_person_kasko_plugin,
                 seriesNo: data.car_person_kasko_seriesNo,
+                email: data.car_person_kasko_email,
             }
         } else {
             filteredData = {
@@ -92,12 +94,13 @@ function CarInsurance() {
                 plugin: data.car_business_kasko_plugin,
                 seriesNo: data.car_business_kasko_seriesNumber,
                 taxNumber: data.car_business_kasko_taxNumber,
+                email: data.car_business_kasko_email,
             }
 
         }
 
         try {
-            addDoc(dbRef, filteredData)
+            await addDoc(dbRef, filteredData)
                 .then((res) => {
                     toast.success("Form Gönderildi");
                     reset();
@@ -109,6 +112,51 @@ function CarInsurance() {
                     setIsLoading(false)
                     console.log(error);
                 })
+            values.person ?
+                await addDoc(dbRefTwo,
+                    {
+                        to: ["gilanakdagcisigorta@gmail.com"],
+                        message: {
+                            subject: "Teklif İsteyen Müşteri",
+                            html: `
+                          <p>  Sigorta :</strong> Arabam Sigortalı</p>
+                          <p>Türü : </strong>Kasko / Şahıs</p>
+                          <p>Ad Soyad :</strong> ${filteredData.nameSurname}</p>
+                          <p>Cep Telefonu :</strong> ${filteredData.phoneNumber}</p>
+                          <p>Ruhsat Sahibi Tc Kimlik No : </strong>${filteredData.tcNo}</p>
+                          <p>Araç Plakası :</strong> ${filteredData.carNumber}</p>
+                          <p>Ruhsat Seri No :</strong> ${filteredData.seriesNo}</p>
+                          <p>Meslek :</strong> ${filteredData.job}</p>
+                          <p>LPG :</strong> ${filteredData.lpg}   </p>                     
+                          <p>Orjınal Harici Aksesuar :</strong> ${filteredData.plugin}</p>
+                          <p><strong>Doğum Traihi :</strong> ${filteredData.birthDate}</p>
+                          <p><strong>Email Adresi :</strong> ${filteredData.email}</p>
+                            `,
+                        },
+                    }
+                )
+                :
+                await addDoc(dbRefTwo,
+                    {
+                        to: ["gilanakdagcisigorta@gmail.com"],
+                        message: {
+                            subject: "Teklif İsteyen Müşteri",
+                            html: `
+                            <p><strong>Sigorta : Arabam Sigortalı</p>
+                            <p> <strong>Türü : Kasko / Şirket</p>
+                            <p> <strong> Firma Unvanı : </strong>${filteredData.companyNameName}</p>
+                            <p> <strong>Vergi Numarası :</strong> ${filteredData.taxNumber}</p>
+                            <p> <strong>İl İlçe :</strong> ${filteredData.location}</p>
+                            <p> <strong> Telefon Numarası : </strong>${filteredData.phoneNumber}</p>
+                            <p> <strong> Araç Plakası : </strong>${filteredData.carNumber}</p>
+                            <p> <strong> Ruhsat Seri No : </strong>${filteredData.seriesNo}</p>
+                            <p> <strong>LPG : </strong>${filteredData.lpg}   </p>                     
+                            <p><strong>Orjınal Harici Aksesuar :</strong> ${filteredData.plugin}</p>
+                            <p><strong>Email Adresi :</strong> ${filteredData.email}</p>
+                        `,
+                        },
+                    }
+                )
 
         } catch (error) {
             setIsLoading(false)
@@ -133,7 +181,7 @@ function CarInsurance() {
                         <TextField
                             value={watchFields.car_person_kasko_nameSurname ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Ad/Soyad"
+                            label="Ad Soyad"
                             {...register("car_person_kasko_nameSurname", {
                                 required: "Zorunlu Alan",
 
@@ -162,7 +210,7 @@ function CarInsurance() {
                         <TextField
                             value={watchFields.car_person_kasko_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Ruhsat Sahibi Tc No"
+                            label="Ruhsat Sahibi TC Kimlik No"
                             {...register("car_person_kasko_TcNo", {
                                 required: "Zorunlu Alan",
                             })}
@@ -209,15 +257,15 @@ function CarInsurance() {
                             rules={{ required: "Zorunlu Alan", }}
                             render={({ field: { onChange, onBlur, value, ref } }) => (
                                 <FormControl className='!mb-3' size='small' fullWidth>
-                                    <InputLabel size='small'>Lpg</InputLabel>
+                                    <InputLabel size='small'>LPG</InputLabel>
                                     <Select
                                         value={value == undefined ? "" : value}
                                         onChange={onChange}
                                         labelId="dlabel-carIns"
-                                        label="Lpg"
+                                        label="LPG"
                                     >
-                                        <MenuItem value={"lgpTrue"}>Lpg Var</MenuItem>
-                                        <MenuItem value={"lpgFalse"}>Lpg Yok</MenuItem>
+                                        <MenuItem value={"lgpTrue"}>LPG Var</MenuItem>
+                                        <MenuItem value={"lpgFalse"}>LPG Yok</MenuItem>
                                     </Select>
                                 </FormControl>
                             )}
@@ -250,6 +298,18 @@ function CarInsurance() {
                             className='!mb-3' size='small' fullWidth
                             label="Doğum Tarihi"
                             {...register("car_person_kasko_birthdate", {
+                                required: "Zorunlu Alan",
+
+                            })}
+                        />
+
+                    </div>
+                    <div>
+                        <TextField
+                            value={watchFields.car_person_kasko_email ?? ""}
+                            className='!mb-3' size='small' fullWidth
+                            label="Email Adresi"
+                            {...register("car_person_kasko_email", {
                                 required: "Zorunlu Alan",
 
                             })}
@@ -364,15 +424,15 @@ function CarInsurance() {
                             rules={{ required: "Zorunlu Alan", }}
                             render={({ field: { onChange, onBlur, value, ref } }) => (
                                 <FormControl className='!mb-3' size='small' fullWidth>
-                                    <InputLabel size='small'>Lpg</InputLabel>
+                                    <InputLabel size='small'>LPG</InputLabel>
                                     <Select
                                         value={value == undefined ? "" : value}
                                         onChange={onChange}
                                         labelId="dlabel-carIns"
-                                        label="Lpg"
+                                        label="LPG"
                                     >
-                                        <MenuItem value={"lgpTrue"}>Lpg Var</MenuItem>
-                                        <MenuItem value={"lpgFalse"}>Lpg Yok</MenuItem>
+                                        <MenuItem value={"lgpTrue"}>LPG Var</MenuItem>
+                                        <MenuItem value={"lpgFalse"}>LPG Yok</MenuItem>
                                     </Select>
                                 </FormControl>
                             )}
@@ -398,6 +458,17 @@ function CarInsurance() {
                                 </FormControl>
                             )}
                         />
+                    </div>
+                    <div>
+                        <TextField
+                            value={watchFields.car_business_kasko_email ?? ""}
+                            className='!mb-3' size='small' fullWidth
+                            label="Email Adresi"
+                            {...register("car_business_kasko_email", {
+                                required: "Zorunlu Alan",
+                            })}
+                        />
+
                     </div>
                 </div>
 
@@ -446,6 +517,7 @@ function TrafficInsurance() {
         setIsLoading(true)
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
+        const dbRefTwo = collection(db, "maıl");
         console.log(data)
         let filteredData = {}
         if (values.person) {
@@ -459,6 +531,7 @@ function TrafficInsurance() {
                 job: data.car_person_traffic_phoneNumber,
                 nameSurname: data.car_person_traffic_nameSurname,
                 phoneNumber: data.car_person_traffic_phoneNumber,
+                email: data.car_person_traffic_email,
 
 
             }
@@ -473,6 +546,7 @@ function TrafficInsurance() {
                 phoneNumber: data.car_business_traffic_phoneNumber,
                 seriesNo: data.car_business_traffic_seriesNumber,
                 taxNumber: data.car_business_traffic_taxNumber,
+                email: data.car_business_traffic_email,
 
             }
         }
@@ -491,6 +565,46 @@ function TrafficInsurance() {
                     setIsLoading(false)
                     console.log(error);
                 })
+            values.person ?
+                await addDoc(dbRefTwo,
+                    {
+                        to: ["gilanakdagcisigorta@gmail.com"],
+                        message: {
+                            subject: "Teklif İsteyen Müşteri",
+                            html: `
+                           <p> <strong>Sigorta : </strong>Arabam Sigortalı</p>
+                           <p><strong>Türü : </strong>Trafik Sigortasi / Şahıs</p>
+                           <p><strong>Ad Soyad :</strong> ${filteredData.nameSurname}</p>
+                           <p><strong>Cep Telefonu :</strong> ${filteredData.phoneNumber}</p>
+                           <p><strong>Ruhsat Sahibi Tc Kimlik No :</strong> ${filteredData.tcNo}</p>
+                           <p><strong>Araç Plakası :</strong> ${filteredData.carNumber}</p>
+                           <p><strong>Ruhsat Seri No : </strong>${filteredData.seriesNo}</p>
+                           <p><strong>Doğum Traihi :</strong> ${filteredData.birthDate}</p>
+                           <p><strong>Email Adresi :</strong> ${filteredData.email}</p>
+                            `,
+                        },
+                    }
+                )
+                :
+                await addDoc(dbRefTwo,
+                    {
+                        to: ["gilanakdagcisigorta@gmail.com"],
+                        message: {
+                            subject: "Teklif İsteyen Müşteri",
+                            html: `
+                            <p> <strong>Sigorta :</strong> Arabam Sigortalı</p>
+                            <p><strong> Türü : </strong>Kasko / Şirket</p>
+                            <p> <strong>Firma Unvanı :</strong> ${filteredData.companyNameName}</p>
+                            <p> <strong>Vergi Numarası :</strong> ${filteredData.taxNumber}</p>
+                            <p> <strong>İl İlçe :</strong> ${filteredData.location}</p>
+                            <p> <strong>Telefon Numarası :</strong> ${filteredData.phoneNumber}</p>
+                            <p> <strong>Araç Plakası : </strong>${filteredData.carNumber}</p>
+                            <p><strong> Ruhsat Seri No :</strong> ${filteredData.seriesNo}</p>
+                            <p><strong>Email Adresi :</strong> ${filteredData.email}</p>
+                                `,
+                        },
+                    }
+                )
 
         } catch (error) {
             setIsLoading(false)
@@ -515,7 +629,7 @@ function TrafficInsurance() {
                         <TextField
                             value={watchFields.car_person_traffic_nameSurname ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Ad/Soyad"
+                            label="Ad Soyad"
                             {...register("car_person_traffic_nameSurname", {
                                 required: "Zorunlu Alan",
                                 // validate: {
@@ -544,7 +658,7 @@ function TrafficInsurance() {
                         <TextField
                             value={watchFields.car_person_traffic_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Ruhsat Sahibi Tc No"
+                            label="Ruhsat Sahibi TC Kimlik No"
                             {...register("car_person_traffic_TcNo", {
                                 required: "Zorunlu Alan",
                             })}
@@ -587,6 +701,20 @@ function TrafficInsurance() {
                         />
 
                     </div>
+                    <div>
+
+                        <TextField
+                            value={watchFields.car_person_traffic_email ?? ""}
+                            className='!mb-3' size='small' fullWidth
+                            label="Email Adresi"
+                            {...register("car_person_traffic_email", {
+                                required: "Zorunlu Alan",
+
+                            })}
+                        />
+
+                    </div>
+
                 </div>
 
                 <button disabled={isLoading ? true : false} className='m-auto text-white border border-transparent px-3 py-1 mt-3 bg-orange-400  hover:bg-orange-500' type='submit' >
@@ -698,6 +826,18 @@ function TrafficInsurance() {
                         />
 
                     </div>
+                    <div>
+                        <TextField
+                            value={watchFields.car_business_traffic_email ?? ""}
+                            className='!mb-3' size='small' fullWidth
+                            label="Email Adresi"
+                            {...register("car_business_traffic_email", {
+                                required: "Zorunlu Alan",
+
+                            })}
+                        />
+
+                    </div>
 
                 </div>
 
@@ -739,16 +879,18 @@ function ResInsurance() {
         setIsLoading(true)
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
+        const dbRefTwo = collection(db, "mail");
         console.log(data);
         let filteredData = {
             insure: "Arabam Sigortalı",
             varietyInsure: "İhtiyari Mali Mesuliyet Sigortası",
             tcNo: data.car_financial_TcNo,
-            BirthDate: data.car_financial_birthdate,
+            birthDate: data.car_financial_birthdate,
             carNumber: data.car_financial_carNumber,
-            job: data.car_financial_seriesNo,
+            seriesNo: data.car_financial_seriesNo,
             nameSurname: data.car_financial_nameSurname,
             phoneNumber: data.car_financial_phoneNumber,
+            email: data.car_financial_email,
         }
         try {
             addDoc(dbRef, filteredData)
@@ -763,6 +905,25 @@ function ResInsurance() {
                     setIsLoading(false)
                     console.log(error);
                 })
+            await addDoc(dbRefTwo,
+                {
+                    to: ["gilanakdagcisigorta@gmail.com"],
+                    message: {
+                        subject: "Teklif İsteyen Müşteri",
+                        html: `
+                            <p><strong>Sigorta : </strong>Arabam Sigortalı</p>
+                            <p><strong> Türü : </strong>İhtiyari Mali Mesuliyet Sigortası</p>
+                            <p><strong>Ad Soyad :</strong> ${filteredData.nameSurname}</p>
+                            <p><strong>Cep Telefonu :</strong> ${filteredData.phoneNumber}</p>
+                            <p><strong>Ruhsat Sahibi Tc Kimlik No :</strong> ${filteredData.tcNo}</p>
+                            <p><strong>Araç Plakası :</strong> ${filteredData.carNumber}</p>
+                            <p><strong>Rusat Seri No: </strong>${filteredData.seriesNo}</p>
+                            <p><strong>Doğum Traihi :</strong> ${filteredData.birthDate}</p>
+                            <p><strong>Email Adresi :</strong> ${filteredData.email}</p>
+                            `,
+                    },
+                }
+            )
 
         } catch (error) {
             setIsLoading(false)
@@ -779,7 +940,7 @@ function ResInsurance() {
                     <TextField
                         value={watchFields.car_financial_nameSurname ?? ""}
                         className='!mb-3' size='small' fullWidth
-                        label="Ad/Soyad"
+                        label="Ad Soyad"
                         {...register("car_financial_nameSurname", {
                             required: "Zorunlu Alan",
 
@@ -804,7 +965,7 @@ function ResInsurance() {
                     <TextField
                         value={watchFields.car_financial_TcNo ?? ""}
                         className='!mb-3' size='small' fullWidth
-                        label="Ruhsat Sahibi Tc No"
+                        label="Ruhsat Sahibi TC Kimlik No"
                         {...register("car_financial_TcNo", {
                             required: "Zorunlu Alan",
                         })}
@@ -839,6 +1000,18 @@ function ResInsurance() {
                         className='!mb-3' size='small' fullWidth
                         label="Doğum Tarihi"
                         {...register("car_financial_birthdate", {
+                            required: "Zorunlu Alan",
+
+                        })}
+                    />
+
+                </div>
+                <div>
+                    <TextField
+                        value={watchFields.car_financial_email ?? ""}
+                        className='!mb-3' size='small' fullWidth
+                        label="Email Adresi"
+                        {...register("car_financial_email", {
                             required: "Zorunlu Alan",
 
                         })}

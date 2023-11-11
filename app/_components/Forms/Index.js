@@ -72,7 +72,7 @@ function Form() {
                             onChange={(e) => setValue({ ...value, second: e.target.value })}
                         >
                             <MenuItem value={"houseIns"}>Konut Sigortası</MenuItem>
-                            <MenuItem value={"daskIns"}>Dask</MenuItem>
+                            <MenuItem value={"daskIns"}>DASK</MenuItem>
                         </Select>
                     </FormControl>
                     : value.first == "business" ?

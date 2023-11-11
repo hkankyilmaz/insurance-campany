@@ -42,7 +42,7 @@ function T() {
         setIsLoading(true)
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
-        console.log(data);
+        const dbRefTwo = collection(db, "mail");
         let filteredData;
 
         filteredData = {
@@ -52,12 +52,13 @@ function T() {
             tcNo: data.trip_person_trip_TcNo,
             about: data.trip_person_trip_about,
             date1: data.trip_person_trip_date1,
-            trip_person_trip_date2: data.trip_person_trip_date2,
+            date2: data.trip_person_trip_date2,
             nameSurname: data.trip_person_trip_nameSurname,
-            phoneNumber: data.trip_person_trip_phoneNumber
+            phoneNumber: data.trip_person_trip_phoneNumber,
+            email: data.trip_person_trip_email
         }
         try {
-            addDoc(dbRef, filteredData)
+            await addDoc(dbRef, filteredData)
                 .then((res) => {
                     toast.success("Form Gönderildi");
                     reset();
@@ -70,6 +71,28 @@ function T() {
                     reset();
                     setIsLoading(false)
                 })
+
+            await addDoc(dbRefTwo,
+                {
+                    to: ["gilanakdagcisigorta@gmail.com"],
+                    message: {
+                        subject: "Teklif İsteyen Müşteri",
+                        html: `
+                            <p><strong>Sigorta :</strong> Seyahatim Sigortalı </p>
+                            <p><strong>Türü :</strong> Seyahat Sigortası </p>
+                            <p><strong>Ad Soyad :</strong> ${filteredData.nameSurname} </p>
+                            <p><strong>Cep Telefonu :</strong> ${filteredData.phoneNumber}</p> 
+                            <p><strong>Tc Kimlik No :</strong> ${filteredData.tcNo} </p>
+                            <p> <strong>Doğum Traihi :</strong> ${filteredData.birthdate} </p>
+                            <p><strong>Gidiş Tarihi :</strong> ${filteredData.date1} </p>
+                            <p> <strong>Dönüş Tarihi :</strong> ${filteredData.date2} </p>
+                            <p> <strong>Seyehat Edilecek Yer :</strong> ${filteredData.about} </p> 
+                            <p> <strong>Email :</strong> ${filteredData.email} </p>                
+                            `,
+                    },
+                }
+            )
+
 
         } catch (error) {
             setIsLoading(false)
@@ -107,7 +130,7 @@ function T() {
                     <TextField
                         value={watchFields.trip_person_trip_TcNo ?? ""}
                         className='!mb-3' size='small' fullWidth
-                        label="Tc No"
+                        label="Tc Kimlik No"
                         {...register("trip_person_trip_TcNo", {
                             required: "Zorunlu Alan",
                         })}
@@ -153,6 +176,16 @@ function T() {
                         className='!mb-3' size='small' fullWidth
                         label="Seyehat Edilecek Yer"
                         {...register("trip_person_trip_about", {
+                            required: "Zorunlu Alan",
+                        })}
+                    />
+                </div>
+                <div>
+                    <TextField
+                        value={watchFields.trip_person_trip_email ?? ""}
+                        className='!mb-3' size='small' fullWidth
+                        label="Email adresi"
+                        {...register("trip_person_trip_email", {
                             required: "Zorunlu Alan",
                         })}
                     />

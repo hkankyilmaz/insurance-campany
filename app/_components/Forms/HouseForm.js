@@ -71,7 +71,8 @@ function HouseInsurance() {
                 usage: data.house_person_konut_usage,
                 owner: data.house_person_konut_own,
                 wflat: data.house_person_konut_wflat,
-                yearOfBuild: data.house_person_konut_yearOfBuild
+                yearOfBuild: data.house_person_konut_yearOfBuild,
+                email: data.house_person_konut_email
 
             }
         } else {
@@ -92,7 +93,8 @@ function HouseInsurance() {
                 usage: data.house_business_konut_usage,
                 owner: data.house_business_konut_own,
                 wflat: data.house_business_konut_wflat,
-                yearOfBuild: data.house_business_konut_yearOfBuild
+                yearOfBuild: data.house_business_konut_yearOfBuild,
+                email: data.house_business_konut_email
             }
         }
 
@@ -110,6 +112,60 @@ function HouseInsurance() {
                     setIsLoading(false)
                     console.log(error);
                 })
+            values.person ?
+                await addDoc(dbRefTwo,
+                    {
+                        to: ["gilanakdagcisigorta@gmail.com"],
+                        message: {
+                            subject: "Teklif İsteyen Müşteri",
+                            html: `
+                           <p> <strong>Sigorta :</strong> Evim Sigortalı</p>
+                           <p> <strong>Türü :</strong> Evim Sigortası / Şahıs</p>
+                           <p><strong>Ad Soyad :</strong> ${filteredData.nameSurname}</p>
+                           <p> <strong>Cep Telefonu :</strong> ${filteredData.phoneNumber}</p>
+                           <p><strong>Tc Kimlik No : </strong>${filteredData.tcNo}</p>
+                           <p><strong>Doğum Traihi :</strong> ${filteredData.birthDate}</p>
+                           <p> <strong>Açık Adres :</strong> ${filteredData.adress}
+                           <p><strong>Evin Büyüklüğü(m2) :</strong> ${filteredData.area}</p>
+                           <p><strong>Binanın Kat Sayısı :</strong>${filteredData.flat}</p>
+                           <p><strong>Bulunduğu Kat :</strong> ${filteredData.wflat}</p>
+                           <p> <strong>Yapı Tarzı : </strong>${filteredData.madeOf}</p>
+                           <p><strong>Kullanım Şekli : </strong>${filteredData.usage}</p>
+                           <p><strong>Bina İnşa Yılı :</strong> ${filteredData.yearOfBuild}</p>
+                           <p><strong>Eşya Bedeli :</strong> ${filteredData.priceOfItems}</p>
+                           <p> <strong>Cam Bedeli :</strong> ${filteredData.priceOfGlass}</p>
+                           <p> <strong>Email Adresi :</strong> ${filteredData.email}</p>
+                            `,
+                        },
+                    }
+                )
+                :
+                await addDoc(dbRefTwo,
+                    {
+                        to: ["gilanakdagcisigorta@gmail.com"],
+                        message: {
+                            subject: "Teklif İsteyen Müşteri",
+                            html: `
+                            <p><strong> Sigorta : </strong>Evim Sigortalı/p>
+                            <p> <strong> Türü :</strong> Evim Sigortası / Şirket/p>
+                            <p>  <strong>  Firma Unvanı :</strong> ${filteredData.companyName}/p>
+                            <p> <strong>  Vergi Numarası : </strong>${filteredData.taxNumber}/p>
+                            <p> <strong> İl İlçe : </strong>${filteredData.location}/p>
+                            <p> <strong> Telefon Numarası :</strong> ${filteredData.phoneNumber}/p>
+                            <p> <strong>  Açık Adres :</strong> ${filteredData.adress}/p>
+                            <p> <strong>  Evin Büyüklüğü(m2) :</strong> ${filteredData.area}/p>
+                            <p> <strong>  Binanın Kat Sayısı :</strong>${filteredData.flat}/p>
+                            <p><strong> Bulunduğu Kat : </strong>${filteredData.wflat}/p>
+                            <p> <strong> Yapı Tarzı : </strong>${filteredData.madeOf}/p>
+                            <p><strong> Kullanım Şekli :</strong> ${filteredData.usage}/p>
+                            <p> <strong> Bina İnşa Yılı : </strong>${filteredData.yearOfBuild}/p>
+                            <p> <strong> Eşya Bedeli : </strong>${filteredData.priceOfItems}/p>
+                            <p> <strong> Cam Bedeli : </strong>${filteredData.priceOfGlass}/p>
+                            <p> <strong> Email Adresi : </strong>${filteredData.email}/p>
+                                `,
+                        },
+                    }
+                )
 
         } catch (error) {
             console.log(error)
@@ -134,7 +190,7 @@ function HouseInsurance() {
                         <TextField
                             value={watchFields.house_person_konut_nameSurname ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Ad/Soyad"
+                            label="Ad Soyad"
                             {...register("house_person_konut_nameSurname", {
                                 required: "Zorunlu Alan",
                             })}
@@ -154,7 +210,7 @@ function HouseInsurance() {
                         <TextField
                             value={watchFields.house_person_konut_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Tc No"
+                            label="Tc Kimlik No"
                             {...register("house_person_konut_TcNo", {
                                 required: "Zorunlu Alan",
                             })}
@@ -249,7 +305,7 @@ function HouseInsurance() {
                             rules={{ required: "Zorunlu Alan", }}
                             render={({ field: { onChange, onBlur, value, ref } }) => (
                                 <FormControl className='!mb-3' size='small' fullWidth>
-                                    <InputLabel size='small'>Kullanim Şekli</InputLabel>
+                                    <InputLabel size='small'>Kullanım Şekli</InputLabel>
                                     <Select
                                         value={value == undefined ? "" : value}
                                         onChange={onChange}
@@ -273,7 +329,7 @@ function HouseInsurance() {
                             rules={{ required: "Zorunlu Alan", }}
                             render={({ field: { onChange, onBlur, value, ref } }) => (
                                 <FormControl className='!mb-3' size='small' fullWidth>
-                                    <InputLabel size='small'>Kullanim Şekli</InputLabel>
+                                    <InputLabel size='small'>Kullanım Şekli</InputLabel>
                                     <Select
                                         value={value == undefined ? "" : value}
                                         onChange={onChange}
@@ -313,8 +369,18 @@ function HouseInsurance() {
                         <TextField
                             value={watchFields.house_person_konut_priceOfGlass ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Eşya Bedeli"
+                            label="Cam Bedeli"
                             {...register("house_person_konut_priceOfGlass", {
+                                required: "Zorunlu Alan",
+                            })}
+                        />
+                    </div>
+                    <div>
+                        <TextField
+                            value={watchFields.house_person_konut_email ?? ""}
+                            className='!mb-3' size='small' fullWidth
+                            label="Email Adresi"
+                            {...register("house_person_konut_email", {
                                 required: "Zorunlu Alan",
                             })}
                         />
@@ -470,7 +536,7 @@ function HouseInsurance() {
                             rules={{ required: "Zorunlu Alan", }}
                             render={({ field: { onChange, onBlur, value, ref } }) => (
                                 <FormControl className='!mb-3' size='small' fullWidth>
-                                    <InputLabel size='small'>Kullanim Şekli</InputLabel>
+                                    <InputLabel size='small'>Kullanım Şekli</InputLabel>
                                     <Select
                                         value={value == undefined ? "" : value}
                                         onChange={onChange}
@@ -494,7 +560,7 @@ function HouseInsurance() {
                             rules={{ required: "Zorunlu Alan", }}
                             render={({ field: { onChange, onBlur, value, ref } }) => (
                                 <FormControl className='!mb-3' size='small' fullWidth>
-                                    <InputLabel size='small'>Kullanim Şekli</InputLabel>
+                                    <InputLabel size='small'>Kullanım Şekli</InputLabel>
                                     <Select
                                         value={value == undefined ? "" : value}
                                         onChange={onChange}
@@ -534,8 +600,18 @@ function HouseInsurance() {
                         <TextField
                             value={watchFields.house_business_konut_priceOfGlass ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Eşya Bedeli"
+                            label="Cam Bedeli"
                             {...register("house_business_konut_priceOfGlass", {
+                                required: "Zorunlu Alan",
+                            })}
+                        />
+                    </div>
+                    <div>
+                        <TextField
+                            value={watchFields.house_business_konut_email ?? ""}
+                            className='!mb-3' size='small' fullWidth
+                            label="Email Adresi"
+                            {...register("house_business_konut_email", {
                                 required: "Zorunlu Alan",
                             })}
                         />
@@ -599,7 +675,8 @@ function DaskInsurance() {
                 flat: data.house_person_dask_flat,
                 nameSurname: data.house_person_dask_nameSurname,
                 phoneNumber: data.house_person_dask_phoneNumber,
-                yearOfBuild: data.house_person_dask_yearOfBulding
+                yearOfBuild: data.house_person_dask_yearOfBulding,
+                email: data.house_person_dask_email
 
 
             }
@@ -617,7 +694,8 @@ function DaskInsurance() {
                 location: data.house_business_dask_location,
                 phoneNumber: data.house_business_dask_phoneNumber,
                 taxNumber: data.house_business_dask_taxNumber,
-                yearOfBuild: data.house_business_dask_yearOfBulding
+                yearOfBuild: data.house_business_dask_yearOfBulding,
+                email: data.house_business_dask_email
 
             }
         }
@@ -636,6 +714,53 @@ function DaskInsurance() {
                     setIsLoading(false)
                     console.log(error);
                 })
+            values.person ?
+                await addDoc(dbRefTwo,
+                    {
+                        to: ["gilanakdagcisigorta@gmail.com"],
+                        message: {
+                            subject: "Teklif İsteyen Müşteri",
+                            html: `
+                           <p> <strong>Sigorta :</strong> Evim Sigortalı</p>
+                           <p> <strong>Türü :</strong> KASKO / Şahıs</p>
+                           <p><strong>Ad Soyad :</strong> ${filteredData.nameSurname}</p>
+                           <p> <strong>Cep Telefonu :</strong> ${filteredData.phoneNumber}</p>
+                           <p><strong>Tc Kimlik No : </strong>${filteredData.tcNo}</p>
+                           <p><strong>Doğum Traihi :</strong> ${filteredData.birthDate}</p>
+                           <p> <strong>Açık Adres :</strong> ${filteredData.adress}
+                           <p><strong>Evin Büyüklüğü(m2) :</strong> ${filteredData.area}</p>
+                           <p><strong>Binanın Kat Sayısı :</strong>${filteredData.flat}</p>          
+                           <p><strong>Bina İnşa Yılı :</strong> ${filteredData.yearOfBuild}</p>
+                           <p> <strong> Email : </strong>${filteredData.email}/p>
+                      
+                            `,
+                        },
+                    }
+                )
+                :
+                await addDoc(dbRefTwo,
+                    {
+                        to: ["gilanakdagcisigorta@gmail.com"],
+                        message: {
+                            subject: "Teklif İsteyen Müşteri",
+                            html: `
+                            <p><strong> Sigorta : </strong>Evim Sigortalı/p>
+                            <p> <strong> Türü :</strong> KASKO / Şirket/p>
+                            <p>  <strong>  Firma Unvanı :</strong> ${filteredData.companyName}/p>
+                            <p> <strong>  Vergi Numarası : </strong>${filteredData.taxNumber}/p>
+                            <p> <strong> İl İlçe : </strong>${filteredData.location}/p>
+                            <p> <strong> Telefon Numarası :</strong> ${filteredData.phoneNumber}/p>
+                            <p> <strong> Doğum Tarihi :</strong> ${filteredData.birthDate}/p>
+                            <p> <strong>  Tc Kimlik No :</strong> ${filteredData.tcNo}/p>
+                            <p> <strong>  Açık Adres :</strong> ${filteredData.adress}/p>
+                            <p> <strong>  Evin Büyüklüğü(m2) :</strong> ${filteredData.area}/p>
+                            <p> <strong>  Binanın Kat Sayısı :</strong>${filteredData.flat}/p>
+                            <p> <strong> Bina İnşa Yılı : </strong>${filteredData.yearOfBuild}/p>
+                            <p> <strong> Email : </strong>${filteredData.email}/p>
+                        `,
+                        },
+                    }
+                )
 
         } catch (error) {
             console.log(error)
@@ -660,7 +785,7 @@ function DaskInsurance() {
                         <TextField
                             value={watchFields.house_person_dask_nameSurname ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Ad/Soyad"
+                            label="Ad Soyad"
                             {...register("house_person_dask_nameSurname", {
                                 required: "Zorunlu Alan",
                             })}
@@ -682,7 +807,7 @@ function DaskInsurance() {
                         <TextField
                             value={watchFields.house_person_dask_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Tc No"
+                            label="Tc Kimlik No"
                             {...register("house_person_dask_TcNo", {
                                 required: "Zorunlu Alan",
                             })}
@@ -739,6 +864,17 @@ function DaskInsurance() {
                             className='!mb-3' size='small' fullWidth
                             label="Bina İnşa Yılı"
                             {...register("house_person_dask_yearOfBulding", {
+                                required: "Zorunlu Alan",
+                            })}
+                        />
+
+                    </div>
+                    <div>
+                        <TextField
+                            value={watchFields.house_person_dask_email ?? ""}
+                            className='!mb-3' size='small' fullWidth
+                            label="Email Adresi"
+                            {...register("house_person_dask_email", {
                                 required: "Zorunlu Alan",
                             })}
                         />
@@ -822,7 +958,7 @@ function DaskInsurance() {
                         <TextField
                             value={watchFields.house_business_dask_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Tc No"
+                            label="Tc Kimlik No"
                             {...register("house_business_dask_TcNo", {
                                 required: "Zorunlu Alan",
                             })}
@@ -879,6 +1015,17 @@ function DaskInsurance() {
                             className='!mb-3' size='small' fullWidth
                             label="Bina İnşa Yılı"
                             {...register("house_business_dask_yearOfBulding", {
+                                required: "Zorunlu Alan",
+                            })}
+                        />
+
+                    </div>
+                    <div>
+                        <TextField
+                            value={watchFields.house_business_dask_email ?? ""}
+                            className='!mb-3' size='small' fullWidth
+                            label="Email Adresi"
+                            {...register("house_business_dask_email", {
                                 required: "Zorunlu Alan",
                             })}
                         />

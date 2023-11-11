@@ -44,6 +44,7 @@ function H() {
         setIsLoading(true)
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
+        const dbRefTwo = collection(db, "mail");
         console.log(data);
         let filteredData;
         if (values.person) {
@@ -55,7 +56,8 @@ function H() {
                 birthdate: data.health_sup_health_birthdate,
                 nameSurname: data.health_sup_health_nameSurname,
                 phoneNumber: data.health_sup_health_phoneNumber,
-                tall: data.health_sup_health_tall
+                tall: data.health_sup_health_tall,
+                email: data.health_sup_health_email
 
             }
         } else {
@@ -67,7 +69,8 @@ function H() {
                 birthdate: data.health_special_health_birthdate,
                 nameSurname: data.health_special_health_nameSurname,
                 phoneNumber: data.health_special_health_phoneNumber,
-                tall: data.health_special_health_tall
+                tall: data.health_special_health_tall,
+                email: data.health_special_health_email
 
             }
 
@@ -86,6 +89,46 @@ function H() {
                     setIsLoading(false)
                     console.log(error);
                 })
+            values.person ?
+                await addDoc(dbRefTwo,
+                    {
+                        to: ["gilanakdagcisigorta@gmail.com"],
+                        message: {
+                            subject: "Teklif İsteyen Müşteri",
+                            html: `
+                          <p> <strong> Sigorta :</strong> İşyerim Sigortalı</p>
+                          <p><strong>Türü :</strong> İşyeri Sigortası / Şahıs</p>
+                          <p><strong>Ad Soyad :</strong> ${filteredData.nameSurname}</p>
+                          <p><strong>Cep Telefonu :</strong> ${filteredData.phoneNumber}</p>
+                          <p><strong>Tc Kimlik No :</strong> ${filteredData.tcNo}</p>
+                          <p><strong>Doğum Traihi :</strong> ${filteredData.birthdate}</p>
+                          <p><strong>Açık Adres :</strong> ${filteredData.tall}</p>
+                          <p><strong>İşyerinin Büyüklüğü :</strong> ${filteredData.weight}</p>
+                          <p><strong>Email Adresi :</strong> ${filteredData.email}</p>
+                        `,
+                        },
+                    }
+                )
+                :
+                await addDoc(dbRefTwo,
+                    {
+                        to: ["gilanakdagcisigorta@gmail.com"],
+                        message: {
+                            subject: "Teklif İsteyen Müşteri",
+                            html: `
+                            <p> <strong> Sigorta :</strong> İşyerim Sigortalı</p>
+                            <p><strong>Türü :</strong> İşyeri Sigortası / Şahıs</p>
+                            <p><strong>Ad Soyad :</strong> ${filteredData.nameSurname}</p>
+                            <p><strong>Cep Telefonu :</strong> ${filteredData.phoneNumber}</p>
+                            <p><strong>Tc Kimlik No :</strong> ${filteredData.tcNo}</p>
+                            <p><strong>Doğum Traihi :</strong> ${filteredData.birthdate}</p>
+                            <p><strong>Açık Adres :</strong> ${filteredData.tall}</p>
+                            <p><strong>İşyerinin Büyüklüğü :</strong> ${filteredData.weight}</p>
+                            <p><strong>Email Adresi :</strong> ${filteredData.email}</p>
+                        `,
+                        },
+                    }
+                )
 
         } catch (error) {
             setIsLoading(false)
@@ -110,7 +153,7 @@ function H() {
                         <TextField
                             value={watchFields.health_sup_health_nameSurname ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Ad/Soyad"
+                            label="Ad Soyad"
                             {...register("health_sup_health_nameSurname", {
                                 required: "Zorunlu Alan",
 
@@ -134,7 +177,7 @@ function H() {
                         <TextField
                             value={watchFields.health_sup_health_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Tc No"
+                            label="Tc Kimlik No"
                             {...register("health_sup_health_TcNo", {
                                 required: "Zorunlu Alan",
                             })}
@@ -170,6 +213,17 @@ function H() {
                             className='!mb-3' size='small' fullWidth
                             label="Kilo(kg)"
                             {...register("health_person_health_weight", {
+                                required: "Zorunlu Alan",
+                            })}
+                        />
+
+                    </div>
+                    <div>
+                        <TextField
+                            value={watchFields.health_person_health_email ?? ""}
+                            className='!mb-3' size='small' fullWidth
+                            label="Email Adresi"
+                            {...register("health_person_health_email", {
                                 required: "Zorunlu Alan",
                             })}
                         />
@@ -211,7 +265,7 @@ function H() {
                         <TextField
                             value={watchFields.health_special_health_nameSurname ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Ad/Soyad"
+                            label="Ad Soyad"
                             {...register("health_special_health_nameSurname", {
                                 required: "Zorunlu Alan",
 
@@ -240,7 +294,7 @@ function H() {
                         <TextField
                             value={watchFields.health_special_health_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Tc No"
+                            label="Tc Kimlik No"
                             {...register("health_special_health_TcNo", {
                                 required: "Zorunlu Alan",
                             })}
@@ -276,6 +330,17 @@ function H() {
                             className='!mb-3' size='small' fullWidth
                             label="Kilo(kg)"
                             {...register("health_special_health_weight", {
+                                required: "Zorunlu Alan",
+                            })}
+                        />
+
+                    </div>
+                    <div>
+                        <TextField
+                            value={watchFields.health_special_health_email ?? ""}
+                            className='!mb-3' size='small' fullWidth
+                            label="Email Adresi"
+                            {...register("health_special_health_email", {
                                 required: "Zorunlu Alan",
                             })}
                         />

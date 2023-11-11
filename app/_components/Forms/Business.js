@@ -40,6 +40,7 @@ function Business() {
         setIsLoading(true)
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
+        const dbRefTwo = collection(db, "mail");
         console.log(data)
         let filteredData = {}
         if (values.person) {
@@ -48,7 +49,7 @@ function Business() {
                 varietyInsure: "İşyeri Sigortası",
                 isPerson: "Şahıs",
                 tcNo: data.business_person_business_TcNo,
-                phoneNumber: data.business_person_business_about,
+                about: data.business_person_business_about,
                 adress: data.business_person_business_adress,
                 area: data.business_person_business_area,
                 itemsPrice: data.business_person_business_itemsPrice,
@@ -56,6 +57,7 @@ function Business() {
                 nameSurname: data.business_person_business_nameSurname,
                 phoneNumber: data.business_person_business_phoneNumber,
                 birthdate: data.business_person_kasko_birthdate,
+                email: data.business_person_kasko_email,
 
             }
         } else {
@@ -71,14 +73,14 @@ function Business() {
                 itemsPrice2: data.business_business_business_itemsPrice2,
                 location: data.business_business_business_location,
                 phoneNumber: data.business_business_business_phoneNumber,
-                taxNumber: data.business_business_business_taxNumber,
+                email: data.business_business_business_email,
 
             }
         }
 
 
         try {
-            addDoc(dbRef, filteredData)
+            await addDoc(dbRef, filteredData)
                 .then((res) => {
                     toast.success("Form Gönderildi");
                     reset();
@@ -90,6 +92,52 @@ function Business() {
                     setIsLoading(false)
                     console.log(error);
                 })
+            values.person ?
+                await addDoc(dbRefTwo,
+                    {
+                        to: ["gilanakdagcisigorta@gmail.com"],
+                        message: {
+                            subject: "Teklif İsteyen Müşteri",
+                            html: `
+                          <p> <strong> Sigorta :</strong> İşyerim Sigortalı</p>
+                          <p><strong>Türü :</strong> İşyeri Sigortası / Şahıs</p>
+                          <p><strong>Ad Soyad :</strong> ${filteredData.nameSurname}</p>
+                          <p><strong>Cep Telefonu :</strong> ${filteredData.phoneNumber}</p>
+                          <p><strong>Tc Kimlik No :</strong> ${filteredData.tcNo}</p>
+                          <p><strong>Doğum Traihi :</strong> ${filteredData.birthdate}</p>
+                          <p><strong>Açık Adres :</strong> ${filteredData.adress}</p>
+                          <p><strong>İşyerinin Büyüklüğü :</strong> ${filteredData.area}</p>
+                          <p><strong>Faaliyet Alanı :</strong> ${filteredData.about}</p>
+                          <p><strong>Demirbaş Değeri :</strong> ${filteredData.itemsPrice}   </p>                     
+                          <p><strong>Emtia Değeri :</strong> ${filteredData.itemsPrice2}</p>
+                          <p><strong>Email Adresi :</strong> ${filteredData.email}</p>
+                            `,
+                        },
+                    }
+                )
+                :
+                await addDoc(dbRefTwo,
+                    {
+                        to: ["gilanakdagcisigorta@gmail.com"],
+                        message: {
+                            subject: "Teklif İsteyen Müşteri",
+                            html: `
+                            <p><strong>Sigorta</strong> : İşyerim Sigortalı</p>
+                            <p> <strong>Türü :</strong> İşyeri Sigortası / Şirket</p>
+                            <p> <strong>Firma Adı :</strong> ${filteredData.companyName}</p>
+                            <p> <strong>Vergi Numarası :</strong> ${filteredData.taxNumber}</p>
+                            <p> <strong>İl-İlçe :</strong> ${filteredData.location}</p>
+                            <p> <strong>Telefon :</strong> ${filteredData.phoneNumber}</p>
+                            <p> <strong>Açık Adres :</strong> ${filteredData.adress}</p>
+                            <p> <strong>İşyerinin Büyüklüğü :</strong> ${filteredData.area}</p>
+                            <p> <strong>Faaliyet Alanı :</strong> ${filteredData.about}</p>
+                            <p> <strong>Demirbaş Değeri :</strong> ${filteredData.itemsPrice} </p>                     
+                            <p> <strong>Emtia Değeri :</strong> ${filteredData.itemsPrice2}</p>
+                            <p><strong>Email Adresi :</strong> ${filteredData.email}</p>
+                                `,
+                        },
+                    }
+                )
 
         } catch (error) {
             console.log(error)
@@ -114,7 +162,7 @@ function Business() {
                         <TextField
                             value={watchFields.business_person_business_nameSurname ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Ad/Soyad"
+                            label="Ad Soyad"
                             {...register("business_person_business_nameSurname", {
                                 required: "Zorunlu Alan",
 
@@ -143,7 +191,7 @@ function Business() {
                         <TextField
                             value={watchFields.business_person_business_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Tc No"
+                            label="Tc Kimlik No"
                             {...register("business_person_business_TcNo", {
                                 required: "Zorunlu Alan",
                             })}
@@ -188,7 +236,7 @@ function Business() {
                         <TextField
                             value={watchFields.business_person_business_about ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Faliyet Konusu"
+                            label="Faaliyet Alanı"
                             {...register("business_person_business_about", {
                                 required: "Zorunlu Alan",
                             })}
@@ -212,6 +260,17 @@ function Business() {
                             className='!mb-3' size='small' fullWidth
                             label="İçindeki Emtia Değeri(TL)"
                             {...register("business_person_business_itemsPrice2", {
+                                required: "Zorunlu Alan",
+                            })}
+                        />
+
+                    </div>
+                    <div>
+                        <TextField
+                            value={watchFields.business_person_business_email ?? ""}
+                            className='!mb-3' size='small' fullWidth
+                            label="Email Adresi"
+                            {...register("business_person_business_email", {
                                 required: "Zorunlu Alan",
                             })}
                         />
@@ -317,7 +376,7 @@ function Business() {
                         <TextField
                             value={watchFields.business_business_business_about ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Faliyet Konusu"
+                            label="Faaliyet Alanı"
                             {...register("business_business_business_about", {
                                 required: "Zorunlu Alan",
                             })}
@@ -341,6 +400,17 @@ function Business() {
                             className='!mb-3' size='small' fullWidth
                             label="İçindeki Emtia Değeri(TL)"
                             {...register("business_business_business_itemsPrice2", {
+                                required: "Zorunlu Alan",
+                            })}
+                        />
+
+                    </div>
+                    <div>
+                        <TextField
+                            value={watchFields.business_business_business_email ?? ""}
+                            className='!mb-3' size='small' fullWidth
+                            label="Email Adresi"
+                            {...register("business_business_business_email", {
                                 required: "Zorunlu Alan",
                             })}
                         />
