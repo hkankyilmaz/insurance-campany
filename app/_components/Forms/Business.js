@@ -8,13 +8,13 @@ import ErrorIcon from "@mui/icons-material/Error";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { toast, ToastContainer } from 'react-toastify';
 import app from '@/app/_connect/connect';
-export default function BusinessForm({ variety }) {
-    return <Business />
+export default function BusinessForm({ variety, setOpen }) {
+    return <Business setOpen={setOpen} />
 }
 
 
 
-function Business() {
+function Business({ setOpen }) {
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -41,7 +41,6 @@ function Business() {
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
         const dbRefTwo = collection(db, "mail");
-        console.log(data)
         let filteredData = {}
         if (values.person) {
             filteredData = {
@@ -85,6 +84,7 @@ function Business() {
                     toast.success("Form Gönderildi");
                     reset();
                     setIsLoading(false)
+                    setOpen(true)
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");

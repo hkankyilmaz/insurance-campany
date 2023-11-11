@@ -58,7 +58,6 @@ export default function SignUp() {
 
 
     const onSubmit = async (data) => {
-        console.log(data)
         try {
             const docRef = doc(db, "users", data.email);
             const docSnap = await getDoc(docRef);

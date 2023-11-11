@@ -15,17 +15,17 @@ import app from '@/app/_connect/connect';
 import ErrorIcon from "@mui/icons-material/Error";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { toast, ToastContainer } from 'react-toastify';
-function HouseForm({ variety }) {
+function HouseForm({ variety, setOpen }) {
     if (variety == "houseIns") {
-        return <HouseInsurance />
+        return <HouseInsurance setOpen={setOpen} />
     } else if (variety == "daskIns") {
-        return <DaskInsurance />
-    } else return <HouseInsurance />
+        return <DaskInsurance setOpen={setOpen} />
+    } else return <HouseInsurance setOpen={setOpen} />
 }
 
 export default HouseForm
 
-function HouseInsurance() {
+function HouseInsurance({ setOpen }) {
     const [isLoading, setIsLoading] = useState(false)
 
     const options = {
@@ -105,6 +105,7 @@ function HouseInsurance() {
                     toast.success("Form Gönderildi");
                     reset();
                     setIsLoading(false)
+                    setOpen(true)
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");
@@ -635,7 +636,7 @@ function HouseInsurance() {
 
 }
 
-function DaskInsurance() {
+function DaskInsurance({ setOpen }) {
     const [isLoading, setIsLoading] = useState(false)
     const options = {
         format: 'DD/MM/YYYY',
@@ -707,6 +708,7 @@ function DaskInsurance() {
                     toast.success("Form Gönderildi");
                     reset();
                     setIsLoading(false)
+                    setOpen(true)
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");

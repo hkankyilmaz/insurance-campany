@@ -13,7 +13,7 @@ import Trip from './Trip';
 import Health from './Health';
 
 
-function Form() {
+function Form({ setOpen }) {
 
     const [value, setValue] = useState({ first: "car", second: "carIns" })
 
@@ -119,15 +119,15 @@ function Form() {
             }
             {
                 value.first == "car"
-                    ? <CarForm variety={value.second} />
+                    ? <CarForm variety={value.second} setOpen={setOpen} />
                     : value.first == "house"
-                        ? <HouseForm variety={value.second} />
+                        ? <HouseForm variety={value.second} setOpen={setOpen} />
                         : value.first == "business"
-                            ? <BusinessForm />
+                            ? <BusinessForm setOpen={setOpen} />
                             : value.first == "trip"
-                                ? <Trip />
+                                ? <Trip setOpen={setOpen} />
                                 : value.first == "healt"
-                                    ? <Health />
+                                    ? <Health setOpen={setOpen} />
                                     : undefined
 
             }

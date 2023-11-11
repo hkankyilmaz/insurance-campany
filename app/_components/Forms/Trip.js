@@ -7,13 +7,13 @@ import app from '@/app/_connect/connect';
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { toast, ToastContainer } from 'react-toastify';
 
-export default function Trip({ variety }) {
-    return <T />
+export default function Trip({ variety, setOpen }) {
+    return <T setOpen={setOpen} />
 }
 
 
 
-function T() {
+function T({ setOpen }) {
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -63,6 +63,7 @@ function T() {
                     toast.success("Form Gönderildi");
                     reset();
                     setIsLoading(false)
+                    setOpen(true)
 
 
                 })

@@ -16,19 +16,19 @@ import app from '@/app/_connect/connect';
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { toast, ToastContainer } from 'react-toastify';
 
-function CarForm({ variety }) {
+function CarForm({ variety, setOpen }) {
     if (variety == "carIns") {
-        return <CarInsurance />
+        return <CarInsurance setOpen={setOpen} />
     } else if (variety == "traffIcins") {
-        return <TrafficInsurance />
+        return <TrafficInsurance setOpen={setOpen} />
     } else if (variety == "refIns") {
-        return <ResInsurance />
+        return <ResInsurance setOpen={setOpen} />
     }
 }
 
 export default CarForm
 
-function CarInsurance() {
+function CarInsurance({ setOpen }) {
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -56,8 +56,6 @@ function CarInsurance() {
 
     }, [values, isSubmitSuccessful])
 
-
-    console.log(errors)
     const onSubmit = async (data) => {
         setIsLoading(true)
 
@@ -105,6 +103,7 @@ function CarInsurance() {
                     toast.success("Form Gönderildi");
                     reset();
                     setIsLoading(false)
+                    setOpen(true)
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");
@@ -491,7 +490,7 @@ function CarInsurance() {
 
 }
 
-function TrafficInsurance() {
+function TrafficInsurance({ setOpen }) {
     const [isLoading, setIsLoading] = useState(false)
     const options = {
         format: 'DD/MM/YYYY',
@@ -518,7 +517,6 @@ function TrafficInsurance() {
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
         const dbRefTwo = collection(db, "maıl");
-        console.log(data)
         let filteredData = {}
         if (values.person) {
             filteredData = {
@@ -558,6 +556,7 @@ function TrafficInsurance() {
                     toast.success("Form Gönderildi");
                     reset();
                     setIsLoading(false)
+                    setOpen(true)
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");
@@ -858,7 +857,7 @@ function TrafficInsurance() {
     }
 }
 
-function ResInsurance() {
+function ResInsurance({ setOpen }) {
     const [isLoading, setIsLoading] = useState(false)
     const options = {
         format: 'DD/MM/YYYY',
@@ -880,7 +879,6 @@ function ResInsurance() {
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
         const dbRefTwo = collection(db, "mail");
-        console.log(data);
         let filteredData = {
             insure: "Arabam Sigortalı",
             varietyInsure: "İhtiyari Mali Mesuliyet Sigortası",
@@ -898,6 +896,7 @@ function ResInsurance() {
                     toast.success("Form Gönderildi");
                     reset();
                     setIsLoading(false)
+                    setOpen(true)
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");

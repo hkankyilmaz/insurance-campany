@@ -58,9 +58,9 @@ export default function SignIn() {
     try {
       const docRef = doc(db, "users", data.email);
       const docSnap = await getDoc(docRef);
-      console.log(docSnap.data())
+
       if (docSnap.data() == undefined) {
-        console.log(docSnap.data())
+
         setError("email", { type: "focus", message: "Kayıtlı Kullanıcı Yok" })
         return;
       }
@@ -68,7 +68,7 @@ export default function SignIn() {
         setError("password", { type: "focus", message: "Yanlış Şifre" })
         return;
       }
-      console.log(data)
+
       const { email, password } = data;
       let options = { callbackUrl: '/', email, password };
       await signIn("credentials", options);

@@ -10,13 +10,13 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { toast, ToastContainer } from 'react-toastify';
 
 
-export default function Health({ variety }) {
+export default function Health({ variety, setOpen }) {
     return <H />
 }
 
 
 
-function H() {
+function H({ setOpen }) {
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -45,7 +45,6 @@ function H() {
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
         const dbRefTwo = collection(db, "mail");
-        console.log(data);
         let filteredData;
         if (values.person) {
             filteredData = {
@@ -82,6 +81,7 @@ function H() {
                     toast.success("Form Gönderildi");
                     reset();
                     setIsLoading(false)
+                    setOpen(true)
                 })
                 .catch(error => {
                     toast.error("Form Gönderilemedi");
