@@ -55,8 +55,8 @@ function Business({ setOpen }) {
                 itemsPrice2: data.business_person_business_itemsPrice2,
                 nameSurname: data.business_person_business_nameSurname,
                 phoneNumber: data.business_person_business_phoneNumber,
-                birthdate: data.business_person_kasko_birthdate,
-                email: data.business_person_kasko_email,
+                birthdate: data.business_person_business_birthdate,
+                email: data.business_person_business_email,
 
             }
         } else {
@@ -191,7 +191,7 @@ function Business({ setOpen }) {
                         <TextField
                             value={watchFields.business_person_business_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Tc Kimlik No"
+                            label="TC Kimlik No"
                             {...register("business_person_business_TcNo", {
                                 required: "Zorunlu Alan",
                             })}
@@ -200,10 +200,10 @@ function Business({ setOpen }) {
                     </div>
                     <div>
                         <TextField
-                            value={watchFields.business_person_kasko_birthdate ?? ""}
+                            value={watchFields.business_person_business_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Doğum Tarihi"
-                            {...register("business_person_kasko_birthdate", {
+                            {...register("business_person_business_birthdate", {
                                 required: "Zorunlu Alan",
 
                             })}
@@ -283,7 +283,7 @@ function Business({ setOpen }) {
                     {isLoading ? "Gönderiliyor..." : "Formu Gönder ve Teklif Al"}
                 </button>
                 {!isEmpty(errors) ?
-                    <p className='flex justify-center item-center' >
+                    <p className='flex justify-center item-center mt-3' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                         <span>
                             Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
@@ -421,7 +421,7 @@ function Business({ setOpen }) {
                     {isLoading ? "Gönderiliyor..." : "Formu Gönder ve Teklif Al"}
                 </button>
                 {!isEmpty(errors) ?
-                    <p className='flex justify-center item-center' >
+                    <p className='flex justify-center item-center mt-3' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                         <span>
                             Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.

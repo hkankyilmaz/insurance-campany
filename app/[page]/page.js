@@ -6,6 +6,7 @@ import SectionThree from '../_components/Sections/SectionThree'
 import SectionFour from '../_components/Sections/SectionFour'
 import SectionSix from '../_components/Sections/SectionSix'
 import { Link } from 'react-scroll'
+import ModalRegister from '../_components/ModalRegister'
 
 function Index(props) {
     const param = props.params.page
@@ -46,6 +47,12 @@ const seyahatphotoMobile = "https://firebasestorage.googleapis.com/v0/b/kutezadm
 
 function SectionOne({ param }) {
 
+
+
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     let image, mobileImage;
 
     if (param == "arac") {
@@ -65,7 +72,7 @@ function SectionOne({ param }) {
         mobileImage = seyahatphotoMobile;
     }
     return (
-        <section className='h-[100vh] w-[100vw] relative'>
+        <section className='h-[100vh] w-[100vw] relative bg-black'>
             <main className='max-md:hidden h-[100vh] w-[100vw]' style={{ backgroundPosition: "center", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundImage: `url(${image})` }}  >
                 <div className='absolute bottom-24 left-[50%] translate-x-[-50%] max-md:flex max-md:flex-col max-md:item-center max-md:justify-center'>
                     <Link
@@ -79,11 +86,51 @@ function SectionOne({ param }) {
                         <button className='mr-6 w-[200px] px-4 py-2 rounded-md bg-white text-black hover:bg-orange-400 hover:text-white transition-all ease-in'>Tekif Al</button>
                     </Link>
                     <button onClick={(e) => document.querySelector("#form").scrollIntoView({ behavior: "smooth", block: "start", inline: "start" })} className='max-md:hidden mr-6 w-[200px] px-4 py-2 rounded-md bg-white text-black hover:bg-orange-400 hover:text-white transition-all ease-in'>Hemen Teklif Alın</button>
-                    <button className='w-[200px]  px-4 py-2 rounded-md hover:bg-white hover:text-black bg-orange-400 text-white transition-all ease-in mt-3' >Aranma Talebi Oluşturun</button>
+                    <button onClick={() => setOpen(true)} className='w-[200px]  px-4 py-2 rounded-md hover:bg-white hover:text-black bg-orange-400 text-white transition-all ease-in mt-3' >Aranma Talebi Oluşturun</button>
+                </div>
+                <div className='max-lg:hidden absolute left-10 top-[50%] translate-y-[-50%]  text-5xl text-white pb-3 border-b-2 border-b-[orange] border-solid '>
+                    {param == "arac"
+                        ? "Arabam Sigortalı"
+                        : param == "ev"
+                            ? "Evim Sigortalı"
+                            : param == "isyeri"
+                                ? "İşyerim sigortalı"
+                                : param == "saglik"
+                                    ? "Sağlığım Sigortalı"
+                                    : param == "seyahat"
+                                        ? "Seyahatim Sigortalı"
+                                        : ""
+
+                    }
+                </div>
+                <div className='max-lg:hidden absolute left-10 top-[50%] translate-y-[40px] max-w-4xl text-3xl text-white text-left'>
+                    Poliçen varsa, yarının maddi risklerini dert etmene gerek yok!
+                </div>
+                <div className='lg:hidden absolute top-[120px] text-center max-w-2xl  w-full px-5 right-[50%] translate-x-[50%] '>
+                    <div className='text-xl text-white pb-1 border-b-2 border-b-[orange] border-solid'>
+                        {param == "arac"
+                            ? "Arabam Sigortalı"
+                            : param == "ev"
+                                ? "Evim Sigortalı"
+                                : param == "isyeri"
+                                    ? "İşyerim sigortalı"
+                                    : param == "saglik"
+                                        ? "Sağlığım Sigortalı"
+                                        : param == "seyahat"
+                                            ? "Seyahatim Sigortalı"
+                                            : ""
+
+                        }
+                    </div>
+                    <div className='text-normal text-white'>
+                        Poliçen varsa, yarının maddi risklerini dert etmene gerek yok!
+                    </div>
+
                 </div>
             </main>
             <main className='md:hidden h-[100vh] w-[100vw]' style={{ backgroundPosition: "center", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundImage: `url(${mobileImage})` }}  >
             </main>
+            <ModalRegister handleClose={handleClose} open={open} />
         </section>
     )
 

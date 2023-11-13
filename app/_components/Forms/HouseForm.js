@@ -51,7 +51,7 @@ function HouseInsurance({ setOpen }) {
         setIsLoading(true)
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
-
+        const dbRefTwo = collection(db, "mail");
         let filteredData = {}
         if (values.person) {
             filteredData = {
@@ -147,22 +147,22 @@ function HouseInsurance({ setOpen }) {
                         message: {
                             subject: "Teklif İsteyen Müşteri",
                             html: `
-                            <p><strong> Sigorta : </strong>Evim Sigortalı/p>
-                            <p> <strong> Türü :</strong> Evim Sigortası / Şirket/p>
-                            <p>  <strong>  Firma Unvanı :</strong> ${filteredData.companyName}/p>
-                            <p> <strong>  Vergi Numarası : </strong>${filteredData.taxNumber}/p>
-                            <p> <strong> İl İlçe : </strong>${filteredData.location}/p>
-                            <p> <strong> Telefon Numarası :</strong> ${filteredData.phoneNumber}/p>
-                            <p> <strong>  Açık Adres :</strong> ${filteredData.adress}/p>
-                            <p> <strong>  Evin Büyüklüğü(m2) :</strong> ${filteredData.area}/p>
-                            <p> <strong>  Binanın Kat Sayısı :</strong>${filteredData.flat}/p>
-                            <p><strong> Bulunduğu Kat : </strong>${filteredData.wflat}/p>
-                            <p> <strong> Yapı Tarzı : </strong>${filteredData.madeOf}/p>
-                            <p><strong> Kullanım Şekli :</strong> ${filteredData.usage}/p>
-                            <p> <strong> Bina İnşa Yılı : </strong>${filteredData.yearOfBuild}/p>
-                            <p> <strong> Eşya Bedeli : </strong>${filteredData.priceOfItems}/p>
-                            <p> <strong> Cam Bedeli : </strong>${filteredData.priceOfGlass}/p>
-                            <p> <strong> Email Adresi : </strong>${filteredData.email}/p>
+                            <p><strong> Sigorta : </strong>Evim Sigortalı</p>
+                            <p> <strong> Türü :</strong> Evim Sigortası / Şirket</p>
+                            <p>  <strong>  Firma Unvanı :</strong> ${filteredData.companyName}</p>
+                            <p> <strong>  Vergi Numarası : </strong>${filteredData.taxNumber}</p>
+                            <p> <strong> İl İlçe : </strong>${filteredData.location}</p>
+                            <p> <strong> Telefon Numarası :</strong> ${filteredData.phoneNumber}</p>
+                            <p> <strong>  Açık Adres :</strong> ${filteredData.adress}</p>
+                            <p> <strong>  Evin Büyüklüğü(m2) :</strong> ${filteredData.area}</p>
+                            <p> <strong>  Binanın Kat Sayısı :</strong>${filteredData.flat}</p>
+                            <p><strong> Bulunduğu Kat : </strong>${filteredData.wflat}</p>
+                            <p> <strong> Yapı Tarzı : </strong>${filteredData.madeOf}</p>
+                            <p><strong> Kullanım Şekli :</strong> ${filteredData.usage}</p>
+                            <p> <strong> Bina İnşa Yılı : </strong>${filteredData.yearOfBuild}</p>
+                            <p> <strong> Eşya Bedeli : </strong>${filteredData.priceOfItems}</p>
+                            <p> <strong> Cam Bedeli : </strong>${filteredData.priceOfGlass}</p>
+                            <p> <strong> Email Adresi : </strong>${filteredData.email}</p>
                                 `,
                         },
                     }
@@ -211,7 +211,7 @@ function HouseInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.house_person_konut_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Tc Kimlik No"
+                            label="TC Kimlik No"
                             {...register("house_person_konut_TcNo", {
                                 required: "Zorunlu Alan",
                             })}
@@ -391,7 +391,7 @@ function HouseInsurance({ setOpen }) {
                     {isLoading ? "Gönderiliyor..." : "Formu Gönder ve Teklif Al"}
                 </button>
                 {!isEmpty(errors) ?
-                    <p className='flex justify-center item-center' >
+                    <p className='flex justify-center item-center mt-3' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                         <span>
                             Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
@@ -622,7 +622,7 @@ function HouseInsurance({ setOpen }) {
                     {isLoading ? "Gönderiliyor..." : "Formu Gönder ve Teklif Al"}
                 </button>
                 {!isEmpty(errors) ?
-                    <p className='flex justify-center item-center' >
+                    <p className='flex justify-center item-center mt-3' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                         <span>
                             Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
@@ -662,6 +662,7 @@ function DaskInsurance({ setOpen }) {
         setIsLoading(true)
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
+        const dbRefTwo = collection(db, "mail");
         console.log(data)
         let filteredData = {}
         if (values.person) {
@@ -733,7 +734,7 @@ function DaskInsurance({ setOpen }) {
                            <p><strong>Evin Büyüklüğü(m2) :</strong> ${filteredData.area}</p>
                            <p><strong>Binanın Kat Sayısı :</strong>${filteredData.flat}</p>          
                            <p><strong>Bina İnşa Yılı :</strong> ${filteredData.yearOfBuild}</p>
-                           <p> <strong> Email : </strong>${filteredData.email}/p>
+                           <p> <strong> Email : </strong>${filteredData.email}</p>
                       
                             `,
                         },
@@ -748,17 +749,17 @@ function DaskInsurance({ setOpen }) {
                             html: `
                             <p><strong> Sigorta : </strong>Evim Sigortalı/p>
                             <p> <strong> Türü :</strong> KASKO / Şirket/p>
-                            <p>  <strong>  Firma Unvanı :</strong> ${filteredData.companyName}/p>
-                            <p> <strong>  Vergi Numarası : </strong>${filteredData.taxNumber}/p>
-                            <p> <strong> İl İlçe : </strong>${filteredData.location}/p>
-                            <p> <strong> Telefon Numarası :</strong> ${filteredData.phoneNumber}/p>
-                            <p> <strong> Doğum Tarihi :</strong> ${filteredData.birthDate}/p>
-                            <p> <strong>  Tc Kimlik No :</strong> ${filteredData.tcNo}/p>
-                            <p> <strong>  Açık Adres :</strong> ${filteredData.adress}/p>
-                            <p> <strong>  Evin Büyüklüğü(m2) :</strong> ${filteredData.area}/p>
-                            <p> <strong>  Binanın Kat Sayısı :</strong>${filteredData.flat}/p>
-                            <p> <strong> Bina İnşa Yılı : </strong>${filteredData.yearOfBuild}/p>
-                            <p> <strong> Email : </strong>${filteredData.email}/p>
+                            <p>  <strong>  Firma Unvanı :</strong> ${filteredData.companyName}</p>
+                            <p> <strong>  Vergi Numarası : </strong>${filteredData.taxNumber}</p>
+                            <p> <strong> İl İlçe : </strong>${filteredData.location}</p>
+                            <p> <strong> Telefon Numarası :</strong> ${filteredData.phoneNumber}</p>
+                            <p> <strong> Doğum Tarihi :</strong> ${filteredData.birthDate}</p>
+                            <p> <strong>  Tc Kimlik No :</strong> ${filteredData.tcNo}</p>
+                            <p> <strong>  Açık Adres :</strong> ${filteredData.adress}</p>
+                            <p> <strong>  Evin Büyüklüğü(m2) :</strong> ${filteredData.area}</p>
+                            <p> <strong>  Binanın Kat Sayısı :</strong>${filteredData.flat}</p>
+                            <p> <strong> Bina İnşa Yılı : </strong>${filteredData.yearOfBuild}</p>
+                            <p> <strong> Email : </strong>${filteredData.email}</p>
                         `,
                         },
                     }
@@ -809,7 +810,7 @@ function DaskInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.house_person_dask_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Tc Kimlik No"
+                            label="TC Kimlik No"
                             {...register("house_person_dask_TcNo", {
                                 required: "Zorunlu Alan",
                             })}
@@ -887,7 +888,7 @@ function DaskInsurance({ setOpen }) {
                     {isLoading ? "Gönderiliyor..." : "Formu Gönder ve Teklif Al"}
                 </button>
                 {!isEmpty(errors) ?
-                    <p className='flex justify-center item-center' >
+                    <p className='flex justify-center item-center mt-3' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                         <span>
                             Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
@@ -960,7 +961,7 @@ function DaskInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.house_business_dask_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Tc Kimlik No"
+                            label="TC Kimlik No"
                             {...register("house_business_dask_TcNo", {
                                 required: "Zorunlu Alan",
                             })}
@@ -1040,7 +1041,7 @@ function DaskInsurance({ setOpen }) {
                     {isLoading ? "Gönderiliyor..." : "Formu Gönder ve Teklif Al"}
                 </button>
                 {!isEmpty(errors) ?
-                    <p className='flex justify-center item-center' >
+                    <p className='flex justify-center item-center mt-3' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                         <span>
                             Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.

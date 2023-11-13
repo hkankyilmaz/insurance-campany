@@ -61,7 +61,7 @@ function CarInsurance({ setOpen }) {
 
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
-        const dbRefTwo = collection(db, "maıl");
+        const dbRefTwo = collection(db, "mail");
 
         let filteredData;
         if (values.person) {
@@ -118,16 +118,16 @@ function CarInsurance({ setOpen }) {
                         message: {
                             subject: "Teklif İsteyen Müşteri",
                             html: `
-                          <p>  Sigorta :</strong> Arabam Sigortalı</p>
-                          <p>Türü : </strong>Kasko / Şahıs</p>
-                          <p>Ad Soyad :</strong> ${filteredData.nameSurname}</p>
-                          <p>Cep Telefonu :</strong> ${filteredData.phoneNumber}</p>
-                          <p>Ruhsat Sahibi Tc Kimlik No : </strong>${filteredData.tcNo}</p>
-                          <p>Araç Plakası :</strong> ${filteredData.carNumber}</p>
-                          <p>Ruhsat Seri No :</strong> ${filteredData.seriesNo}</p>
-                          <p>Meslek :</strong> ${filteredData.job}</p>
-                          <p>LPG :</strong> ${filteredData.lpg}   </p>                     
-                          <p>Orjınal Harici Aksesuar :</strong> ${filteredData.plugin}</p>
+                          <p> strong> Sigorta :</strong> Arabam Sigortalı</p>
+                          <p>Tstrong>ürü : </strong>Kasko / Şahıs</p>
+                          <p>Astrong>d Soyad :</strong> ${filteredData.nameSurname}</p>
+                          <p>strong>Cep Telefonu :</strong> ${filteredData.phoneNumber}</p>
+                          <p>strong>Ruhsat Sahibi Tc Kimlik No : </strong>${filteredData.tcNo}</p>
+                          <p>strong>Araç Plakası :</strong> ${filteredData.carNumber}</p>
+                          <p>strong>Ruhsat Seri No :</strong> ${filteredData.seriesNo}</p>
+                          <p>strong>Meslek :</strong> ${filteredData.job}</p>
+                          <p>strong>LPG :</strong> ${filteredData.lpg}   </p>                     
+                          <p>strong>Orjınal Harici Aksesuar :</strong> ${filteredData.plugin}</p>
                           <p><strong>Doğum Traihi :</strong> ${filteredData.birthDate}</p>
                           <p><strong>Email Adresi :</strong> ${filteredData.email}</p>
                             `,
@@ -141,8 +141,8 @@ function CarInsurance({ setOpen }) {
                         message: {
                             subject: "Teklif İsteyen Müşteri",
                             html: `
-                            <p><strong>Sigorta : Arabam Sigortalı</p>
-                            <p> <strong>Türü : Kasko / Şirket</p>
+                            <p><strong>Sigorta :</strong> Arabam Sigortalı</p>
+                            <p> <strong>Türü : </strong>Kasko / Şirket</p>
                             <p> <strong> Firma Unvanı : </strong>${filteredData.companyNameName}</p>
                             <p> <strong>Vergi Numarası :</strong> ${filteredData.taxNumber}</p>
                             <p> <strong>İl İlçe :</strong> ${filteredData.location}</p>
@@ -277,15 +277,15 @@ function CarInsurance({ setOpen }) {
                             rules={{ required: "Zorunlu Alan", }}
                             render={({ field: { onChange, onBlur, value, ref } }) => (
                                 <FormControl className='!mb-3' size='small' fullWidth>
-                                    <InputLabel size='small'>Orjinal Harici Aksesuar</InputLabel>
+                                    <InputLabel size='small'>Orijinal Harici Aksesuar</InputLabel>
                                     <Select
                                         value={value == undefined ? "" : value}
                                         onChange={onChange}
                                         labelId="dlabel-carIns"
-                                        label="Orjinal Harici Aksesuar"
+                                        label="Orijinal Harici Aksesuar"
                                     >
-                                        <MenuItem value={"pluginTrue"}>Orjinal Aksesuar Var</MenuItem>
-                                        <MenuItem value={"pluginFalse"}>Orjinal Aksesuar Yok</MenuItem>
+                                        <MenuItem value={"pluginTrue"}>Orijinal Aksesuar Var</MenuItem>
+                                        <MenuItem value={"pluginFalse"}>Orijinal Aksesuar Yok</MenuItem>
                                     </Select>
                                 </FormControl>
                             )}
@@ -322,7 +322,7 @@ function CarInsurance({ setOpen }) {
                     {isLoading ? "Gönderiliyor..." : "Formu Gönder ve Teklif Al"}
                 </button>
                 {!isEmpty(errors) ?
-                    <p className='flex justify-center item-center' >  <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />  <span> Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin. </span> </p>
+                    <p className='flex justify-center item-center mt-3' >  <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />  <span> Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin. </span> </p>
                     : undefined
 
                 }
@@ -444,15 +444,15 @@ function CarInsurance({ setOpen }) {
                             rules={{ required: "Zorunlu Alan", }}
                             render={({ field: { onChange, onBlur, value, ref } }) => (
                                 <FormControl className='!mb-3' size='small' fullWidth>
-                                    <InputLabel size='small'>Orjinal Harici Aksesuar</InputLabel>
+                                    <InputLabel size='small'>Orijinal Harici Aksesuar</InputLabel>
                                     <Select
                                         value={value == undefined ? "" : value}
                                         onChange={onChange}
                                         labelId="dlabel-carIns"
-                                        label="Orjinal Harici Aksesuar"
+                                        label="Orijinal Harici Aksesuar"
                                     >
-                                        <MenuItem value={"pluginTrue"}>Orjinal Aksesuar Var</MenuItem>
-                                        <MenuItem value={"pluginFalse"}>Orjinal Aksesuar Yok</MenuItem>
+                                        <MenuItem value={"pluginTrue"}>Orijinal Aksesuar Var</MenuItem>
+                                        <MenuItem value={"pluginFalse"}>Orijinal Aksesuar Yok</MenuItem>
                                     </Select>
                                 </FormControl>
                             )}
@@ -476,7 +476,7 @@ function CarInsurance({ setOpen }) {
                     {isLoading ? "Gönderiliyor..." : "Formu Gönder ve Teklif Al"}
                 </button>
                 {!isEmpty(errors) ?
-                    <p className='flex justify-center item-center' >
+                    <p className='flex justify-center item-center mt-3' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                         <span>
                             Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
@@ -516,7 +516,7 @@ function TrafficInsurance({ setOpen }) {
         setIsLoading(true)
         const db = getFirestore(app);
         const dbRef = collection(db, "requests");
-        const dbRefTwo = collection(db, "maıl");
+        const dbRefTwo = collection(db, "mail");
         let filteredData = {}
         if (values.person) {
             filteredData = {
@@ -721,7 +721,7 @@ function TrafficInsurance({ setOpen }) {
                 </button>
 
                 {!isEmpty(errors) ?
-                    <p className='flex justify-center item-center' >
+                    <p className='flex justify-center item-center mt-3' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                         <span>
                             Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
@@ -844,7 +844,7 @@ function TrafficInsurance({ setOpen }) {
                     {isLoading ? "Gönderiliyor..." : "Formu Gönder ve Teklif Al"}
                 </button>
                 {!isEmpty(errors) ?
-                    <p className='flex justify-center item-center' >
+                    <p className='flex justify-center item-center mt-3' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                         <span>
                             Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
@@ -914,7 +914,7 @@ function ResInsurance({ setOpen }) {
                             <p><strong> Türü : </strong>İhtiyari Mali Mesuliyet Sigortası</p>
                             <p><strong>Ad Soyad :</strong> ${filteredData.nameSurname}</p>
                             <p><strong>Cep Telefonu :</strong> ${filteredData.phoneNumber}</p>
-                            <p><strong>Ruhsat Sahibi Tc Kimlik No :</strong> ${filteredData.tcNo}</p>
+                            <p><strong>Ruhsat Sahibi TC Kimlik No :</strong> ${filteredData.tcNo}</p>
                             <p><strong>Araç Plakası :</strong> ${filteredData.carNumber}</p>
                             <p><strong>Rusat Seri No: </strong>${filteredData.seriesNo}</p>
                             <p><strong>Doğum Traihi :</strong> ${filteredData.birthDate}</p>
@@ -1023,7 +1023,7 @@ function ResInsurance({ setOpen }) {
                 {isLoading ? "Gönderiliyor..." : "Formu Gönder ve Teklif Al"}
             </button>
             {!isEmpty(errors) ?
-                <p className='flex justify-center item-center' >
+                <p className='flex justify-center item-center mt-3' >
                     <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                     <span>
                         Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.

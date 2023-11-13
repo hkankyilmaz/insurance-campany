@@ -131,7 +131,7 @@ function T({ setOpen }) {
                     <TextField
                         value={watchFields.trip_person_trip_TcNo ?? ""}
                         className='!mb-3' size='small' fullWidth
-                        label="Tc Kimlik No"
+                        label="TC Kimlik No"
                         {...register("trip_person_trip_TcNo", {
                             required: "Zorunlu Alan",
                         })}
@@ -198,7 +198,7 @@ function T({ setOpen }) {
                 {isLoading ? "Gönderiliyor..." : "Formu Gönder ve Teklif Al"}
             </button>
             {!isEmpty(errors) ?
-                <p className='flex justify-center item-center' >
+                <p className='flex justify-center item-center mt-3' >
                     <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                     <span>
                         Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.

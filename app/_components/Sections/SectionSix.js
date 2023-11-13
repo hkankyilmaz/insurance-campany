@@ -21,7 +21,7 @@ function SectionSix() {
                 open={open}
                 onClose={handleClose}
             >
-                <Image className='m-auto  w-[90vw] md:w-[40vw] h-auto' src={feed} alt='faa' />
+                <Image className='m-auto  w-[90vw] md:max-w-[600px] h-auto' src={feed} alt='faa' />
             </Modal>
 
         </section>

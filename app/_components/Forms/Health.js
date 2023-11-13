@@ -11,7 +11,7 @@ import { toast, ToastContainer } from 'react-toastify';
 
 
 export default function Health({ variety, setOpen }) {
-    return <H />
+    return <H setOpen={setOpen} />
 }
 
 
@@ -50,7 +50,7 @@ function H({ setOpen }) {
             filteredData = {
                 insure: "Sağlığım Sigortalı",
                 varietyInsure: "Tamamlayıcı Sağlık Sigortası",
-                weight: data.health_person_health_weight,
+                weight: data.health_sup_health_weight,
                 tcNo: data.health_sup_health_TcNo,
                 birthdate: data.health_sup_health_birthdate,
                 nameSurname: data.health_sup_health_nameSurname,
@@ -96,8 +96,8 @@ function H({ setOpen }) {
                         message: {
                             subject: "Teklif İsteyen Müşteri",
                             html: `
-                          <p> <strong> Sigorta :</strong> İşyerim Sigortalı</p>
-                          <p><strong>Türü :</strong> İşyeri Sigortası / Şahıs</p>
+                          <p> <strong> Sigorta :</strong> Sağlığım Sigortalı</p>
+                          <p><strong>Türü :</strong> Sağlık Sigortası / Tamamlayıcı Sağlık Sigortası</p>
                           <p><strong>Ad Soyad :</strong> ${filteredData.nameSurname}</p>
                           <p><strong>Cep Telefonu :</strong> ${filteredData.phoneNumber}</p>
                           <p><strong>Tc Kimlik No :</strong> ${filteredData.tcNo}</p>
@@ -117,7 +117,7 @@ function H({ setOpen }) {
                             subject: "Teklif İsteyen Müşteri",
                             html: `
                             <p> <strong> Sigorta :</strong> İşyerim Sigortalı</p>
-                            <p><strong>Türü :</strong> İşyeri Sigortası / Şahıs</p>
+                            <p><strong>Türü :</strong> İşyeri Sigortası / Özel Sağlık Sigortası</p>
                             <p><strong>Ad Soyad :</strong> ${filteredData.nameSurname}</p>
                             <p><strong>Cep Telefonu :</strong> ${filteredData.phoneNumber}</p>
                             <p><strong>Tc Kimlik No :</strong> ${filteredData.tcNo}</p>
@@ -177,7 +177,7 @@ function H({ setOpen }) {
                         <TextField
                             value={watchFields.health_sup_health_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Tc Kimlik No"
+                            label="TC Kimlik No"
                             {...register("health_sup_health_TcNo", {
                                 required: "Zorunlu Alan",
                             })}
@@ -209,10 +209,10 @@ function H({ setOpen }) {
                     </div>
                     <div>
                         <TextField
-                            value={watchFields.health_person_health_weight ?? ""}
+                            value={watchFields.health_sup_health_weight ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Kilo(kg)"
-                            {...register("health_person_health_weight", {
+                            {...register("health_sup_health_weight", {
                                 required: "Zorunlu Alan",
                             })}
                         />
@@ -220,10 +220,10 @@ function H({ setOpen }) {
                     </div>
                     <div>
                         <TextField
-                            value={watchFields.health_person_health_email ?? ""}
+                            value={watchFields.health_sup_health_email ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="Email Adresi"
-                            {...register("health_person_health_email", {
+                            {...register("health_sup_health_email", {
                                 required: "Zorunlu Alan",
                             })}
                         />
@@ -236,7 +236,7 @@ function H({ setOpen }) {
                     {isLoading ? "Gönderiliyor..." : "Formu Gönder ve Teklif Al"}
                 </button>
                 {!isEmpty(errors) ?
-                    <p className='flex justify-center item-center' >
+                    <p className='flex justify-center item-center mt-3' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                         <span>
                             Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
@@ -294,7 +294,7 @@ function H({ setOpen }) {
                         <TextField
                             value={watchFields.health_special_health_TcNo ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Tc Kimlik No"
+                            label="TC Kimlik No"
                             {...register("health_special_health_TcNo", {
                                 required: "Zorunlu Alan",
                             })}
@@ -352,7 +352,7 @@ function H({ setOpen }) {
                     {isLoading ? "Gönderiliyor..." : "Formu Gönder ve Teklif Al"}
                 </button>
                 {!isEmpty(errors) ?
-                    <p className='flex justify-center item-center' >
+                    <p className='flex justify-center item-center mt-3' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                         <span>
                             Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.

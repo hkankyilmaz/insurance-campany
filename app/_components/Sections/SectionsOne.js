@@ -2,15 +2,21 @@
 import React, { useCallback, useEffect } from 'react'
 import Image from 'next/image';
 import { Link } from 'react-scroll';
+import ModalRegister from '../ModalRegister';
 
 
 function SectionsOne() {
+
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     const OPTIONS = { containScroll: 'trimSnaps' }
     const SLIDE_COUNT = 7;
     const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
     const [text, setText] = React.useState({ textOne: "Trafik Kazaları", textTwo: "Arabam Sigortalı" })
     return (
-        <section className='relative'>
+        <section className='relative bg-black'>
             <Slider slides={SLIDES} options={OPTIONS} text={text} setText={setText} />
             <div className='absolute bottom-24 left-[50%] translate-x-[-50%] max-md:flex max-md:flex-col max-md:item-center max-md:justify-center'>
                 <Link
@@ -24,23 +30,24 @@ function SectionsOne() {
                     <button className='mr-6 w-[200px] px-4 py-2 rounded-md bg-white text-black hover:bg-orange-400 hover:text-white transition-all ease-in'>Tekif Al</button>
                 </Link>
                 <button onClick={(e) => document.querySelector("#form").scrollIntoView({ behavior: "smooth", block: "start", inline: "start" })} className='max-md:hidden mr-6 w-[200px] px-4 py-2 rounded-md bg-white text-black hover:bg-orange-400 hover:text-white transition-all ease-in'>Tekif Al</button>
-                <button className='w-[200px]  px-4 py-2 rounded-md hover:bg-white hover:text-black bg-orange-400 text-white transition-all ease-in mt-3' >Aranma Talebi Oluşturun</button>
+                <button onClick={() => setOpen(true)} className='w-[200px]  px-4 py-2 rounded-md hover:bg-white hover:text-black bg-orange-400 text-white transition-all ease-in mt-3' >Aranma Talebi Oluşturun</button>
             </div>
-            <div className='max-lg:hidden absolute left-10 top-[50%] translate-y-[-50%] max-w-xl text-4xl text-white'>
+            <div className='max-lg:hidden absolute left-10 top-[50%] translate-y-[-50%]  text-5xl text-white pb-3 border-b-2 border-b-[orange] border-solid '>
                 {text.textOne}
             </div>
-            <div className='max-lg:hidden absolute right-10 top-[50%] translate-y-[-50%] max-w-xl text-xl text-white text-right'>
-                {text.textTwo}
+            <div className='max-lg:hidden absolute left-10 top-[50%] translate-y-[40px] max-w-4xl text-3xl text-white text-left'>
+                Poliçen varsa, yarının maddi risklerini dert etmene gerek yok!
             </div>
-            <div className='lg:hidden absolute top-[50%] translate-y-[-50%] w-full px-5 right-[50%] translate-x-[50%]' >
-                <div className='text-2xl text-white'>
+            <div className='lg:hidden absolute top-[120px] text-center max-w-2xl  w-full px-5 right-[50%] translate-x-[50%] '>
+                <div className='text-xl text-white pb-1 border-b-2 border-b-[orange] border-solid'>
                     {text.textOne}
                 </div>
                 <div className='text-normal text-white'>
-                    {text.textTwo}
+                    Poliçen varsa, yarının maddi risklerini dert etmene gerek yok!
                 </div>
 
             </div>
+            <ModalRegister handleClose={handleClose} open={open} />
         </section>
     )
 }
@@ -71,13 +78,36 @@ import _image7 from '../../_assets/seyahat2 320*625.jpg'
 
 import "./style.css"
 
-const imagesDesktop = [image1, image2, image3, image4, image5, image6, image7]
-const imagesMobile = [_image1, _image2, _image3, _image4, _image5, _image6, _image7]
 
-const imageByIndex = (index) => imagesMobile[index % imagesMobile.length]
+
 
 
 function Slider(props) {
+
+    const imagesDesktop = [image1, image2, image3, image4, image5, image6, image7]
+    const imagesMobile = [_image1, _image2, _image3, _image4, _image5, _image6, _image7]
+
+    const [list, setList] = React.useState(imagesMobile)
+
+    const imageByIndex = (index) => list[index % list.length]
+
+    useEffect(() => {
+
+        if (typeof window !== "undefined") {
+            if (window.innerWidth < 600) setList(imagesDesktop)
+            if (window.innerWidth > 600) setList(imagesMobile)
+        }
+    }, [])
+
+    if (typeof window !== "undefined") {
+        window.addEventListener("resize", (event) => {
+            if (window.innerWidth < 600) setList(imagesDesktop)
+            if (window.innerWidth > 600) setList(imagesMobile)
+        });
+    }
+
+
+
     const { slides, options } = props
     const autoplayOptions = {
         delay: 6000,
