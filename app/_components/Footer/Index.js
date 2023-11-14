@@ -36,11 +36,11 @@ function Footer() {
 
                         <p>BİLGİ MERKEZİ</p>
                         <ul>
-                            <li> Gizlilik ve Çerez Politikası</li>
-                            <li>Kişisel Verileri Koruma Kanunu</li>
-                            <li>Hasar Yardım Merkezi</li>
-                            <li>Kullanıcı Sözleşmesi</li>
-                            <li>Kaza Tespit Tutanağı</li>
+                            <Link href={"/gizlilik-ve-cerez-politikasi"} ><li> Gizlilik ve Çerez Politikası</li></Link>
+                            <Link href={"/kisisel-veri-koruma-kanunu"} > <li>Kişisel Verileri Koruma Kanunu</li></Link>
+                            <Link href="http://wa.me/905331555516" ><li>Hasar Yardım Merkezi</li></Link>
+                            <Link href={"/kullanici-sozlesmesi"} > <li>Kullanıcı Sözleşmesi</li></Link>
+                            <Link href={"https://www.tmtb.org.tr/Forms/ktt.pdf"} > <li>Kaza Tespit Tutanağı</li></Link>
                         </ul>
                     </div>
                     <div>
@@ -54,11 +54,11 @@ function Footer() {
                     <div>
                         <p>Ürünlerimiz</p>
                         <ul>
-                            <li>Arabam Sigortalı</li>
-                            <li>Evim Sigortalı</li>
-                            <li>İşyerim Sigortalı</li>
-                            <li>Seyahatim Sigortalı</li>
-                            <li>Sağlığım Sigortalı</li>
+                            <Link href={"/arac"} > <li>Arabam Sigortalı</li></Link>
+                            <Link href={"/ev"} > <li>Evim Sigortalı</li></Link>
+                            <Link href={"/isyeri"} ><li>İşyerim Sigortalı</li></Link>
+                            <Link href={"/seyahat"} ><li>Seyahatim Sigortalı</li></Link>
+                            <Link href={"/saglik"} > <li>Sağlığım Sigortalı</li></Link>
                         </ul>
                     </div>
                 </div>
