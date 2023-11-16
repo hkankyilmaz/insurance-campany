@@ -32,16 +32,16 @@ function SectionsOne() {
                 <button onClick={(e) => document.querySelector("#form").scrollIntoView({ behavior: "smooth", block: "start", inline: "start" })} className='max-md:hidden lg:mr-6 w-[200px] px-4 py-2 rounded-md bg-white text-black hover:bg-orange-400 hover:text-white transition-all ease-in'>Tekif Al</button>
                 <button onClick={() => setOpen(true)} className='w-[200px]  px-4 py-2 rounded-md hover:bg-white hover:text-black bg-orange-400 text-white transition-all ease-in mt-3' >Aranma Talebi Oluşturun</button>
             </div>
-            <div className='max-lg:hidden absolute left-10 top-[50%] translate-y-[-50%]  text-5xl text-white pb-3 border-b-2 border-b-[orange] border-solid '>
+            {/* <div className='max-lg:hidden absolute left-10 top-[50%] translate-y-[-50%]  text-5xl text-white pb-3 border-b-2 border-b-[orange] border-solid '>
                 {text.textOne}
-            </div>
+            </div> */}
             <div className='max-lg:hidden absolute left-10 top-[50%] translate-y-[40px] max-w-4xl text-3xl text-white text-left'>
                 Poliçen varsa, yarının maddi risklerini dert etmene gerek yok!
             </div>
             <div className='lg:hidden absolute top-[120px] text-center max-w-2xl  w-full px-5 right-[50%] translate-x-[50%] '>
-                <div className='text-xl text-white pb-1 border-b-2 border-b-[orange] border-solid'>
+                {/* <div className='text-xl text-white pb-1 border-b-2 border-b-[orange] border-solid'>
                     {text.textOne}
-                </div>
+                </div> */}
                 <div className='text-normal text-white'>
                     Poliçen varsa, yarının maddi risklerini dert etmene gerek yok!
                 </div>
