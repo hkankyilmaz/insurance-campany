@@ -124,12 +124,12 @@ function TickerContainer() {
             <div className='ticker-viewer overflow-viewer'>
                 <div className='ticker-scroll infinite-animation delay-animation flex' >
                     {images.map((item, i) => (
-                        <Image alt='Brand-Image' className='max-w-[250px] mr-5' src={item} key={i} />
+                        <Image alt='Brand-Image' priority={true} className='max-w-[250px] mr-5' src={item} key={i} />
                     ))}
                 </div>
                 <div className='ticker-scroll infinite-animation delay-animation flex' >
                     {images.map((item, i) => (
-                        <Image alt='Brand-Image' className='max-w-[250px] mr-5' src={item} key={i} />
+                        <Image alt='Brand-Image' priority={true} className='max-w-[250px] mr-5' src={item} key={i} />
                     ))}
                 </div>
             </div>
