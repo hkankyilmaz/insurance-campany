@@ -25,10 +25,6 @@
   --type: y mandatory;
 }
 
-html {
-  font-size: 13px;
-}
-
 body {
   position: relative;
   overflow-x: hidden;
