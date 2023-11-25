@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 function Footer() {
     return (
-        <section className='text-white bg-slate-800 py-[100px] max-xl+:px-[25px] px-[25px] md:px-[150px] footer'>
+        <section className='text-white bg-slate-800 py-[40px] md:py-[100px] max-xl+:px-[25px] px-[25px] md:px-[150px] footer'>
             {/* <div className='mb-[50px]'>
                 <Image className='w-[300px]' src={logo} />
 
