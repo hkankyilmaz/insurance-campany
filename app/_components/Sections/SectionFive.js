@@ -49,7 +49,7 @@ function Card() {
                 <div className='flex justify-between border-l-[30px] px-2 border-l-orange-400 pb-4' >
                     <div className=''>
                         <p className='mb-1 font-bold text-sm'>Genel Sigorta</p>
-                        <p className='flex justify-start items-center text-xs' > <HiOutlineDocumentText color='red' className='text-lg' /> <span className='ml-1' > Sigorta Yaptirmanin Onemi</span></p>
+                        <p className='flex justify-start items-center text-sm' > <HiOutlineDocumentText color='red' className='text-lg' /> <span className='ml-1' > Sigorta Yaptirmanin Onemi</span></p>
                     </div>
                     <div>
                         <p className='flex items-center mt-1'> <CgCalendarDates color='red' className='text-lg' /> <span className='ml-1 text-xs' >04-10-2023</span> </p>

@@ -69,7 +69,7 @@ function SectionFour() {
 
             </div>
             <h2 className='max-md:text-lg font-bold text-2xl text-center mb-3'>Aracılık Ettiğimiz Kurumlar</h2>
-            <p className='text-center text-lg max-md:text-xs max-w-[1000px] md:mb-20'>
+            <p className='text-center text-lg max-md:text-sm max-w-[1000px] md:mb-20'>
                 Sigorta, gelecekte mülk ya da bireylerin maddi hasar alması halinde en başta teminat altına alınan tutarın sigorta şirketi tarafından sigortalı bireye/şirkete ödenmesidir.
                 Ayhan Akdağcı Sigorta 25'ten fazla marka ile etkin çalışarak sizin için en iyi teklifi hızla hazırlar.
             </p>

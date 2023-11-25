@@ -21,7 +21,7 @@ function SectionThree() {
                         <div className='mb-2 mr-4 md:mr-6'>  <div className='w-20 h-20 flcenter max-md:w-10 max-md:h-10 border rounded-full' ><BsSendFill className='max-md:text-xl text-4xl' /></div>  </div>
                         <div>
                             <h2 className='mb-2 md:text-xl max-md:text-normal  font-bold' >Teklif Alın </h2>
-                            <p className='max-md:text-xs text-md mb-2'>İhtiyacınız olan sigorta poliçesi formunu doldurun ve gönderin. Birkaç dakika içerisinde satış temsilcimiz en iyi tekliflerle gelsin.</p>
+                            <p className='max-md:text-sm text-md mb-2'>İhtiyacınız olan sigorta poliçesi formunu doldurun ve gönderin. Birkaç dakika içerisinde satış temsilcimiz en iyi tekliflerle gelsin.</p>
                         </div>
                     </div>
 
@@ -29,7 +29,7 @@ function SectionThree() {
                         <div className='mb-2 mr-4 md:mr-6'  >  <div className='w-20 h-20 flcenter max-md:w-10 max-md:h-10  border rounded-full' > <GoGitCompare className='max-md:text-xl text-4xl' /> </div>  </div>
                         <div>
                             <h2 className='mb-2 md:text-xl max-md:text-normal font-bold'>Karşılaştırın</h2>
-                            <p className='max-md:text-xs text-md mb-2' >Satış temsilcimizin size sunduğu detaylı teklifleri karşılaştırın ve size en uygun poliçeyi seçin. Seçim sürecinde de yanınızdayız.</p>
+                            <p className='max-md:text-sm text-md mb-2' >Satış temsilcimizin size sunduğu detaylı teklifleri karşılaştırın ve size en uygun poliçeyi seçin. Seçim sürecinde de yanınızdayız.</p>
                         </div>
                     </div>
 
@@ -37,7 +37,7 @@ function SectionThree() {
                         <div className='mb-2 mr-4 md:mr-6' >  <div className='w-20 h-20 flcenter max-md:w-10 max-md:h-10  border rounded-full' > <AiFillCreditCard className='max-md:text-xl text-4xl' /> </div>  </div>
                         <div>
                             <h2 className='max-md:text-normal mb-2 md:text-xl font-bold' >Güvenle Ödeyin</h2>
-                            <p className='max-md:text-xs text-md mb-2' >Seçtiğiniz poliçeyi web sitemizden güvenle ödeyin. Poliçenizi dijital belge veya basılı belge olarak temin edebilirsiniz.</p>
+                            <p className='max-md:text-sm text-md mb-2' >Seçtiğiniz poliçeyi web sitemizden güvenle ödeyin. Poliçenizi dijital belge veya basılı belge olarak temin edebilirsiniz.</p>
                         </div>
                     </div>
                 </div>

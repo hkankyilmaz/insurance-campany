@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 function SectionSeven() {
     return (
         <section className='md:min-h-[900px] md:h-[100vh] md:pt-[120px] flex flex-col justify-start items-center lg:mx-[100px]' >
-            <h2 className='text-2xl max-md:mt-[50px] font-bold' >Bizi Tercih Edenler</h2>
+            <h2 className='text-2xl max-md:mt-[50px] font-bold max-md:text-lg' >Bizi Tercih Edenler</h2>
             <div className='max-md:flex-col flex justify-center items-center'>
                 <div className='w-full md:w-[50%] flex justify-end'>
                     <Image className='w-[725px]' src={comment} />
@@ -60,7 +60,7 @@ export default SectionSeven
 
 function Comment({ name, rate, comment }) {
     return (
-        <div className='w-full bg-orange-50 p-5 rounded-lg mb-3'>
+        <div className='w-full bg-orange-50 p-5 max-md:text-sm rounded-lg mb-3'>
             <div> <Rating value={rate} readOnly /> </div>
             <div className='mb-1' > {comment} </div>
             <div className='font-bold' > {name} </div>
