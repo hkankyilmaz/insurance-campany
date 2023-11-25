@@ -80,6 +80,7 @@
     bottom: 25px;
     border-top: 1px solid orange;
     border-bottom: 1px solid orange;
+    border: none;
   }
 }
 
