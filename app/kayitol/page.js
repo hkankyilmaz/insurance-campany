@@ -81,7 +81,7 @@ export default function SignUp() {
 
     return (
         <>
-            <section className="pt-[100px] md:pt-[150px] h-[90vh]">
+            <section className="pt-[100px] md:pt-[150px]  min-h-[90vh]">
 
                 <ThemeProvider theme={defaultTheme}>
                     <CssBaseline />
