@@ -99,12 +99,12 @@ function Slider(props) {
         }
     }, [])
 
-    if (typeof window !== "undefined") {
-        window.addEventListener("resize", (event) => {
-            if (window.innerWidth < 600) setList(imagesDesktop)
-            if (window.innerWidth > 600) setList(imagesMobile)
-        });
-    }
+    // if (typeof window !== "undefined") {
+    //     window.addEventListener("resize", (event) => {
+    //         if (window.innerWidth < 600) setList(imagesDesktop)
+    //         if (window.innerWidth > 600) setList(imagesMobile)
+    //     });
+    // }
 
 
 
