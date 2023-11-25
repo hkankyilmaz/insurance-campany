@@ -9,7 +9,6 @@ function SectionFour() {
 
     const ref = useRef(null)
     const isInView = useInView(ref)
-    console.log(isInView)
 
     const [count, setCount] = useState({ first: 0, second: 0, third: 0, fourth: 0 })
 
@@ -70,7 +69,7 @@ function SectionFour() {
 
             </div>
             <h2 className='max-md:text-lg font-bold text-2xl text-center mb-3'>Aracılık Ettiğimiz Kurumlar</h2>
-            <p className='text-center max-md:text-xs max-w-[1000px]'>
+            <p className='text-center text-lg max-md:text-xs max-w-[1000px]'>
                 Sigorta, gelecekte mülk ya da bireylerin maddi hasar alması halinde en başta teminat altına alınan tutarın sigorta şirketi tarafından sigortalı bireye/şirkete ödenmesidir.
                 Ayhan Akdağcı Sigorta 25'ten fazla marka ile etkin çalışarak sizin için en iyi teklifi hızla hazırlar.
             </p>

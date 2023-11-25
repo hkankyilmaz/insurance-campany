@@ -251,11 +251,11 @@ function H({ setOpen }) {
         return (
             <form className='w-full' onSubmit={handleSubmit(onSubmit)} >
                 <div>
-                    <FormControlLabel control={<Checkbox checked={values.person}
+                    <FormControlLabel control={<Checkbox color='warning' checked={values.person}
                         onChange={(e) => setValues({ person: e.target.checked, business: !e.target.checked })} />}
                         label="Tamamlayıcı Sağlık Sigortası"
                     />
-                    <FormControlLabel control={<Checkbox checked={values.business}
+                    <FormControlLabel control={<Checkbox color='warning' checked={values.business}
                         onChange={(e) => setValues({ business: e.target.checked, person: !e.target.checked })} />}
                         label="Özel Sağlık Sigortası"
                     />

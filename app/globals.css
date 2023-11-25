@@ -98,3 +98,11 @@ header {
 ._increament-item p:nth-of-type(2) {
   @apply text-sm lg:text-lg text-slate-500;
 }
+
+form {
+  @apply flex flex-col;
+}
+
+form button {
+  @apply rounded-md !px-10 !py-2;
+}

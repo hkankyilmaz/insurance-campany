@@ -100,7 +100,7 @@ function ModalRegister({ handleClose, open }) {
                                     required: "Zorunlu Alan",
                                 })}
                             />
-                            <button disabled={isLoading ? true : false} type="submit" className='w-[200px] px-4 py-2 rounded-md  bg-orange-400 hover:bg-orange-500 text-white transition-all ease-in mt-3' >
+                            <button disabled={isLoading ? true : false} type="submit" className='w-[250px] px-4 py-2 rounded-md  bg-orange-400 hover:bg-orange-500 text-white transition-all ease-in mt-3' >
                                 {isLoading ? "Gönderiliyor..." : "Aranma Talebi Oluştur"}
                             </button>
                         </form>
