@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
             pauseOnHover
             theme="light"
           />
-          <Link target='_blank' className='z-[100] fixed right-[10px] top-[86vh] md:right-[50px] md:top-[calc(88vh-10px)] translate-[-200%]' href="http://wa.me/905331555516" > <Image className='hover:scale-[1.1] transition-all duration-700' width={80} height={80} src={wp} /> </Link>
+          <Link target='_blank' className='z-[100] fixed right-[10px] top-[86vh] md:right-[50px] md:top-[calc(88vh-10px)] translate-[-200%]' href="http://wa.me/905331555516" > <Image priority={true} className='hover:scale-[1.1] transition-all duration-700' width={80} height={80} src={wp} /> </Link>
         </body>
 
       </AuthProvider>

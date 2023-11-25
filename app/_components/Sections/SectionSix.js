@@ -11,7 +11,7 @@ function SectionSix() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     return (
-        <section id='form' className='md:min-h-[900px] mb*10 form md:w-[100vw] md:h-[100vh] md:px-[50px] lg:px[200px] 2xl:px-[250px] max-md:pb-[50px] md:pt-[100px] flex flex-col justify-start items-center max-md:bg-slate-50 form_' >
+        <section id='form' className='md:min-h-[900px] mb-10 form md:w-[100vw] md:h-[100vh] md:px-[50px] lg:px[200px] 2xl:px-[250px] max-md:pb-[50px] md:pt-[100px] flex flex-col justify-start items-center max-md:bg-slate-50 form_' >
             <h2 className='text-2xl max-md:text-lg font-bold text-center mb-5' >Hemen teklif almak için formu doldurun:</h2>
 
 

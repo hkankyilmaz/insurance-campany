@@ -35,7 +35,10 @@ body {
 }
 main {
   overflow-x: hidden;
-  @media (min-width: 760px) {
+}
+
+@media (min-width: 760px) {
+  main {
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: var(--type);
