@@ -52,7 +52,7 @@ function Footer() {
                         </ul>
                     </div>
                     <div>
-                        <p>Ürünlerimiz</p>
+                        <p>ÜRÜNLERİMİZ</p>
                         <ul>
                             <Link href={"/arac"} > <li>Arabam Sigortalı</li></Link>
                             <Link href={"/ev"} > <li>Evim Sigortalı</li></Link>
