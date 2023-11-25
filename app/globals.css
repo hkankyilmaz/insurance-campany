@@ -86,7 +86,7 @@ header {
 
 /* bizimle calisanlar */
 ._increament-item {
-  @apply h-[70px] w-[150px] md:w-[250px] lg:w-[225px] lg:h-[225px] mr-7 rounded-md flex flex-col justify-center items-center border-slate-400 border md:shadow-2xl cursor-crosshair;
+  @apply h-[90px] w-[150px] md:w-[250px] lg:w-[225px] lg:h-[225px] mr-2 md:mr-7 rounded-md flex flex-col justify-center items-center border-slate-400 border md:shadow-2xl cursor-crosshair;
 }
 ._increament-item:hover {
   @apply shadow-orange-300;
