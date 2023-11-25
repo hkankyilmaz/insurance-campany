@@ -30,12 +30,7 @@ function Copyright(props) {
             align="center"
             {...props}
         >
-            {"Copyright © "}
-            <Link color="inherit" href="#">
-                @akdagsigorta
-            </Link>{" "}
-            {new Date().getFullYear()}
-            {"."}
+            Ayhan Akdağcı Sigorta ©️ 2023
         </Typography>
     );
 }
@@ -141,7 +136,7 @@ export default function SignUp() {
                                 required
                                 fullWidth
                                 id="email"
-                                label="Email Addresi"
+                                label="E-posta Adresi"
                                 name="email"
                                 autoComplete="email"
                                 {...register("email", {
@@ -188,7 +183,7 @@ export default function SignUp() {
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2 }}
                             >
-                                {"Gönder"}
+                                {"Kaydol"}
                             </Button>
                             <Grid container>
                                 <Grid item xs>
