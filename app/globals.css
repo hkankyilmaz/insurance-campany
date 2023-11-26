@@ -68,11 +68,11 @@ header {
 /* Header */
 
 .m-link {
-  @apply text-black md:rounded-lg px-6 py-1 max-md:border-b-2 max-md:pb-2 max-md:border-[orange];
+  @apply text-black md:rounded-lg px-6 py-1 max-md:border-b-2 max-md:pb-2 max-md:border-[orange] max-md:w-[200px];
 }
 
 .menu-item {
-  @apply md:hidden flex flex-col justify-center items-center leading-[16px];
+  @apply md:hidden flex justify-center items-center leading-[16px] w-full;
 }
 /* Footer */
 .footer p {
