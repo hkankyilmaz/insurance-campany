@@ -72,7 +72,7 @@ header {
 }
 
 .menu-item {
-  @apply md:hidden flex justify-center items-center leading-[16px] w-full;
+  @apply md:hidden flex md:flex-col justify-center items-center leading-[16px] w-full;
 }
 /* Footer */
 .footer p {
