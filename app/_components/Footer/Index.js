@@ -38,9 +38,9 @@ function Footer() {
                         <ul>
                             <Link href={"/gizlilik-ve-cerez-politikasi"} ><li> Gizlilik ve Çerez Politikası</li></Link>
                             <Link href={"/kisisel-veri-koruma-kanunu"} > <li>Kişisel Verileri Koruma Kanunu</li></Link>
-                            <Link href="http://wa.me/905331555516" ><li>Hasar Yardım Merkezi</li></Link>
+                            <Link target='_blank' href="http://wa.me/905331555516" ><li>Hasar Yardım Merkezi</li></Link>
                             <Link href={"/kullanici-sozlesmesi"} > <li>Kullanıcı Sözleşmesi</li></Link>
-                            <Link href={"https://www.tmtb.org.tr/Forms/ktt.pdf"} > <li>Kaza Tespit Tutanağı</li></Link>
+                            <Link target='_blank' href={"https://www.tmtb.org.tr/Forms/ktt.pdf"} > <li>Kaza Tespit Tutanağı</li></Link>
                         </ul>
                     </div>
                     <div>
