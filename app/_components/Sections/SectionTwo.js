@@ -96,6 +96,7 @@ function Slider(props) {
     const autoplayOptions = {
         delay: 6000,
         rootNode: (emblaRoot) => emblaRoot.parentElement,
+        stopOnInteraction: false
     }
     const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay(autoplayOptions)])
 
