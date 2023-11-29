@@ -36,7 +36,7 @@ function SectionThree() {
                         </div>
                     </div>
 
-                    <div className='flex mb-5 md:mb-10items-center'>
+                    <div className='flex md:mb-10 items-center'>
                         <div className='mb-2 mr-4 md:mr-6' >  <div className='w-20 h-20 flcenter max-md:w-10 max-md:h-10  border rounded-full' > <AiFillCreditCard className='max-md:text-xl text-4xl' /> </div>  </div>
                         <div>
                             <h2 className='max-md:text-normal mb-2 md:text-xl font-bold' >Güvenle Ödeyin</h2>

@@ -17,7 +17,7 @@ function SectionTwo() {
     return (
         <section className='secTwo relative h-[100vh] w-[100vw] bg-black'>
             <Slider slides={SLIDES} options={OPTIONS} setText={setText} text={text} />
-            <div className='absolute bottom-24 left-[50%] translate-x-[-50%] max-md:flex max-md:flex-col max-md:item-center max-md:justify-center'>
+            <div className='absolute bottom-24 left-[50%] translate-x-[-50%] max-md:flex max-md:flex-col max-md:item-center max-md:justify-center md:min-w-[464px]'>
                 <Link
                     className='md:hidden'
                     to="form"
@@ -26,9 +26,9 @@ function SectionTwo() {
                     offset={-35}
                     duration={500}
                 >
-                    <button className='lg:mr-6 w-[220px] px-4 py-2 rounded-md bg-white text-black hover:bg-orange-400 hover:text-white transition-all ease-in'>Hemen Teklif Alın</button>
+                    <button className='md:mr-6 w-[220px] px-4 py-2 rounded-md bg-white text-black hover:bg-orange-400 hover:text-white transition-all ease-in'>Hemen Teklif Alın</button>
                 </Link>
-                <button onClick={(e) => document.querySelector("#form").scrollIntoView({ behavior: "smooth", block: "start", inline: "start" })} className='max-md:hidden lg:mr-6 w-[220px] px-4 py-2 rounded-md bg-white text-black hover:bg-orange-400 hover:text-white transition-all ease-in'>Tekif Alın</button>
+                <button onClick={(e) => document.querySelector("#form").scrollIntoView({ behavior: "smooth", block: "start", inline: "start" })} className='max-md:hidden md:mr-6 w-[220px] px-4 py-2 rounded-md bg-white text-black hover:bg-orange-400 hover:text-white transition-all ease-in'>Tekif Alın</button>
                 <button onClick={() => setOpen(true)} className='w-[220px]  px-4 py-2 rounded-md hover:bg-white hover:text-black bg-orange-400 text-white transition-all ease-in mt-3' >Aranma Talebi Oluşturun</button>
             </div>
             <div className='max-lg:hidden absolute left-10 top-[50%] translate-y-[-50%]  text-5xl text-white pb-3 border-b-2 border-b-[orange] border-solid '>
