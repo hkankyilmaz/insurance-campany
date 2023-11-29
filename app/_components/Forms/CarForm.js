@@ -341,7 +341,7 @@ function CarInsurance({ setOpen }) {
                         label="Şirket"
                     />
                 </div>
-                <div className='grid grid-cols-2 gap-x-2' >
+                <div className='grid grid-cols-2 gap-x-2 max-md:grid-cols-1' >
                     <div>
                         <TextField
                             value={watchFields.car_business_kasko_companyName ?? ""}
@@ -623,7 +623,7 @@ function TrafficInsurance({ setOpen }) {
                         label="Şirket"
                     />
                 </div>
-                <div className='grid grid-cols-2 gap-x-2' >
+                <div className='grid grid-cols-2 gap-x-2 max-md:grid-cols-1' >
                     <div>
                         <TextField
                             value={watchFields.car_person_traffic_nameSurname ?? ""}
@@ -745,7 +745,7 @@ function TrafficInsurance({ setOpen }) {
                         label="Şirket"
                     />
                 </div>
-                <div className='grid grid-cols-2 gap-x-2' >
+                <div className='grid grid-cols-2 gap-x-2 max-md:grid-cols-1' >
                     <div>
                         <TextField
                             value={watchFields.car_business_traffic_companyName ?? ""}
@@ -933,7 +933,7 @@ function ResInsurance({ setOpen }) {
     return (
         <form className='w-full' onSubmit={handleSubmit(onSubmit)} >
 
-            <div className='grid grid-cols-2 gap-x-2' >
+            <div className='grid grid-cols-2 gap-x-2 max-md:grid-cols-1' >
                 <div>
 
                     <TextField

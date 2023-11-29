@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 function SectionThree() {
     return (
-        <section className='w-[100vw] md:pt-[100px] max-md:py-[0px] px-[25px] lg:px-[200px] xl:px-[300px] flex flex-col justify-start items-center relative' >
+        <section className='w-[100vw] md:pt-[100px] max-md:py-[0px] px-[25px] lg:px-[100px] xl:px-[150px] flex flex-col justify-start items-center relative' >
             <p className='font-bold text-2xl max-md:text-lg my-4' >Nasıl Çalışır?</p>
             <motion.div
                 className='max-md:flex-col  md:flcenter'

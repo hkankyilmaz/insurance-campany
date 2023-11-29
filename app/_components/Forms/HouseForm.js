@@ -416,7 +416,7 @@ function HouseInsurance({ setOpen }) {
                         label="Şirket"
                     />
                 </div>
-                <div className='grid grid-cols-2 gap-x-2' >
+                <div className='grid grid-cols-2 gap-x-2 max-md:grid-cols-1' >
                     <div>
                         <TextField
                             value={watchFields.house_business_konut_companyName ?? ""}
@@ -774,16 +774,16 @@ function DaskInsurance({ setOpen }) {
         return (
             <form className='w-full' onSubmit={handleSubmit(onSubmit)} >
                 <div>
-                    <FormControlLabel control={<Checkbox checked={values.person}
+                    <FormControlLabel control={<Checkbox color='warning' checked={values.person}
                         onChange={(e) => setValues({ person: e.target.checked, business: !e.target.checked })} />}
                         label="Şahıs"
                     />
-                    <FormControlLabel control={<Checkbox checked={values.business}
+                    <FormControlLabel control={<Checkbox color='warning' checked={values.business}
                         onChange={(e) => setValues({ business: e.target.checked, person: !e.target.checked })} />}
                         label="Şirket"
                     />
                 </div>
-                <div className='grid grid-cols-2 gap-x-2' >
+                <div className='grid grid-cols-2 gap-x-2 max-md:grid-cols-1' >
                     <div>
                         <TextField
                             value={watchFields.house_person_dask_nameSurname ?? ""}
@@ -904,16 +904,16 @@ function DaskInsurance({ setOpen }) {
         return (
             <form className='w-full' onSubmit={handleSubmit(onSubmit)} >
                 <div>
-                    <FormControlLabel control={<Checkbox checked={values.person}
+                    <FormControlLabel control={<Checkbox color='warning' checked={values.person}
                         onChange={(e) => setValues({ person: e.target.checked, business: !e.target.checked })} />}
                         label="Şahıs"
                     />
-                    <FormControlLabel control={<Checkbox checked={values.business}
+                    <FormControlLabel control={<Checkbox color='warning' checked={values.business}
                         onChange={(e) => setValues({ business: e.target.checked, person: !e.target.checked })} />}
                         label="Şirket"
                     />
                 </div>
-                <div className='grid grid-cols-2 gap-x-2' >
+                <div className='grid grid-cols-2 gap-x-2 max-md:grid-cols-1' >
                     <div>
                         <TextField
                             value={watchFields.house_business_dask_companyName ?? ""}
