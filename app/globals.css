@@ -36,12 +36,13 @@ body {
 main {
   overflow-x: hidden;
 }
-main {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: var(--type);
+@media (min-width: 760px) {
+  main {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: var(--type);
+  }
 }
-
 /* main::-webkit-scrollbar {
   z-index: 100;
 } */
