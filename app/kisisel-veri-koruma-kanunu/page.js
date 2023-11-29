@@ -5,7 +5,7 @@ import Footer from '../_components/Footer/Index'
 function Index() {
     return (
         <>
-            <div className='flex justify-center items-start pt-[100px] pb-[100px] max-lg:px-7'>
+            <div className='flex justify-center items-start pt-[100px] pb-[100px] max-lg:px-5'>
 
                 <div className='max-w-[1000px] grid grid-cols-1 gap-2' >
                     <h2 className='text-xl font-bold'> KVKK Aydınlatma Metni </h2>

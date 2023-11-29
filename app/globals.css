@@ -41,11 +41,7 @@ main {
   overflow-y: scroll;
   scroll-snap-type: var(--type);
 }
-@media (max-width: 640px) {
-  body {
-    @apply pt-[70px];
-  }
-}
+
 /* main::-webkit-scrollbar {
   z-index: 100;
 } */
