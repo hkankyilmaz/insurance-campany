@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 function SectionSeven() {
     return (
-        <section className='flex flex-col justify-start items-center lg:px-[100px] md:pt-[100px]' >
+        <section className='flex flex-col justify-start items-center lg:px-[100px] md:pt-[100px] max-md:pt-[10px]' >
             <h2 className='text-2xl font-bold md:mb-3 max-md:text-lg' >Bizi Tercih Edenler</h2>
             <div className='max-md:flex-col flex justify-center items-center md:bg-slate-50'>
                 <div className='w-full md:w-[50%] flex justify-end'>
