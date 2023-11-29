@@ -36,12 +36,14 @@ body {
 main {
   overflow-x: hidden;
 }
-
-@media (min-width: 760px) {
-  main {
-    height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: var(--type);
+main {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: var(--type);
+}
+@media (max-width: 640px) {
+  body {
+    @apply pt-[70px];
   }
 }
 /* main::-webkit-scrollbar {
