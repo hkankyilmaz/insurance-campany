@@ -60,13 +60,11 @@ export default function Header() {
     const logoClass = "translate-y-[-8px] max-md:translate-x-[-30px] max-md:w-[175px]"
     const otherClass = "translate-y-[-7px] ml-10"
 
-
-
     return (
         <header onMouseEnter={onEnter} onMouseLeave={onLeave} ref={ref} className={`${styles.container} shadow-lg py-2 fixed left-0 top-0 right-0  max-md:h-[70px] overflow-hidden max-md:bg-white max-md:bottom-0 max-md:flex max-md:flex-col max-md-justify-center max-md:items-start z-[111]`}>
             <a className='flcenter' href={pathname == "/arac" ? "/arac" : pathname == "/ev" ? "/ev" : pathname == "/isyeri" ? "/isyeri" : pathname == "/seyahat" ? "/seyahat" : pathname == "/saglik" ? "/saglik" : "/"} >
                 <div className='absolute max-md:left-1 top-[20px] left-0 text-black z-10 !flex flcenter'>
-                    <Image className={pathname == "/arac" ? otherClass : pathname == "/ev" ? otherClass : pathname == "/isyeri" ? otherClass : pathname == "/seyahat" ? otherClass : pathname == "/saglik" ? heart : logoClass}
+                    <Image className={pathname == "/arac" ? otherClass : pathname == "/ev" ? otherClass : pathname == "/isyeri" ? otherClass : pathname == "/seyahat" ? otherClass : pathname == "/saglik" ? otherClass : logoClass}
                         src={pathname == "/arac" ? car : pathname == "/ev" ? home : pathname == "/isyeri" ? company : pathname == "/seyahat" ? trip : pathname == "/saglik" ? heart : logo}
                         width={pathname == "/arac" ? 50 : pathname == "/ev" ? 50 : pathname == "/isyeri" ? 50 : pathname == "/seyahat" ? 50 : pathname == "/saglik" ? 50 : 200}
                     />
