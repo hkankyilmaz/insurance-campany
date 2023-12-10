@@ -172,7 +172,7 @@ export default function SignIn() {
                 </Grid>
                 <Grid item>
                   <Link className="text-blue-800 underline text-xs" href="/kayitol">
-                    {"Hesabın yok mu ? Hesap oluşturun."}
+                    {"Hesap oluştur"}
                   </Link>
                 </Grid>
               </Grid>

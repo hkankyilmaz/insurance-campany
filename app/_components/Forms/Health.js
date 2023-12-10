@@ -191,6 +191,10 @@ function H({ setOpen }) {
                             label="Doğum Tarihi"
                             {...register("health_sup_health_birthdate", {
                                 required: "Zorunlu Alan",
+                                validate: {
+                                    isDate: (value) =>
+                                        validator?.isDate(value, options)
+                                },
 
                             })}
                         />
@@ -308,6 +312,10 @@ function H({ setOpen }) {
                             label="Doğum Tarihi"
                             {...register("health_special_health_birthdate", {
                                 required: "Zorunlu Alan",
+                                validate: {
+                                    isDate: (value) =>
+                                        validator?.isDate(value, options)
+                                },
 
                             })}
                         />

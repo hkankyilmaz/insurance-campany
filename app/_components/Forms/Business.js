@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import validator from 'validator';
 import TextField from "@mui/material/TextField";
 import { useForm } from "react-hook-form";
 import isEmpty from 'lodash.isempty';
@@ -177,11 +178,10 @@ function Business({ setOpen }) {
                             label="Cep Telefonu"
                             {...register("business_person_business_phoneNumber", {
                                 required: "Zorunlu Alan",
-                                // validate: {
-                                //     isMobilePhone: (value) =>
-                                //         validator?.isMobilePhone(value, 'tr-TR') ||
-                                //         "Lütfen geçerli bir telefon numarası girin.",
-                                // },
+                                validate: {
+                                    isMobilePhone: (value) =>
+                                        validator?.isMobilePhone(value, 'tr-TR')
+                                },
                             })}
                         />
 
@@ -205,6 +205,10 @@ function Business({ setOpen }) {
                             label="Doğum Tarihi"
                             {...register("business_person_business_birthdate", {
                                 required: "Zorunlu Alan",
+                                validate: {
+                                    isDate: (value) =>
+                                        validator?.isDate(value, options)
+                                },
 
                             })}
                         />
@@ -286,7 +290,7 @@ function Business({ setOpen }) {
                     <p className='flex justify-center item-center mt-3' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                         <span>
-                            Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
+                            Tüm Alanları Doldurun,Tarihleri GG/AA/YYYY, Telefon Numaranızı 05XXXXXXXXX Formatında Girin.
                         </span>
                     </p>
                     : undefined
@@ -333,6 +337,7 @@ function Business({ setOpen }) {
                     <div>
 
                         <TextField
+                            value={watchFields.business_business_business_location ?? ""}
                             className='!mb-3' size='small' fullWidth
                             label="İl-İlçe"
                             {...register("business_business_business_location", {
@@ -347,6 +352,10 @@ function Business({ setOpen }) {
                             label="Telefon Numarası"
                             {...register("business_business_business_phoneNumber", {
                                 required: "Zorunlu Alan",
+                                validate: {
+                                    isMobilePhone: (value) =>
+                                        validator?.isMobilePhone(value, 'tr-TR')
+                                },
                             })}
                         />
                     </div>
@@ -424,7 +433,7 @@ function Business({ setOpen }) {
                     <p className='flex justify-center item-center mt-3' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                         <span>
-                            Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
+                            Tüm Alanları Doldurun,Tarihleri GG/AA/YYYY, Telefon Numaranızı 05XXXXXXXXX Formatında Girin.
                         </span>
                     </p>
                     : undefined

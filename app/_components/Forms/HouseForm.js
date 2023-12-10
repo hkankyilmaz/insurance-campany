@@ -225,6 +225,10 @@ function HouseInsurance({ setOpen }) {
                             label="Doğum Tarihi"
                             {...register("house_person_konut_birthdate", {
                                 required: "Zorunlu Alan",
+                                validate: {
+                                    isDate: (value) =>
+                                        validator?.isDate(value, options)
+                                },
                             })}
                         />
 
@@ -824,6 +828,10 @@ function DaskInsurance({ setOpen }) {
                             label="Doğum Tarihi"
                             {...register("house_person_dask_birthdate", {
                                 required: "Zorunlu Alan",
+                                validate: {
+                                    isDate: (value) =>
+                                        validator?.isDate(value, options)
+                                },
                             })}
                         />
                     </div>
@@ -975,6 +983,10 @@ function DaskInsurance({ setOpen }) {
                             label="Doğum Tarihi"
                             {...register("house_business_dask_birthdate", {
                                 required: "Zorunlu Alan",
+                                validate: {
+                                    isDate: (value) =>
+                                        validator?.isDate(value, options)
+                                },
                             })}
                         />
                     </div>

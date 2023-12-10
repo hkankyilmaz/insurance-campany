@@ -129,13 +129,6 @@
   width: 100%;
 }
 
-.ticker-container .ticker-viewer .animation-paused,
-.ticker-container .ticker-viewer.ticker-not-view .ticker-scroll,
-.ticker-container .ticker-viewer:hover .ticker-scroll {
-  -webkit-animation-play-state: paused !important;
-  animation-play-state: paused !important;
-}
-
 .ticker-container .ticker-viewer .ticker-scroll {
   -webkit-transition: all linear;
   transition: all linear;

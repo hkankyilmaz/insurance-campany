@@ -22,6 +22,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { GoPerson } from 'react-icons/go';
 import { PiSignInFill } from 'react-icons/pi';
 import { signOut } from 'next-auth/react'
+import { IoHomeOutline } from "react-icons/io5";
 
 
 import logo from "../../_assets/AKDAĞCI SİGORTA LOGO 750x350-100.jpg"
@@ -61,6 +62,13 @@ export default function Header() {
         <header onMouseEnter={onEnter} onMouseLeave={onLeave} ref={ref} className={`${styles.container} shadow-lg py-2 fixed left-0 top-0 right-0 z-10 max-md:h-[70px] overflow-hidden max-md:bg-white max-md:bottom-0 max-md:flex max-md:flex-col max-md-justify-center max-md:items-start`}>
             <a className='flcenter' href={"/"} >  <div className='absolute max-md:left-1 top-[20px] left-0 text-black z-10 !flex flcenter'> <Image className='translate-y-[-8px] max-md:translate-x-[-30px] max-md:w-[175px] ' width={200} src={logo} /> </div></a>
             <div ref={ref_} className='max-md:hidden flex justify-center items-start max-md:m-auto max-md:flex-col max-md-justify-start max-md:items-start max-md:[&>a]:mb-5' >
+                <Link onClick={() => handleClickClose()} className='flex flex-col  justify-center items-center m-link min-w-[120px]' href={"/"} >
+                    <IoHomeOutline className='w-[40px] h-[40px] mt-1 text-[#666666] hover:text-orange-300 max-md:mb-2' />
+                    <div className='menu-item md:absolute md:top-[65%]  text-sx' >
+                        <div className='max-md:mr-1' >Ana</div>
+                        <div>Sayfa</div>
+                    </div>
+                </Link>
                 <Link onClick={() => handleClickClose()} className='flex flex-col max-md:items-start justify-center items-center m-link min-w-[120px]' href={"/arac"} >
                     <Image className={`m-auto max-w-[50px] ${styles.fimg}`} src={pathname == "/car" ? car : car_} />
                     <Image className={`m-auto max-w-[50px] hidden ${styles.simg}`} src={car} />

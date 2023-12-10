@@ -52,7 +52,7 @@ function SectionFour() {
                     className='_increament-item'
                 >
                     <p>25</p>
-                    <p>Marka İşbirliği</p>
+                    <p>Şirket İşbirliği</p>
                 </motion.div>
                 <motion.div
                     initial={{ opacity: 0, x: 50 }}

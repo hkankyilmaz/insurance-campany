@@ -8,7 +8,7 @@ function SectionFive() {
 
 
             <div className='max-w-[1500px]'>
-                <h1 className='text-xl font-bold md:text-2xl text-center mb-5 md:mb-10 ' >Blog</h1>
+                <h1 className='text-xl font-bold md:text-2xl text-center mb-5 md:mb-10 ' >Bilgi Köşesi</h1>
                 <div className='grid grid-cols-3 gap-x-10 gap-y-10 max-xl:grid-cols-2 max-md:grid-cols-1' >
                     <Card />
                     <Card />

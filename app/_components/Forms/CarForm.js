@@ -195,11 +195,10 @@ function CarInsurance({ setOpen }) {
                             label="Cep Telefonu"
                             {...register("car_person_kasko_phoneNumber", {
                                 required: "Zorunlu Alan",
-                                // validate: {
-                                //     isMobilePhone: (value) =>
-                                //         validator?.isMobilePhone(value, 'tr-TR') ||
-                                //         "Lütfen geçerli bir telefon numarası girin.",
-                                // },
+                                validate: {
+                                    isMobilePhone: (value) =>
+                                        validator?.isMobilePhone(value, 'tr-TR')
+                                },
                             })}
                         />
 
@@ -298,6 +297,10 @@ function CarInsurance({ setOpen }) {
                             label="Doğum Tarihi"
                             {...register("car_person_kasko_birthdate", {
                                 required: "Zorunlu Alan",
+                                validate: {
+                                    isDate: (value) =>
+                                        validator?.isDate(value, options)
+                                },
 
                             })}
                         />
@@ -322,7 +325,8 @@ function CarInsurance({ setOpen }) {
                     {isLoading ? "Gönderiliyor..." : "Formu Gönder ve Teklif Al"}
                 </button>
                 {!isEmpty(errors) ?
-                    <p className='flex justify-center item-center mt-3' >  <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />  <span> Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin. </span> </p>
+                    <p className='flex justify-center item-center mt-3' >  <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
+                        <span>   Tüm Alanları Doldurun,Tarihleri GG/AA/YYYY, Telefon Numaranızı 05XXXXXXXXX Formatında Girin. </span> </p>
                     : undefined
 
                 }
@@ -385,6 +389,10 @@ function CarInsurance({ setOpen }) {
                             label="Telefon Numarası"
                             {...register("car_business_kasko_phoneNumber", {
                                 required: "Zorunlu Alan",
+                                validate: {
+                                    isMobilePhone: (value) =>
+                                        validator?.isMobilePhone(value, 'tr-TR')
+                                },
                             })}
                         />
 
@@ -479,7 +487,7 @@ function CarInsurance({ setOpen }) {
                     <p className='flex justify-center item-center mt-3' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                         <span>
-                            Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
+                            Tüm Alanları Doldurun,Tarihleri GG/AA/YYYY, Telefon Numaranızı 05XXXXXXXXX Formatında Girin.
                         </span>
                     </p>
                     : undefined
@@ -647,6 +655,10 @@ function TrafficInsurance({ setOpen }) {
                             label="Cep Telefonu"
                             {...register("car_person_traffic_phoneNumber", {
                                 required: "Zorunlu Alan",
+                                validate: {
+                                    isMobilePhone: (value) =>
+                                        validator?.isMobilePhone(value, 'tr-TR')
+                                },
 
                             })}
                         />
@@ -695,6 +707,10 @@ function TrafficInsurance({ setOpen }) {
                             label="Doğum Tarihi"
                             {...register("car_person_traffic_birthdate", {
                                 required: "Zorunlu Alan",
+                                validate: {
+                                    isDate: (value) =>
+                                        validator?.isDate(value, options)
+                                },
 
                             })}
                         />
@@ -724,7 +740,7 @@ function TrafficInsurance({ setOpen }) {
                     <p className='flex justify-center item-center mt-3' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                         <span>
-                            Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
+                            Tüm Alanları Doldurun,Tarihleri GG/AA/YYYY, Telefon Numaranızı 05XXXXXXXXX Formatında Girin.
                         </span>
                     </p>
                     : undefined
@@ -793,6 +809,10 @@ function TrafficInsurance({ setOpen }) {
                             label="Telefon Numarası"
                             {...register("car_business_traffic_phoneNumber", {
                                 required: "Zorunlu Alan",
+                                validate: {
+                                    isMobilePhone: (value) =>
+                                        validator?.isMobilePhone(value, 'tr-TR')
+                                },
                             })}
                         />
 
@@ -847,7 +867,7 @@ function TrafficInsurance({ setOpen }) {
                     <p className='flex justify-center item-center mt-3' >
                         <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                         <span>
-                            Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
+                            Tüm Alanları Doldurun,Tarihleri GG/AA/YYYY, Telefon Numaranızı 05XXXXXXXXX Formatında Girin.
                         </span>
                     </p>
                     : undefined
@@ -954,6 +974,11 @@ function ResInsurance({ setOpen }) {
                         label="Cep Telefonu"
                         {...register("car_financial_phoneNumber", {
                             required: "Zorunlu Alan",
+                            validate: {
+                                isMobilePhone: (value) =>
+                                    validator?.isMobilePhone(value, 'tr-TR') ||
+                                    "Lütfen geçerli bir telefon numarası girin.",
+                            },
 
                         })}
                     />
@@ -1000,6 +1025,10 @@ function ResInsurance({ setOpen }) {
                         label="Doğum Tarihi"
                         {...register("car_financial_birthdate", {
                             required: "Zorunlu Alan",
+                            validate: {
+                                isDate: (value) =>
+                                    validator?.isDate(value, options)
+                            },
 
                         })}
                     />
@@ -1026,7 +1055,7 @@ function ResInsurance({ setOpen }) {
                 <p className='flex justify-center item-center mt-3' >
                     <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                     <span>
-                        Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
+                        Tüm Alanları Doldurun,Tarihleri GG/AA/YYYY, Telefon Numaranızı 05XXXXXXXXX Formatında Girin.
                     </span>
                 </p>
                 : undefined

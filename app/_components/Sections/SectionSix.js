@@ -6,7 +6,7 @@ import Modal from '@mui/material/Modal';
 import Image from 'next/image';
 import feed from "../../_assets/feed.jpg"
 
-function SectionSix() {
+function SectionSix({ param, hidden }) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -15,7 +15,7 @@ function SectionSix() {
             <h2 className='text-2xl max-md:max-w-[80vw] max-md:text-lg font-bold text-center mb-5' >Hemen teklif almak için formu doldurun:</h2>
 
 
-            <Form setOpen={setOpen} />
+            <Form setOpen={setOpen} param={param} hidden={hidden} />
             <Modal
                 className='flex justify-center items-center'
                 open={open}

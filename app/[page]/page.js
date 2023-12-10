@@ -17,7 +17,7 @@ function Index(props) {
             <SectionOne param={param} />
             <SectionThree />
             <SectionFour />
-            <SectionSix />
+            <SectionSix param={param} hidden={true} />
             <Footer />
 
         </main>

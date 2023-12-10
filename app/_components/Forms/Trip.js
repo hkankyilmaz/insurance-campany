@@ -145,6 +145,10 @@ function T({ setOpen }) {
                         label="Doğum Tarihi"
                         {...register("trip_person_kasko_birthdate", {
                             required: "Zorunlu Alan",
+                            validate: {
+                                isDate: (value) =>
+                                    validator?.isDate(value, options)
+                            },
 
                         })}
                     />
