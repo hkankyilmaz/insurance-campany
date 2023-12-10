@@ -136,14 +136,14 @@ export default function SignUp() {
                                 required
                                 fullWidth
                                 id="email"
-                                label="E-posta Adresi"
+                                label="E-posta Adresi / Cep Telefonu Numarası"
                                 name="email"
                                 autoComplete="email"
                                 {...register("email", {
                                     required: "Zorunlu Alan",
                                     pattern: {
-                                        value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-                                        message: "Lütfen geçerli bir email adresi girin",
+                                        value: /^(^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$)|(0[0-9]{10})/,
+                                        message: "Lütfen geçerli bir eıposta adresi veya Cep Telefonu Numarası girin",
                                     },
                                 })}
                             />
