@@ -15,6 +15,11 @@ import Image from "next/image";
 
 function ModalRegister({ handleClose, open }) {
 
+    const handleClose_ = () => {
+        handleClose();
+        setShowImage(false)
+    }
+
     const [isLoading, setIsLoading] = React.useState(false)
     const [showImage, setShowImage] = React.useState(false)
 
@@ -73,7 +78,7 @@ function ModalRegister({ handleClose, open }) {
     return (
         <Modal
             open={open}
-            onClose={handleClose}
+            onClose={handleClose_}
             className="flex justify-center items-center"
         >
             {
