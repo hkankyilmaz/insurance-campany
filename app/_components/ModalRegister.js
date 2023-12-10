@@ -9,7 +9,7 @@ import app from "../_connect/connect";
 import isEmpty from 'lodash.isempty';
 import ErrorIcon from "@mui/icons-material/Error";
 import { toast, ToastContainer } from 'react-toastify';
-import feed from "../_assets/feed.jpg"
+import feed from "../_assets/feed.png"
 import Image from "next/image";
 
 

@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link'
 import Image from 'next/image'
-import wp from "./_assets/wp.png"
+import wp from "./_assets/whatsapp_ikonu.png"
 import ll from "./_assets/AKDAĞCI SİGORTA LOGO 750x350-100.jpg"
 
 const inter = Inter({ subsets: ['latin'] })
@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
             pauseOnHover
             theme="light"
           />
-          <Link target='_blank' className='z-[100] fixed right-[10px] top-[86vh] md:right-[50px] md:top-[calc(88vh-10px)] translate-[-200%]' href="http://wa.me/905331555516" > <Image priority={true} className='hover:scale-[1.1] transition-all duration-700' width={80} height={80} src={wp} /> </Link>
+          <Link target='_blank' className='z-[100] fixed right-[10px] top-[86vh] md:right-[50px] md:top-[calc(88vh-10px)] translate-[-200%]' href="http://wa.me/905331555516" > <Image priority={true} className='max-md:scale-75 md:hover:scale-[1.1] transition-all duration-700' src={wp} /> </Link>
         </body>
 
       </AuthProvider>

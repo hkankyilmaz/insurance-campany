@@ -4,7 +4,7 @@ import React from 'react'
 import Form from '../Forms/Index'
 import Modal from '@mui/material/Modal';
 import Image from 'next/image';
-import feed from "../../_assets/feed.jpg"
+import feed from "../../_assets/feed.png"
 
 function SectionSix({ param, hidden }) {
     const [open, setOpen] = React.useState(false);
