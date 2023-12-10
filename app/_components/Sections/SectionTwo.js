@@ -125,7 +125,7 @@ function Slider(props) {
                             <div className="embla__slide__number">
                                 <span>{index + 1}</span>
                             </div>
-                            <video className='h-[100vh] w-[100vw] object-cover' preload="none" playsinline src={imageByIndex(index)} style={{ viewTransitionName: "visible" }} muted autoPlay loop playsInline >
+                            <video className='h-[100vh] w-[100vw] object-cover' preload="none" playsinline src={imageByIndex(index)} style={{ viewTransitionName: "visible" }} muted autoPlay loop >
                                 <track kind='caption' />
                             </video>
                         </div>
