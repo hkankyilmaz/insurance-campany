@@ -63,7 +63,7 @@ export default function Header() {
             <a className='flcenter' href={"/"} >  <div className='absolute max-md:left-1 top-[20px] left-0 text-black z-10 !flex flcenter'> <Image className='translate-y-[-8px] max-md:translate-x-[-30px] max-md:w-[175px] ' width={200} src={logo} /> </div></a>
             <div ref={ref_} className='max-md:hidden flex justify-center items-start max-md:m-auto max-md:flex-col max-md-justify-start max-md:items-start max-md:[&>a]:mb-3' >
                 <Link onClick={() => handleClickClose()} className='flex flex-col  justify-center items-center m-link min-w-[120px]' href={"/"} >
-                    <IoHomeOutline className='max-md:max-w-[35px] w-[40px] h-[40px] mt-1 text-[#666666] hover:text-orange-300 max-md:mb-2' />
+                    <IoHomeOutline className='max-md:max-w-[35px] w-[40px] h-[40px] mt-1 text-[#666666] hover:text-orange-300 max-md:mb-1' />
                     <div className='menu-item md:absolute md:top-[65%]  max-md:text-sm' >
                         <div className='max-md:mr-1' >Ana</div>
                         <div>Sayfa</div>
