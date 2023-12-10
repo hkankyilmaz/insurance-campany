@@ -57,12 +57,22 @@ export default function Header() {
     }
 
 
+    const logoClass = "translate-y-[-8px] max-md:translate-x-[-30px] max-md:w-[175px]"
+    const otherClass = "translate-y-[-7px] ml-10"
+
+
 
     return (
         <header onMouseEnter={onEnter} onMouseLeave={onLeave} ref={ref} className={`${styles.container} shadow-lg py-2 fixed left-0 top-0 right-0  max-md:h-[70px] overflow-hidden max-md:bg-white max-md:bottom-0 max-md:flex max-md:flex-col max-md-justify-center max-md:items-start z-[111]`}>
-            <a className='flcenter' href={"/"} >  <div className='absolute max-md:left-1 top-[20px] left-0 text-black z-10 !flex flcenter'> <Image className='translate-y-[-8px] max-md:translate-x-[-30px] max-md:w-[175px] ' width={200} src={logo} /> </div></a>
+            <a className='flcenter' href={pathname == "/arac" ? "/arac" : pathname == "/ev" ? "/ev" : pathname == "/isyeri" ? "/isyeri" : pathname == "/seyahat" ? "/seyahat" : pathname == "/saglik" ? "/saglik" : "/"} >
+                <div className='absolute max-md:left-1 top-[20px] left-0 text-black z-10 !flex flcenter'>
+                    <Image className={pathname == "/arac" ? otherClass : pathname == "/ev" ? otherClass : pathname == "/isyeri" ? otherClass : pathname == "/seyahat" ? otherClass : pathname == "/saglik" ? heart : logoClass}
+                        src={pathname == "/arac" ? car : pathname == "/ev" ? home : pathname == "/isyeri" ? company : pathname == "/seyahat" ? trip : pathname == "/saglik" ? heart : logo}
+                        width={pathname == "/arac" ? 50 : pathname == "/ev" ? 50 : pathname == "/isyeri" ? 50 : pathname == "/seyahat" ? 50 : pathname == "/saglik" ? 50 : 200}
+                    />
+                </div></a>
             <div ref={ref_} className='max-md:hidden flex justify-center items-start max-md:m-auto max-md:flex-col max-md-justify-start max-md:items-start max-md:[&>a]:mb-3' >
-                <Link onClick={() => handleClickClose()} className='flex flex-col  justify-center items-center m-link min-w-[120px]' href={"/"} >
+                <Link style={{ display: pathname == "/" ? "none" : "" }} onClick={() => handleClickClose()} className='flex flex-col  justify-center items-center m-link min-w-[120px]' href={"/"} >
                     <IoHomeOutline className='max-md:max-w-[35px] w-[40px] h-[40px] mt-1 text-[#666666] hover:text-orange-300 max-md:mb-1' />
                     <div className='menu-item md:absolute md:top-[65%]  max-md:text-sm' >
                         <div className='max-md:mr-1' >Ana</div>
@@ -70,7 +80,7 @@ export default function Header() {
                     </div>
                 </Link>
                 <Link onClick={() => handleClickClose()} className='flex flex-col max-md:items-start justify-center items-center m-link min-w-[120px]' href={"/arac"} >
-                    <Image className={`m-auto max-md:max-w-[40px] max-w-[50px] ${styles.fimg}`} src={pathname == "/car" ? car : car_} />
+                    <Image className={`m-auto max-md:max-w-[40px] max-w-[50px] ${styles.fimg}`} src={pathname == "/arac" ? car : car_} />
                     <Image className={`m-auto max-md:max-w-[40px] max-w-[50px] hidden ${styles.simg}`} src={car} />
                     <div className='menu-item md:absolute md:top-[65%]  max-md:text-sm' >
                         <div className='max-md:mr-1' >Arabam</div>
