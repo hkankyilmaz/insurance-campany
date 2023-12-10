@@ -59,12 +59,12 @@ import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 
 
-const image1 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/ev%20320*675.mp4?alt=media&token=b7e382c3-7a13-484a-823f-6c428349427f'
+const image1 = 'https://firebasestorage.googleapis.com/v0/b/kutezadmin.appspot.com/o/hakan%2Fyang%C4%B1n%20banner.mp4?alt=media&token=20c37827-ab79-43ff-bec7-b305ffff6cf7'
 const image2 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/seyahat%20320*675.mp4?alt=media&token=c8519909-be31-4b2f-ab2f-ed355e0f67f6'
 const image3 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/sagl%C4%B1k%20320*675.mp4?alt=media&token=39d9fce6-df18-49d9-9368-df1409b280fa'
 const image4 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/arac%CC%A7%20320*675.mp4?alt=media&token=4aac2d50-9e62-4c29-9cb9-16dfda3c0a48'
 
-const _image1 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/ev%201920*960.mp4?alt=media&token=eab27df9-f97e-428d-845b-d8e066388723'
+const _image1 = 'https://firebasestorage.googleapis.com/v0/b/kutezadmin.appspot.com/o/hakan%2Fyang%C4%B1n%20banner.mp4?alt=media&token=20c37827-ab79-43ff-bec7-b305ffff6cf7'
 const _image2 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/seyahat%201920*960.mp4?alt=media&token=58ada133-0dab-4255-9611-2c6f1bbea771'
 const _image3 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/sagl%C4%B1k%201920*960.mp4?alt=media&token=8c6812fb-0d04-44da-a20f-586af6563ad2'
 const _image4 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/arac%CC%A7%201920*960.mp4?alt=media&token=25db68cb-c372-485b-bac9-1dc062a85196'
@@ -125,7 +125,7 @@ function Slider(props) {
                             <div className="embla__slide__number">
                                 <span>{index + 1}</span>
                             </div>
-                            <video className='h-[100vh] w-[100vw] object-cover' preload="none" playsInlin={true} src={imageByIndex(index)} style={{ viewTransitionName: "visible" }} muted autoPlay loop playsInline >
+                            <video className='h-[100vh] w-[100vw] object-cover' preload="none" playsinline src={imageByIndex(index)} style={{ viewTransitionName: "visible" }} muted autoPlay loop playsInline >
                                 <track kind='caption' />
                             </video>
                         </div>
