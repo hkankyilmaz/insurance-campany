@@ -205,7 +205,7 @@ function T({ setOpen }) {
                 <p className='flex justify-center item-center mt-3' >
                     <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                     <span>
-                        Lütfen Tüm Alanları Doldurun ve Tarihleri GG/AA/YYYY şeklinde girin.
+                        Tüm Alanları Doldurun,Tarihleri GG/AA/YYYY, Telefon Numaranızı 05XXXXXXXXX Formatında Girin.
                     </span>
                 </p>
                 : undefined
