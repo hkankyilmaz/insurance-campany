@@ -47,8 +47,8 @@ function Footer() {
 
                         <p>BİZİ TANIYIN</p>
                         <ul>
-                            <Link href={"hakkimizda"}><li> Hakkımızda</li></Link>
-                            <Link href={"iletisim"}> <li>İletişim</li></Link>
+                            <Link href={"/hakkimizda"}><li> Hakkımızda</li></Link>
+                            <Link href={"/iletisim"}> <li>İletişim</li></Link>
                         </ul>
                     </div>
                     <div>
