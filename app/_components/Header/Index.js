@@ -58,7 +58,7 @@ export default function Header() {
 
 
     const logoClass = "translate-y-[-8px] max-md:translate-x-[-30px] max-md:w-[175px]"
-    const otherClass = "translate-y-[-7px] ml-[0.5rem] md:ml-10"
+    const otherClass = "translate-y-[-10px] ml-[0.5rem] md:ml-10"
 
     return (
         <header onMouseEnter={onEnter} onMouseLeave={onLeave} ref={ref} className={`${styles.container} shadow-lg py-2 fixed left-0 top-0 right-0  max-md:h-[70px] overflow-hidden max-md:bg-white max-md:bottom-0 max-md:flex max-md:flex-col max-md-justify-center max-md:items-start z-[111]`}>
