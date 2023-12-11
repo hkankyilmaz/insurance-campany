@@ -6,6 +6,7 @@ import { useForm, Controller } from "react-hook-form";
 import isEmpty from 'lodash.isempty';
 import ErrorIcon from "@mui/icons-material/Error";
 import app from '@/app/_connect/connect';
+import validator from "validator";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { toast, ToastContainer } from 'react-toastify';
 
