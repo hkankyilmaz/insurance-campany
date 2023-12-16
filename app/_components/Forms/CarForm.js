@@ -294,7 +294,7 @@ function CarInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.car_person_kasko_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Doğum Tarihi - XX/XX/XXXX"
+                            label="Doğum Tarihi - GG/AA/YYYY"
                             {...register("car_person_kasko_birthdate", {
                                 required: "Zorunlu Alan",
                                 validate: {
@@ -704,7 +704,7 @@ function TrafficInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.car_person_traffic_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Doğum Tarihi - XX/XX/XXXX"
+                            label="Doğum Tarihi - GG/AA/YYYY"
                             {...register("car_person_traffic_birthdate", {
                                 required: "Zorunlu Alan",
                                 validate: {
@@ -1022,7 +1022,7 @@ function ResInsurance({ setOpen }) {
                     <TextField
                         value={watchFields.car_financial_birthdate ?? ""}
                         className='!mb-3' size='small' fullWidth
-                        label="Doğum Tarihi - XX/XX/XXXX"
+                        label="Doğum Tarihi - GG/AA/YYYY"
                         {...register("car_financial_birthdate", {
                             required: "Zorunlu Alan",
                             validate: {

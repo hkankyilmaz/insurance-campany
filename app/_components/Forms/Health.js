@@ -189,7 +189,7 @@ function H({ setOpen }) {
                         <TextField
                             value={watchFields.health_sup_health_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Doğum Tarihi - XX/XX/XXXX"
+                            label="Doğum Tarihi - GG/AA/YYYY"
                             {...register("health_sup_health_birthdate", {
                                 required: "Zorunlu Alan",
                                 validate: {
@@ -312,7 +312,7 @@ function H({ setOpen }) {
                         <TextField
                             value={watchFields.health_special_health_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Doğum Tarihi - XX/XX/XXXX"
+                            label="Doğum Tarihi - GG/AA/YYYY"
                             {...register("health_special_health_birthdate", {
                                 required: "Zorunlu Alan",
                                 validate: {

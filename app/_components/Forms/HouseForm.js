@@ -222,7 +222,7 @@ function HouseInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.house_person_konut_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Doğum Tarihi - XX/XX/XXXX"
+                            label="Doğum Tarihi - GG/AA/YYYY"
                             {...register("house_person_konut_birthdate", {
                                 required: "Zorunlu Alan",
                                 validate: {
@@ -825,7 +825,7 @@ function DaskInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.house_person_dask_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Doğum Tarihi - XX/XX/XXXX"
+                            label="Doğum Tarihi - GG/AA/YYYY"
                             {...register("house_person_dask_birthdate", {
                                 required: "Zorunlu Alan",
                                 validate: {
@@ -980,7 +980,7 @@ function DaskInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.house_business_dask_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Doğum Tarihi - XX/XX/XXXX"
+                            label="Doğum Tarihi - GG/AA/YYYY"
                             {...register("house_business_dask_birthdate", {
                                 required: "Zorunlu Alan",
                                 validate: {

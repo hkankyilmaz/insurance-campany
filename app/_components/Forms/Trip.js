@@ -143,7 +143,7 @@ function T({ setOpen }) {
                     <TextField
                         value={watchFields.trip_person_kasko_birthdate ?? ""}
                         className='!mb-3' size='small' fullWidth
-                        label="Doğum Tarihi - XX/XX/XXXX"
+                        label="Doğum Tarihi - GG/AA/YYYY"
                         {...register("trip_person_kasko_birthdate", {
                             required: "Zorunlu Alan",
                             validate: {

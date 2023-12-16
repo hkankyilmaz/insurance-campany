@@ -202,7 +202,7 @@ function Business({ setOpen }) {
                         <TextField
                             value={watchFields.business_person_business_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Doğum Tarihi - XX/XX/XXXX"
+                            label="Doğum Tarihi - GG/AA/YYYY"
                             {...register("business_person_business_birthdate", {
                                 required: "Zorunlu Alan",
                                 validate: {
