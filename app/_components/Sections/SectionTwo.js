@@ -99,7 +99,7 @@ function Slider(props) {
 
     const { slides, options } = props
     const autoplayOptions = {
-        delay: 6000,
+        delay: 5000,
         rootNode: (emblaRoot) => emblaRoot.parentElement,
         stopOnInteraction: false
     }
