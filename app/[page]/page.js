@@ -74,7 +74,7 @@ function SectionOne({ param }) {
     return (
         <section className='h-[100vh] w-[100vw] relative bg-black'>
             <main className='max-md:hidden h-[100vh] w-[100vw]' style={{ backgroundPosition: "center", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundImage: `url(${image})` }}  >
-                <div className='absolute bottom-24 left-[50%] translate-x-[-50%] max-md:flex max-md:flex-col max-md:item-center max-md:justify-center'>
+                <div className='absolute bottom-24 left-[50%]  max-lg:min-w-[470px] translate-x-[-50%] max-md:flex max-md:flex-col max-md:item-center max-md:justify-center'>
                     <Link
                         className='md:hidden'
                         to="form"

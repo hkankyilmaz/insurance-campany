@@ -61,7 +61,7 @@ export default function Header() {
     const otherClass = "translate-y-[-10px] ml-[0.5rem] md:ml-10"
 
     return (
-        <header onMouseEnter={onEnter} onMouseLeave={onLeave} ref={ref} className={`${styles.container} shadow-lg py-2 fixed left-0 top-0 right-0  max-md:h-[70px] overflow-hidden max-md:bg-white max-md:bottom-0 max-md:flex max-md:flex-col max-md-justify-center max-md:items-start z-[111]`}>
+        <header onMouseEnter={onEnter} onMouseLeave={onLeave} ref={ref} className={`${styles.container} shadow-lg py-2 fixed left-0 top-0 right-0  max-lg:h-[70px] overflow-hidden max-md:bg-white max-md:bottom-0 max-md:flex max-md:flex-col max-md-justify-center max-md:items-start z-[111]`}>
             <a className='flcenter' href={pathname == "/arac" ? "/arac" : pathname == "/ev" ? "/ev" : pathname == "/isyeri" ? "/isyeri" : pathname == "/seyahat" ? "/seyahat" : pathname == "/saglik" ? "/saglik" : "/"} >
                 <div className='absolute max-md:left-1 top-[20px] left-0 text-black z-10 !flex flcenter'>
                     <Image className={pathname == "/arac" ? otherClass : pathname == "/ev" ? otherClass : pathname == "/isyeri" ? otherClass : pathname == "/seyahat" ? otherClass : pathname == "/saglik" ? otherClass : logoClass}
@@ -69,7 +69,7 @@ export default function Header() {
                         width={pathname == "/arac" ? 50 : pathname == "/ev" ? 50 : pathname == "/isyeri" ? 50 : pathname == "/seyahat" ? 50 : pathname == "/saglik" ? 50 : 200}
                     />
                 </div></a>
-            <div ref={ref_} className='max-md:hidden flex justify-center items-start max-md:m-auto max-md:flex-col max-md-justify-start max-md:items-start max-md:[&>a]:mb-3' >
+            <div ref={ref_} className='max-lg:hidden flex justify-center items-start max-md:m-auto max-md:flex-col max-md-justify-start max-md:items-start max-md:[&>a]:mb-3' >
                 <Link style={{ display: pathname == "/" ? "none" : "" }} onClick={() => handleClickClose()} className='flex flex-col  justify-center items-center m-link min-w-[120px]' href={"/"} >
                     <IoHomeOutline className='max-md:max-w-[35px] w-[40px] h-[40px] mt-1 text-[#666666] hover:text-orange-300 max-md:mb-1' />
                     <div className='menu-item md:absolute md:top-[65%]  max-md:text-sm' >
@@ -77,7 +77,7 @@ export default function Header() {
                         <div>Sayfa</div>
                     </div>
                 </Link>
-                <Link onClick={() => handleClickClose()} className='flex flex-col max-md:items-start justify-center items-center m-link min-w-[120px]' href={"/arac"} >
+                <Link onClick={() => handleClickClose()} className='flex flex-col max-md:items-start justify-center items-center m-link xl:min-w-[120px]' href={"/arac"} >
                     <Image className={`m-auto max-md:max-w-[40px] max-w-[50px] ${styles.fimg}`} src={pathname == "/arac" ? car : car_} />
                     <Image className={`m-auto max-md:max-w-[40px] max-w-[50px] hidden ${styles.simg}`} src={car} />
                     <div className='menu-item md:absolute md:top-[65%]  max-md:text-sm' >
@@ -85,7 +85,7 @@ export default function Header() {
                         <div>Sigortalı</div>
                     </div>
                 </Link>
-                <Link onClick={() => handleClickClose()} className='flex flex-col max-md:items-start justify-center items-center m-link min-w-[120px]' href={"/ev"} >
+                <Link onClick={() => handleClickClose()} className='flex flex-col max-md:items-start justify-center items-center m-link xl:min-w-[120px]' href={"/ev"} >
                     <Image className={`m-auto max-md:max-w-[40px] max-w-[50px] ${styles.fimg}`} src={pathname == "/ev" ? home : home_} />
                     <Image className={`m-auto max-md:max-w-[40px] max-w-[50px] hidden ${styles.simg}`} src={home} />
                     <div className='menu-item md:absolute md:top-[65%] max-md:text-sm' >
@@ -93,7 +93,7 @@ export default function Header() {
                         <div>Sigortalı</div>
                     </div>
                 </Link>
-                <Link onClick={() => handleClickClose()} className='flex flex-col max-md:items-start justify-center items-center m-link min-w-[120px]' href={"/isyeri"}>
+                <Link onClick={() => handleClickClose()} className='flex flex-col max-md:items-start justify-center items-center m-link xl:min-w-[120px]' href={"/isyeri"}>
                     <Image className={`m-auto max-md:max-w-[40px] max-w-[50px] ${styles.fimg}`} src={pathname == "/isyeri" ? company : company_} />
                     <Image className={`m-auto max-md:max-w-[40px] max-w-[50px] hidden ${styles.simg}`} src={company} />
                     <div className='menu-item md:absolute md:top-[65%] max-md:text-sm'>
@@ -101,7 +101,7 @@ export default function Header() {
                         <div>Sigortalı</div>
                     </div>
                 </Link>
-                <Link onClick={() => handleClickClose()} className='flex flex-col max-md:items-start justify-center items-center m-link min-w-[120px]' href={"/seyahat"}>
+                <Link onClick={() => handleClickClose()} className='flex flex-col max-md:items-start justify-center items-center m-link xl:min-w-[120px]' href={"/seyahat"}>
                     <Image className={`m-auto max-md:max-w-[40px] max-w-[50px] ${styles.fimg}`} src={pathname == "/seyahat" ? trip : trip_} />
                     <Image className={`m-auto max-md:max-w-[40px] max-w-[50px] hidden ${styles.simg}`} src={trip} />
                     <div className='menu-item md:absolute md:top-[65%] max-md:text-sm'>
@@ -109,7 +109,7 @@ export default function Header() {
                         <div>Sigortalı</div>
                     </div>
                 </Link>
-                <Link onClick={() => handleClickClose()} className='flex flex-col max-md:items-start justify-center items-center m-link min-w-[120px]' href={"/saglik"} >
+                <Link onClick={() => handleClickClose()} className='flex flex-col max-md:items-start justify-center items-center m-link xl:min-w-[120px]' href={"/saglik"} >
                     <Image className={`m-auto max-md:max-w-[40px] max-w-[50px] ${styles.fimg}`} src={pathname == "/saglik" ? heart : heart_} />
                     <Image className={`m-auto max-md:max-w-[40px] max-w-[50px] hidden ${styles.simg}`} src={heart} />
                     <div className='menu-item md:absolute md:top-[65%] max-md:text-sm'>
@@ -121,16 +121,16 @@ export default function Header() {
             </div>
             {
                 !menu ? <button onClick={(e) => handleClickClose(e)} className='absolute top-4 right-4' >
-                    <AiOutlineCloseCircle className='text-4xl md:hidden' />
+                    <AiOutlineCloseCircle className='text-4xl lg:hidden' />
                 </button>
                     : <button onClick={(e) => handleClickOpen(e)} className='absolute top-4 right-4' >
-                        < GiHamburgerMenu className='text-4xl md:hidden' />
+                        < GiHamburgerMenu className='text-4xl lg:hidden' />
                     </button>
             }
             {session ?
-                <button onClick={() => signOut()} className='absolute right-16 top-5 md:top-5 md:right-10' > <PiSignInFill className='text-3xl cursor-pointer' /></button>
+                <button onClick={() => signOut()} className='absolute right-16 top-5 md:top-5 lg:right-10' > <PiSignInFill className='text-3xl cursor-pointer' /></button>
                 :
-                <Link href={"/oturumac"} className='absolute right-16 top-5 md:top-5 md:right-10' > <GoPerson className='text-3xl cursor-pointer' /></Link>
+                <Link href={"/oturumac"} className='absolute right-16 top-5 md:top-5 lg:right-10' > <GoPerson className='text-3xl cursor-pointer' /></Link>
             }
 
 

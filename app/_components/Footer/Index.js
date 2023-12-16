@@ -18,7 +18,7 @@ function Footer() {
 
             <div className='flex justify-between' >
 
-                <div className='grid grid-cols-4 max-sm:gap-5 gap-2 [&>p]:text-4xl w-[85%] max-lg:w-[100%] max-sm:grid-cols-1' >
+                <div className='grid sm:grid-cols-2 max-sm:gap-5 gap-2 [&>p]:text-4xl w-[85%] max-lg:w-[100%] xl:grid-cols-4 grid-cols-1' >
                     <div>
 
                         <ul>
