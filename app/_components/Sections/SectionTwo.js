@@ -60,16 +60,19 @@ import Autoplay from 'embla-carousel-autoplay'
 
 
 // const image1 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/ev%20320*675.mp4?alt=media&token=b7e382c3-7a13-484a-823f-6c428349427f'
-const image1 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/yang%C4%B1n%20banner.mp4?alt=media&token=6c704fe3-b90e-46ce-a2bb-8b810c9c5992'
-const image2 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/seyahat%20320*675.mp4?alt=media&token=c8519909-be31-4b2f-ab2f-ed355e0f67f6'
-const image3 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/sagl%C4%B1k%20320*675.mp4?alt=media&token=39d9fce6-df18-49d9-9368-df1409b280fa'
-const image4 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/arac%CC%A7%20320*675.mp4?alt=media&token=4aac2d50-9e62-4c29-9cb9-16dfda3c0a48'
+const image1 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/yangin%20mobil.mp4?alt=media&token=89e2a2f6-d01d-4ce3-9be2-196a89ce5fa0'
+const image2 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/seyahat%20mobil.mp4?alt=media&token=d45ead3e-ac5f-439c-b2b2-969868612b01'
+const image3 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/sagl%C4%B1k%20mobil.mp4?alt=media&token=fcf70c3f-25e3-43e2-bd79-0be8c714832a'
+const image4 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/arac%20mobil.mp4?alt=media&token=4589651f-24fe-4a8c-873d-8efc90c0cf5d'
+
 
 //const _image1 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/ev%201920*960.mp4?alt=media&token=eab27df9-f97e-428d-845b-d8e066388723'
-const _image1 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/yang%C4%B1n%20banner.mp4?alt=media&token=6c704fe3-b90e-46ce-a2bb-8b810c9c5992'
-const _image2 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/seyahat%201920*960.mp4?alt=media&token=58ada133-0dab-4255-9611-2c6f1bbea771'
-const _image3 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/sagl%C4%B1k%201920*960.mp4?alt=media&token=8c6812fb-0d04-44da-a20f-586af6563ad2'
-const _image4 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/arac%CC%A7%201920*960.mp4?alt=media&token=25db68cb-c372-485b-bac9-1dc062a85196'
+const _image1 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/yangin%20web.mp4?alt=media&token=65e918c1-52a0-4bc3-96a8-6b18b7fa67fd'
+const _image2 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/seyahat%20web.mp4?alt=media&token=948ba3df-5970-44f0-9051-52d074ff5816'
+const _image3 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/sagl%C4%B1k%20web.mp4?alt=media&token=a11d974a-9e68-4e19-81fe-1b2b064d6c54'
+const _image4 = 'https://firebasestorage.googleapis.com/v0/b/akdagcisigorta-ff7ec.appspot.com/o/arac%20web.mp4?alt=media&token=63b3cf27-b525-4537-8072-999e4f54e2c4'
+
+
 
 
 import "./style.css"
