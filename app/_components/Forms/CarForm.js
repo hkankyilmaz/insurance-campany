@@ -262,8 +262,8 @@ function CarInsurance({ setOpen }) {
                                         labelId="dlabel-carIns"
                                         label="LPG"
                                     >
-                                        <MenuItem value={"lgpTrue"}>LPG Var</MenuItem>
-                                        <MenuItem value={"lpgFalse"}>LPG Yok</MenuItem>
+                                        <MenuItem value={"lgpTrue"}>Var</MenuItem>
+                                        <MenuItem value={"lpgFalse"}>Yok</MenuItem>
                                     </Select>
                                 </FormControl>
                             )}
@@ -283,8 +283,8 @@ function CarInsurance({ setOpen }) {
                                         labelId="dlabel-carIns"
                                         label="Orijinal Harici Aksesuar"
                                     >
-                                        <MenuItem value={"pluginTrue"}>Orijinal Aksesuar Var</MenuItem>
-                                        <MenuItem value={"pluginFalse"}>Orijinal Aksesuar Yok</MenuItem>
+                                        <MenuItem value={"pluginTrue"}>Var</MenuItem>
+                                        <MenuItem value={"pluginFalse"}>Yok</MenuItem>
                                     </Select>
                                 </FormControl>
                             )}
@@ -438,8 +438,8 @@ function CarInsurance({ setOpen }) {
                                         labelId="dlabel-carIns"
                                         label="LPG"
                                     >
-                                        <MenuItem value={"lgpTrue"}>LPG Var</MenuItem>
-                                        <MenuItem value={"lpgFalse"}>LPG Yok</MenuItem>
+                                        <MenuItem value={"lgpTrue"}>Var</MenuItem>
+                                        <MenuItem value={"lpgFalse"}>Yok</MenuItem>
                                     </Select>
                                 </FormControl>
                             )}
@@ -459,8 +459,8 @@ function CarInsurance({ setOpen }) {
                                         labelId="dlabel-carIns"
                                         label="Orijinal Harici Aksesuar"
                                     >
-                                        <MenuItem value={"pluginTrue"}>Orijinal Aksesuar Var</MenuItem>
-                                        <MenuItem value={"pluginFalse"}>Orijinal Aksesuar Yok</MenuItem>
+                                        <MenuItem value={"pluginTrue"}>Var</MenuItem>
+                                        <MenuItem value={"pluginFalse"}>Yok</MenuItem>
                                     </Select>
                                 </FormControl>
                             )}
