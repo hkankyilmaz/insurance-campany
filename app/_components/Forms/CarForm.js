@@ -192,7 +192,7 @@ function CarInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.car_person_kasko_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Cep Telefonu"
+                            label="Cep Telefonu - 05XXXXXXXXX"
                             {...register("car_person_kasko_phoneNumber", {
                                 required: "Zorunlu Alan",
                                 validate: {
@@ -294,7 +294,7 @@ function CarInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.car_person_kasko_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Doğum Tarihi"
+                            label="Doğum Tarihi - XX/XX/XXXX"
                             {...register("car_person_kasko_birthdate", {
                                 required: "Zorunlu Alan",
                                 validate: {
@@ -386,7 +386,7 @@ function CarInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.car_business_kasko_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Telefon Numarası"
+                            label="Cep Telefonu - 05XXXXXXXXX"
                             {...register("car_business_kasko_phoneNumber", {
                                 required: "Zorunlu Alan",
                                 validate: {
@@ -652,7 +652,7 @@ function TrafficInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.car_person_traffic_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Cep Telefonu"
+                            label="Cep Telefonu - 05XXXXXXXXX"
                             {...register("car_person_traffic_phoneNumber", {
                                 required: "Zorunlu Alan",
                                 validate: {
@@ -704,7 +704,7 @@ function TrafficInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.car_person_traffic_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Doğum Tarihi"
+                            label="Doğum Tarihi - XX/XX/XXXX"
                             {...register("car_person_traffic_birthdate", {
                                 required: "Zorunlu Alan",
                                 validate: {
@@ -806,7 +806,7 @@ function TrafficInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.car_business_traffic_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Telefon Numarası"
+                            label="Cep Telefonu - 05XXXXXXXXX"
                             {...register("car_business_traffic_phoneNumber", {
                                 required: "Zorunlu Alan",
                                 validate: {
@@ -971,7 +971,7 @@ function ResInsurance({ setOpen }) {
                     <TextField
                         value={watchFields.car_financial_phoneNumber ?? ""}
                         className='!mb-3' size='small' fullWidth
-                        label="Cep Telefonu"
+                        label="Cep Telefonu - 05XXXXXXXXX"
                         {...register("car_financial_phoneNumber", {
                             required: "Zorunlu Alan",
                             validate: {
@@ -1022,7 +1022,7 @@ function ResInsurance({ setOpen }) {
                     <TextField
                         value={watchFields.car_financial_birthdate ?? ""}
                         className='!mb-3' size='small' fullWidth
-                        label="Doğum Tarihi"
+                        label="Doğum Tarihi - XX/XX/XXXX"
                         {...register("car_financial_birthdate", {
                             required: "Zorunlu Alan",
                             validate: {

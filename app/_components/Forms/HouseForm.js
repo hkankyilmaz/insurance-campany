@@ -201,7 +201,7 @@ function HouseInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.house_person_konut_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Cep Telefonu"
+                            label="Cep Telefonu - 05XXXXXXXXX"
                             {...register("house_person_konut_phoneNumber", {
                                 required: "Zorunlu Alan",
                             })}
@@ -222,7 +222,7 @@ function HouseInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.house_person_konut_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Doğum Tarihi"
+                            label="Doğum Tarihi - XX/XX/XXXX"
                             {...register("house_person_konut_birthdate", {
                                 required: "Zorunlu Alan",
                                 validate: {
@@ -458,7 +458,7 @@ function HouseInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.house_business_konut_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Telefon Numarası"
+                            label="Cep Telefonu - 05XXXXXXXXX"
                             {...register("house_business_konut_phoneNumber", {
                                 required: "Zorunlu Alan",
                             })}
@@ -803,7 +803,7 @@ function DaskInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.house_person_dask_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Cep Telefonu"
+                            label="Cep Telefonu - 05XXXXXXXXX"
                             {...register("house_person_dask_phoneNumber", {
                                 required: "Zorunlu Alan",
                             })}
@@ -825,7 +825,7 @@ function DaskInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.house_person_dask_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Doğum Tarihi"
+                            label="Doğum Tarihi - XX/XX/XXXX"
                             {...register("house_person_dask_birthdate", {
                                 required: "Zorunlu Alan",
                                 validate: {
@@ -959,7 +959,7 @@ function DaskInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.house_business_dask_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Telefon Numarası"
+                            label="Cep Telefonu - 05XXXXXXXXX"
                             {...register("house_business_dask_phoneNumber", {
                                 required: "Zorunlu Alan",
                             })}
@@ -980,7 +980,7 @@ function DaskInsurance({ setOpen }) {
                         <TextField
                             value={watchFields.house_business_dask_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Doğum Tarihi"
+                            label="Doğum Tarihi - XX/XX/XXXX"
                             {...register("house_business_dask_birthdate", {
                                 required: "Zorunlu Alan",
                                 validate: {

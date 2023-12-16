@@ -166,7 +166,7 @@ function H({ setOpen }) {
                         <TextField
                             value={watchFields.health_sup_health_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Cep Telefonu"
+                            label="Cep Telefonu - 05XXXXXXXXX"
                             {...register("health_sup_health_phoneNumber", {
                                 required: "Zorunlu Alan",
                             })}
@@ -189,7 +189,7 @@ function H({ setOpen }) {
                         <TextField
                             value={watchFields.health_sup_health_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Doğum Tarihi"
+                            label="Doğum Tarihi - XX/XX/XXXX"
                             {...register("health_sup_health_birthdate", {
                                 required: "Zorunlu Alan",
                                 validate: {
@@ -284,7 +284,7 @@ function H({ setOpen }) {
                         <TextField
                             value={watchFields.health_special_health_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Cep Telefonu"
+                            label="Cep Telefonu - 05XXXXXXXXX"
                             {...register("health_special_health_phoneNumber", {
                                 required: "Zorunlu Alan",
                                 // validate: {
@@ -312,7 +312,7 @@ function H({ setOpen }) {
                         <TextField
                             value={watchFields.health_special_health_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Doğum Tarihi"
+                            label="Doğum Tarihi - XX/XX/XXXX"
                             {...register("health_special_health_birthdate", {
                                 required: "Zorunlu Alan",
                                 validate: {

@@ -175,7 +175,7 @@ function Business({ setOpen }) {
                         <TextField
                             value={watchFields.business_person_business_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Cep Telefonu"
+                            label="Cep Telefonu - 05XXXXXXXXX"
                             {...register("business_person_business_phoneNumber", {
                                 required: "Zorunlu Alan",
                                 validate: {
@@ -202,7 +202,7 @@ function Business({ setOpen }) {
                         <TextField
                             value={watchFields.business_person_business_birthdate ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Doğum Tarihi"
+                            label="Doğum Tarihi - XX/XX/XXXX"
                             {...register("business_person_business_birthdate", {
                                 required: "Zorunlu Alan",
                                 validate: {
@@ -349,7 +349,7 @@ function Business({ setOpen }) {
                         <TextField
                             value={watchFields.business_business_business_phoneNumber ?? ""}
                             className='!mb-3' size='small' fullWidth
-                            label="Telefon Numarası"
+                            label="Cep Telefonu - 05XXXXXXXXX"
                             {...register("business_business_business_phoneNumber", {
                                 required: "Zorunlu Alan",
                                 validate: {

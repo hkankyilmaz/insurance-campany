@@ -120,7 +120,7 @@ function T({ setOpen }) {
                     <TextField
                         value={watchFields.trip_person_trip_phoneNumber ?? ""}
                         className='!mb-3' size='small' fullWidth
-                        label="Cep Telefonu"
+                        label="Cep Telefonu - 05XXXXXXXXX"
                         {...register("trip_person_trip_phoneNumber", {
                             required: "Zorunlu Alan",
                         })}
@@ -143,7 +143,7 @@ function T({ setOpen }) {
                     <TextField
                         value={watchFields.trip_person_kasko_birthdate ?? ""}
                         className='!mb-3' size='small' fullWidth
-                        label="Doğum Tarihi"
+                        label="Doğum Tarihi - XX/XX/XXXX"
                         {...register("trip_person_kasko_birthdate", {
                             required: "Zorunlu Alan",
                             validate: {
