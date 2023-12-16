@@ -123,6 +123,11 @@ function T({ setOpen }) {
                         label="Cep Telefonu - 05XXXXXXXXX"
                         {...register("trip_person_trip_phoneNumber", {
                             required: "Zorunlu Alan",
+                            validate: {
+                                isMobilePhone: (value) =>
+                                    validator?.isMobilePhone(value, 'tr-TR') ||
+                                    "Lütfen geçerli bir telefon numarası girin.",
+                            },
                         })}
                     />
 

@@ -11,6 +11,7 @@ import ErrorIcon from "@mui/icons-material/Error";
 import { toast, ToastContainer } from 'react-toastify';
 import feed from "../_assets/feed.png"
 import Image from "next/image";
+import validator from "validator";
 
 
 function ModalRegister({ handleClose, open }) {
@@ -86,7 +87,7 @@ function ModalRegister({ handleClose, open }) {
                 showImage ?
                     <Image className='m-auto  w-[90vw] md:max-w-[600px] h-auto' src={feed} alt='faa' />
                     :
-                    <div className="bg-white md: w-[700px] md:px-10 py-10 rounded-lg max-md:mx-5" >
+                    <div className="bg-white md: w-[750px] md:px-10 py-10 rounded-lg max-md:mx-5" >
                         <form className='w-full max-md:px-3 flex flex-col justify-center items-center' onSubmit={handleSubmit(onSubmit)} >
                             <h1 className="md:text-2xl text-center mb-5" >Lütfen Formu Doldurun</h1>
                             <TextField
@@ -103,6 +104,11 @@ function ModalRegister({ handleClose, open }) {
                                 label="Telefon numarası"
                                 {...register("phoneNumber", {
                                     required: "Zorunlu Alan",
+                                    validate: {
+                                        isMobilePhone: (value) =>
+                                            validator?.isMobilePhone(value, 'tr-TR') ||
+                                            "Lütfen geçerli bir telefon numarası girin.",
+                                    },
                                 })}
                             />
                             <button disabled={isLoading ? true : false} type="submit" className='w-[250px] px-4 py-2 rounded-md  bg-orange-400 hover:bg-orange-500 text-white transition-all ease-in mt-3' >
@@ -113,7 +119,7 @@ function ModalRegister({ handleClose, open }) {
                             <p className='flex justify-center item-center mt-3' >
                                 <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                                 <span>
-                                    Lütfen Tüm Alanları Doldurun
+                                    Lütfen Tüm Alanları Doldurun, Telefon Numaranizi 05XXXXXXXXX Formatnda Girin.
                                 </span>
                             </p>
                             : undefined
