@@ -13,9 +13,22 @@ function SectionFive() {
                     <Card
                         url={'/blog/dask-nedir-daskin-onemi'}
                         variety={'Ev Sigortası'}
-                        title={'DASK Nedir? DASK’ın Önemi Nedir?'}
-                        date={'01.01.2021'}
+                        title={'DASK Nedir? DASK’ın Önemi Nedir ?'}
+                        date={'03.01.2024'}
 
+
+                    />
+                    <Card
+                        url={'/blog/konut-sigortasi-nelerden-korur'}
+                        variety={'Ev Sigortası'}
+                        title={'Konut Sigortası Nelerden Korur ?'}
+                        date={'05.01.2021'}
+                    />
+                    <Card
+                        url={'/blog/kasko-yaparken-nelere-dikkat-edilmeli'}
+                        variety={'Taşıt Sigortası'}
+                        title={'Kasko Yaparken Nelere Dikkat Edilmeli ? '}
+                        date={'10.01.2021'}
                     />
                     {/* <Card />
                     <Card />
@@ -49,13 +62,13 @@ import Link from 'next/link';
 
 function Card({ url, variety, title, date }) {
     return (
-        <Link href={url} >
-            <div className='w-[400px] border shadow-xl rounded-t-md bg-white hover:scale-[1.03] transition-all duration-[0.5s] cursor-pointer hover:shadow-xl hover:shadow-orange-300 '>
+        <Link href={url} className='max-md:mx-3'>
+            <div className='md:w-[400px] border shadow-xl rounded-t-md bg-white hover:scale-[1.03] transition-all duration-[0.5s] cursor-pointer hover:shadow-xl hover:shadow-orange-300 '>
                 <Image className='w-full rounded-t-md' src={image} />
-                <div className='flex justify-between border-l-[30px] px-2 border-l-orange-400 pb-4' >
+                <div className='flex justify-between border-l-[30px] px-2 border-l-orange-400 pb-4 h-[80px]' >
                     <div className=''>
                         <p className='mb-1 font-bold text-sm'> {variety} </p>
-                        <p className='flex justify-start items-center text-sm' > <HiOutlineDocumentText color='red' className='text-lg' /> <span className='ml-1' > {title} </span></p>
+                        <p className='flex justify-start item-start text-sm' > <HiOutlineDocumentText color='red' className='text-lg' /> <span className='ml-1' > {title} </span></p>
                     </div>
                     <div>
                         <p className='flex items-center mt-1'> <CgCalendarDates color='red' className='text-lg' /> <span className='ml-1 text-xs' > {date} </span> </p>
