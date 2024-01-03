@@ -30,6 +30,18 @@ function SectionFive() {
                         title={'Kasko Yaparken Nelere Dikkat Edilmeli ? '}
                         date={'10.01.2021'}
                     />
+                    <Card
+                        url={'/blog/trafik-sigortasi-nedir'}
+                        variety={'Trafik Sigortası'}
+                        title={'Trafik Sigortası Nedir ?'}
+                        date={'15.01.2021'}
+                    />
+                    <Card
+                        url={'/blog/seyahat-sigortasinin-faydalari'}
+                        variety={'Seyahat Sigortası'}
+                        title={'Seyahat Sıgortasının Faydaları ?'}
+                        date={'18.01.2021'}
+                    />
                     {/* <Card />
                     <Card />
                     <Card />
