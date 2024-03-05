@@ -119,7 +119,7 @@ function ModalRegister({ handleClose, open }) {
                             <p className='flex justify-center item-center mt-3' >
                                 <ErrorIcon className="translate-y-[2px]" sx={{ marginRight: "3px", color: "#ff9999", fontSize: "17px", }} />
                                 <span>
-                                    Lütfen Tüm Alanları Doldurun, Telefon Numaranizi 05XXXXXXXXX Formatnda Girin.
+                                    Lütfen Tüm Alanları Doldurun, Telefon Numaranızı 05XXXXXXXXX Formatında Girin.
                                 </span>
                             </p>
                             : undefined
